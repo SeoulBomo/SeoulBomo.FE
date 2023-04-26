@@ -1,7 +1,7 @@
 ---
 name: "✅Feature"
 about: Feature 작업 사항
-title: ''
+title: "[Feature]"
 labels: ''
 assignees: ''
 
