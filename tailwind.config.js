@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         cardFrameColor: "#FFF9E4",
         cardColor: "#FFFCF7",
+        yellowColor: "#FFEE98",
       },
     },
   },
