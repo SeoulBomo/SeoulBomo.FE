@@ -1,7 +1,5 @@
+import { Pretendard } from "@/utils/font";
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "서울보모",
@@ -15,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={Pretendard.className}>{children}</body>
     </html>
   );
 }
