@@ -31,8 +31,8 @@ export default function PopularCard() {
   ];
   return (
     <div className="bg-yellowColor rounded-[10px] shadow-lg w-[20.5rem] h-[30rem] flex justify-center items-center">
-      <div className="w-[18rem] h-[26.8rem]   flex flex-col items-center justify-between">
-        <text className="font-bold text-[28px]">인기 복지</text>
+      <div className="w-[18rem] h-[26rem]   flex flex-col items-center justify-between">
+        <text className="font-bold text-[1.75rem]">인기 복지</text>
         <div className="border-blue-500 w-[16.9rem] h-[22rem] bg-white rounded-[10px] flex flex-col justify-center">
           {dummy.map((item) => (
             <p
@@ -42,7 +42,7 @@ export default function PopularCard() {
               <text className="hover:underline underline-offset-4 ">
                 {item.id}.
               </text>
-              <text className="pl-2 hover:underline underline-offset-4 ">
+              <text className="pl-2 hover:underline underline-offset-4">
                 {item.name}
               </text>
             </p>
