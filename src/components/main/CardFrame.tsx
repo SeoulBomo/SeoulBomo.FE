@@ -4,14 +4,10 @@ import PopularCard from "./PopularCard";
 
 export default function CardFrame() {
   return (
-    <div className="w-screen mt-[6rem] flex justify-center items-center">
-      <div className="bg-cardFrameColor  shadow-lg w-[80.75rem] h-[45rem] flex  items-center justify-center">
-        <div className="h-[35rem] w-[72rem] flex items-center justify-evenly">
-          <CalculateCard />
-          <PopularCard />
-          <NewsCard />
-        </div>
-      </div>
+    <div className="bg-cardFrameColor shadow-lg w-[90%] flex lg:flex-row md:flex-col justify-center items-center gap-[2rem] flex-wrap lg:py-[10rem] py-[2rem]">
+      <CalculateCard />
+      <PopularCard />
+      <NewsCard />
     </div>
   );
 }

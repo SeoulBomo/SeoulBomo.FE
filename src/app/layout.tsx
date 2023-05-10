@@ -1,5 +1,6 @@
 import { Pretendard } from "@/utils/font";
 import "./globals.css";
+import Header from "@/components/header";
 
 export const metadata = {
   title: "서울보모",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={Pretendard.className}>{children}</body>
+      <body className={Pretendard.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
