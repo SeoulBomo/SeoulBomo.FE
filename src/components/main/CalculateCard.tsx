@@ -40,9 +40,6 @@ const dummy = [
     name: "자산형성지원",
   },
 ];
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 export default function CalculateCard() {
   return (
     <div className="bg-cardColor rounded-[10px] shadow-lg w-[20.5rem] h-[30rem] flex justify-center items-center">
@@ -60,7 +57,7 @@ export default function CalculateCard() {
         </div>
 
         <button className="w-[14.75rem] h-[3.3rem] bg-white rounded-lg shadow-lg hover:bg-gray-100">
-          <text className="font-inter text-xl font-semibold">GO</text>
+          <text className="text-xl font-semibold">GO</text>
         </button>
       </div>
     </div>
