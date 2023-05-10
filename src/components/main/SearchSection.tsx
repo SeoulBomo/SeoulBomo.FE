@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function SearchFrame() {
+export default function SearchSection() {
   return (
     <div className="p-[3rem] bg-white rounded-[1.375rem] drop-shadow-xl flex justify-center items-center">
       <div>
