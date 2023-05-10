@@ -1,19 +1,20 @@
+import RadioButton from "./RadioButton";
+
 export default function RadioBox() {
   return (
-    <div className="flex items-center mt-5">
-      <input
-        id="default-radio-1"
-        type="radio"
-        value=""
-        name="default-radio"
-        className="w-5 h-5 text-black bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-500 "
-      />
-      <label
-        htmlFor="default-radio-1"
-        className="ml-2 text-base font-semibold text-gray-900 dark:text-gray-300"
-      >
-        야외시설
-      </label>
-    </div>
+    <>
+      <div className="flex flex-wrap rounded-[0.3rem] w-[25rem] h-[16.2rem]">
+        <div className="flex flex-wrap gap-2">
+          <RadioButton name="야외시설" />
+          <RadioButton name="관공서" />
+          <RadioButton name="도서관" />
+          <RadioButton name="의료시설" />
+          <RadioButton name="문화행사" />
+          <button className="w-[10rem] h-[4.4rem] rounded-md bg-yellow-200 p-5 hover:bg-yellow-300">
+            <text className="text-xl font-semibold">GO {`->`}</text>
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
