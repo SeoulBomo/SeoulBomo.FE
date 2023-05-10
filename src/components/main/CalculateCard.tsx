@@ -54,7 +54,7 @@ export default function CalculateCard() {
               key={item.id}
               className="text-left font-medium text-2xl font-inter"
             >
-              --{item.name}
+              ✅ {item.name}
             </div>
           ))}
         </div>
