@@ -1,5 +1,4 @@
 import SearchCard from "../SearchCard";
-import MainSearchCard from "../SearchCard";
 
 export default function MainSearchFrame() {
   const dummy = [
