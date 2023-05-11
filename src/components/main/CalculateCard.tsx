@@ -56,8 +56,8 @@ export default function CalculateCard() {
           ))}
         </div>
 
-        <button className="w-[14.75rem] h-[3.3rem] bg-white rounded-lg shadow-lg hover:bg-gray-100">
-          <text className="text-xl font-semibold">GO</text>
+        <button className="w-[14.75rem] h-[3.3rem] bg-white rounded-md shadow-lg hover:bg-gray-100">
+          <text className="text-xl font-semibold">GO {`->`}</text>
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function RadioButton({ name }: { name: string }) {
           name="place"
           value={name}
         />
-        <div className="w-[10rem] rounded-md bg-white p-5 text-gray-400 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-black peer-checked:ring-black peer-checked:ring-offset-2">
+        <div className="w-[10rem] rounded-md bg-white p-5 shadow-sm text-gray-400 ring-2 ring-transparent transition-all hover:shadow-md peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2">
           <div className="flex flex-col">
             <div className="flex items-end justify-between">
               <p>

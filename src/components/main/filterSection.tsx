@@ -27,7 +27,7 @@ export default function FilterSection() {
         console.log(e.target.age.value);
       }}
     >
-      <section className="w-[screen] mt-[2rem]  flex items-center justify-center">
+      <section className="w-[screen] flex items-center justify-center">
         <div className="rounded-[0.625rem]">
           <div className="flex flex-col items-center justify-center">
             <text className="font-bold text-2xl ">

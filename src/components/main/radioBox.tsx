@@ -10,8 +10,8 @@ export default function RadioBox() {
           <RadioButton name="도서관" />
           <RadioButton name="의료시설" />
           <RadioButton name="문화행사" />
-          <button className="w-[10rem] h-[4.4rem] rounded-md bg-yellow-200 p-5 hover:bg-yellow-300">
-            <text className="text-xl font-semibold">GO {`->`}</text>
+          <button className="w-[10rem] h-[4.4rem] shadow-md rounded-md bg-yellow-200 p-5 hover:bg-yellow-300">
+            <text className="text-xl font-semibold">검색 🔎</text>
           </button>
         </div>
       </div>

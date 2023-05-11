@@ -6,7 +6,7 @@ import SearchSection from "@/components/main/SearchSection";
 export default function Home() {
   return (
     <>
-      <div className="bg-cardFrameColor shadow-lg w-screen h-screen flex justify-center items-center flex-wrap lg:py-[8rem]">
+      <div className="bg-cardFrameColor shadow-lg w-screen h-screen flex justify-center items-center flex-wrap">
         <SearchSection />
         <FilterSection />
       </div>
