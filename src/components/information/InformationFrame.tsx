@@ -67,7 +67,7 @@ export default function InformationFrame() {
   ];
 
   return (
-    <main className="w-[screen] bg-cardFrameColor flex flex-col items-center justify-between">
+    <main className="w-screen bg-cardFrameColor flex flex-col items-center justify-between">
       <text className="font-bold text-4xl mt-[5rem] mb-[5rem]">
         Information
       </text>
