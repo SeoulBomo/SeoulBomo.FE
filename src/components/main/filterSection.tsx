@@ -20,13 +20,7 @@ export default function FilterSection() {
     },
   ];
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        console.log(e.target.place.value);
-        console.log(e.target.age.value);
-      }}
-    >
+    <fieldset>
       <section className="w-[screen] flex items-center justify-center">
         <div className="rounded-[0.625rem]">
           <div className="flex flex-col items-center justify-center">
@@ -38,11 +32,11 @@ export default function FilterSection() {
               우리 아이의 나이를 선택하고 필요한 정보를 받아보세요
             </text>
           </div>
-          <div className="flex flex-wrap items-center justify-center lg:flex-wrap-reverse gap-[0.5rem] lg:gap-[2rem]">
+          <div className="flex flex-wrap items-center justify-center gap-[0.5rem] lg:gap-[2rem]">
             <label className="cursor-pointer">
               <input
                 type="radio"
-                className="peer sr-only"
+                className="peer hidden"
                 name="age"
                 value="연령무관"
               />
@@ -54,7 +48,7 @@ export default function FilterSection() {
               <label className="cursor-pointer" key={item.id}>
                 <input
                   type="radio"
-                  className="peer sr-only"
+                  className="peer hidden"
                   name="age"
                   value={item.text}
                 />
@@ -76,6 +70,6 @@ export default function FilterSection() {
           </div>
         </div>
       </section>
-    </form>
+    </fieldset>
   );
 }
