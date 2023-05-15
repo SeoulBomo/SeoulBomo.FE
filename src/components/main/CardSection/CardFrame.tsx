@@ -4,7 +4,7 @@ import PopularCard from "./PopularCard";
 
 export default function CardFrame() {
   return (
-    <div className="bg-cardFrameColor shadow-lg w-[90%] flex lg:flex-row md:flex-col justify-center items-center gap-[2rem] flex-wrap lg:py-[10rem] py-[2rem]">
+    <div className="my-[10rem] gap-[3rem] justify-center items-center justify-items-center grid grid-cols-1 lg:grid-cols-3">
       <CalculateCard />
       <PopularCard />
       <NewsCard />

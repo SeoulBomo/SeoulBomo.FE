@@ -1,8 +1,12 @@
-import CardFrame from "@/components/main/CardFrame";
+import CardFrame from "@/components/main/CardSection/CardFrame";
+import FilterSection from "@/components/main/FilterSection/FilterSection";
+import SearchSection from "@/components/main/SearchSection/SearchSection";
 
 export default function Home() {
   return (
-    <div className="w-screen flex justify-center items-center">
+    <div className="bg-cardFrameColor shadow-lg flex justify-center items-center flex-wrap">
+      <SearchSection />
+      <FilterSection />
       <CardFrame />
     </div>
   );
