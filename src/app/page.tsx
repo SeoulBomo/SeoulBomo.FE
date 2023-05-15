@@ -1,6 +1,6 @@
-import CardFrame from "@/components/main/CardFrame";
-import FilterSection from "@/components/main/FilterSection";
-import SearchSection from "@/components/main/SearchSection";
+import CardFrame from "@/components/main/CardSection/CardFrame";
+import FilterSection from "@/components/main/FilterSection/FilterSection";
+import SearchSection from "@/components/main/SearchSection/SearchSection";
 
 export default function Home() {
   return (
