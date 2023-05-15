@@ -30,24 +30,19 @@ export default function PopularCard() {
     },
   ];
   return (
-    <div className="bg-yellowColor rounded-[10px] shadow-lg w-[20.5rem] h-[30rem] flex justify-center items-center">
-      <div className="w-[18rem] h-[26rem]   flex flex-col items-center justify-between">
-        <text className="font-bold text-[1.75rem]">인기 복지</text>
-        <div className="border-blue-500 w-[16.9rem] h-[22rem] bg-white rounded-[10px] flex flex-col justify-center">
-          {dummy.map((item) => (
-            <p
-              key={item.id}
-              className=" text-left font-semibold text-xl leading-loose pl-6 h-[3rem] w-[16.5rem] truncate"
-            >
-              <text className="hover:underline underline-offset-4 ">
-                {item.id}.
-              </text>
-              <text className="pl-2 hover:underline underline-offset-4">
-                {item.name}
-              </text>
-            </p>
-          ))}
-        </div>
+    <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] h-[28rem] lg:w-[20.5rem] lg:h-[30rem]">
+      <text className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+        인기 복지
+      </text>
+      <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
+        {dummy?.map((item) => (
+          <text
+            key={item.id}
+            className="font-medium text-lg lg:text-2xl truncate hover:underline underline-offset-4 cursor-pointer"
+          >
+            {item.name}
+          </text>
+        ))}
       </div>
     </div>
   );
