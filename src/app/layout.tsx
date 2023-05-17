@@ -1,6 +1,6 @@
 import { Pretendard } from "@/utils/font";
 import "./globals.css";
-import Header from "@/components/header";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "서울보모",
