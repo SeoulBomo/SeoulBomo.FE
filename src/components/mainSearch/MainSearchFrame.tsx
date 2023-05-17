@@ -36,7 +36,7 @@ export default function MainSearchFrame() {
             type="text"
             name="search"
             id="search"
-            className="placeholder:text-gray-400 pl-[1rem] w-[12rem] h-[2rem] sm:w-[20rem] sm:h-[2.5rem] md:w-[28rem] lg:w-[33rem]border-4 border-white rounded-[28px] focus:outline-yellow-300  p  -[1rem] text-xl"
+            className="placeholder:text-gray-400 pl-[1rem] w-[12rem] h-[2rem] sm:w-[20rem] sm:h-[2.5rem] md:w-[28rem] lg:w-[33rem]border-4 border-white rounded-[28px] focus:outline-yellow-300  p-[1rem] text-xl"
           ></input>
           <button className="w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] bg-white rounded-[0.9rem] text-xs sm:text-sm font-bold hover:bg-gray-100">
             Search
