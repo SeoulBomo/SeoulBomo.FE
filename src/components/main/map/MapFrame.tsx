@@ -3,11 +3,10 @@ import Link from "next/link";
 export default function MapFrame() {
   const outLineStyle =
     "stroke-black stroke-2 fill-white hover:fill-yellowColor";
-  const textStyle = "text-base";
 
   return (
     <div className="w-screen flex items-center justify-center mt-[1rem]">
-      <text className="font-bold text-[3rem] hidden lg:block" x="0" y="153" z>
+      <text className="font-bold text-[3rem] hidden lg:block" x="0" y="153">
         우리 동네
         <br /> <text className="text-yellow-300">복지 시설</text> 알아보기
       </text>
