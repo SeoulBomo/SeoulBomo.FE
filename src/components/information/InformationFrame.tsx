@@ -9,13 +9,13 @@ export default function InformationFrame() {
     },
     {
       id: 2,
-      name: "국공립 어린이집 활동",
-      path: "/information/activity",
+      name: "국공립 어린이집 확충",
+      path: "/information/expansion",
     },
     {
       id: 3,
       name: "육아 종합 지원 센터",
-      path: "/information/support",
+      path: "/information/center",
     },
     {
       id: 4,
@@ -30,7 +30,7 @@ export default function InformationFrame() {
     {
       id: 6,
       name: "아이 행복 카드",
-      path: "/information/card",
+      path: "/information/credit",
     },
     {
       id: 7,
@@ -54,6 +54,11 @@ export default function InformationFrame() {
       id: 3,
       name: "가정 양육 수당",
       path: "/information/benefit",
+    },
+    {
+      id: 4,
+      name: "영아수당",
+      path: "/information/infant-benefit",
     },
   ];
 
