@@ -2,13 +2,17 @@ export default function CareProcess() {
   return (
     <main>
       {/* 타이틀 */}
-      <div className=" bg-yellowColor rounded-[0.7rem] w-[18.9rem] h-[5.6rem] flex items-center justify-center mt-[6rem] mb-[4rem]">
-        <text className="font-bold text-2xl">3-5세 누리 과정</text>
+      <div className="flex items-center justify-center p-[3rem]">
+        <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
+          3-5세 누리 과정
+        </text>
       </div>
 
-      <div className=" bg-white w-[70rem] py-[2rem] pl-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col">
-        <text className="text-2xl font-semibold">제도 도입 의의</text>
-        <text className="text-lg font-normal leading-8 pt-3">
+      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+        <text className="text-xl lg:text-2xl font-semibold">
+          제도 도입 의의
+        </text>
+        <text className="text-base lg:text-lg font-normal leading-8 lg:leading-8 pt-3">
           만 3-5세아 보육 · 교육에 대한 국가의 책임 강화
           <br />
           미래 인적자원 투자로서 보육·교육에 대한 지원을 확대하여 부모 양육부담
@@ -31,8 +35,10 @@ export default function CareProcess() {
           지원을 순차적으로 늘려 경제적 부담 경감
           <br />
         </text>
-        <text className="text-2xl font-semibold pt-[5rem]">주요 내용</text>
-        <text className="text-lg font-normal leading-8 pt-3">
+        <text className="text-xl lg:text-2xl font-semibold pt-[5rem]">
+          주요 내용
+        </text>
+        <text className="text-base lg:text-lg font-normal leading-8 lg:leading-8 pt-3">
           만 3-5세아에 대한 유아 공통과정(누리과정) 도입
           <br />
           ‘3-5세 누리과정 ‘은 만 3-5세 유아의 심신의 건강과 조화로운 발달을 도와
@@ -55,15 +61,17 @@ export default function CareProcess() {
           <br />
           ※ 지원대상(2020년)
           <br />
-          만3세 : 2016.1.1 ∼ 2016.12.31일 생<br />
-          만4세 : 2015.1.1 ∼ 2015.12.31일 생<br />
-          만5세 : 2014.1.1 ∼ 2014.12.31일 생<br />
+          만3세 : 2016.1.1 ~ 2016.12.31일 생<br />
+          만4세 : 2015.1.1 ~ 2015.12.31일 생<br />
+          만5세 : 2014.1.1 ~ 2014.12.31일 생<br />
         </text>
-        <text className="text-2xl font-semibold pt-[5rem]">기대효과</text>
-        <text className="text-lg font-normal leading-8 pt-3">
+        <text className="text-xl lg:text-2xl font-semibold pt-[5rem]">
+          기대효과
+        </text>
+        <text className="text-base lg:text-lg font-normal leading-8 pt-3">
           보육 · 유아교육에 대한 투자는 일석사조(맞춤형 복지, 저출산 대책,
           미래대비 투자, 일자리 대책 등)의 효과 <br />
-          보육교사 등 사회서비스 일자리를 창출하고, 여성의 경제 활동 참여를 촉진{" "}
+          보육교사 등 사회서비스 일자리를 창출하고, 여성의 경제 활동 참여를 촉진
           <br />
           만 3-5세 유아교육 · 보육의 질이 한 단계 높아지고, 학부모의 부담이
           실질적으로 경감 <br />

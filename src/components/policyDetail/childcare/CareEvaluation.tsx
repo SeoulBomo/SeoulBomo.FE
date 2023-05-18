@@ -1,52 +1,57 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function CareEstimate() {
+export default function CareEvaluation() {
   return (
     <main>
       {/* 타이틀 */}
-      <div className=" bg-yellowColor rounded-[0.7rem] w-[18.9rem] h-[5.6rem] flex items-center justify-center mt-[6rem] mb-[4rem]">
-        <text className="font-bold text-2xl">어린이집 평가제</text>
+      <div className="flex items-center justify-center p-[3rem]">
+        <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
+          어린이집 평가제
+        </text>
       </div>
 
-      <div className=" bg-white w-[70rem] py-[2rem] pl-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col">
-        <text className="text-2xl font-semibold">어린이집 평가제</text>
-        <text className="text-lg font-normal leading-8 pt-3">
+      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+        <text className="text-xl lg:text-2xl font-semibold">
+          어린이집 평가제
+        </text>
+        <text className="text-base lg:text-lg font-normal leading-8 lg:leading-8 pt-3">
           어린이집 평가제도는 보육·양육에 대한 사회적 책임강화 실현 및 안심
           보육환경 조성을 위해
           <br /> 국가 차원에서 모든 어린이집을 주기적으로 평가하여 상시적인
           보육서비스의 질을 확보하고자 하는 제도
           <br />
-          <br /> ◼️2004.1~ : 어린이집 평가인증 제도 도입근거 마련(영유아보육법
-          제30조)
           <br />
-          ◼️2005.1~ : 어린이집 평가인증 시범운영 실시
+          █ 2004.1~ : 어린이집 평가인증 제도 도입근거 마련(영유아보육법 제30조)
           <br />
-          ◼️2006.1~ : 제1차 어린이집 평가인증 실시
+          █ 2005.1~ : 어린이집 평가인증 시범운영 실시
           <br />
-          ◼️2010.2~ : 제2차 어린이집 평가인증 실시
+          █ 2006.1~ : 제1차 어린이집 평가인증 실시
           <br />
-          ◼️2014.11~ : 제3차 어린이집 평가인증 시범사업 실시
+          █ 2010.2~ : 제2차 어린이집 평가인증 실시
           <br />
-          ◼️2017.11~ : 제3차 어린이집 평가인증(통합지표) 시행
+          █ 2014.11~ : 제3차 어린이집 평가인증 시범사업 실시
           <br />
-          ◼️2019.6~ : 어린이집 평가제 시행
+          █ 2017.11~ : 제3차 어린이집 평가인증(통합지표) 시행
+          <br />
+          █ 2019.6~ : 어린이집 평가제 시행
           <br />
           <br />
           영유아보육법 제30조에 근거하여 모든 어린이집이 지표를 기준으로 질적
           수준을 자체적으로 점검·개선하도록 한 후, <br />
           평가과정을 수행하여 평가 등급 부여( A, B, C, D 등급)
         </text>
-        <text className="text sm font-bold pt-[2rem]">
-          평가등급의 기준 및 평가주기
-        </text>
-        <section className="mt-[4rem]">
-          <table className=" text-lg text-left text-gray-500 mt-[1.5rem] ">
-            <thead className="text-lg text-gray-700  bg-gray-100">
+        <section className="mt-[2rem]">
+          <text className="text-base lg:text-lg font-bold pt-[2rem]">
+            평가등급의 기준 및 평가주기
+          </text>
+          <table className="text-base lg:text-lg text-left text-gray-500 mt-[1rem]">
+            <thead className="text-base lg:text-lg text-gray-700  bg-gray-100">
               <tr>
-                <th className=" px-5 py-5 ">등급</th>
-                <th className=" px-5 py-5 ">등급구분 (정의)</th>
-                <th className=" px-5 py-5 ">등급 부여기준</th>
-                <th className=" px-5 py-5 ">평가주기</th>
+                <th className="px-5 py-5">등급</th>
+                <th className="px-5 py-5">등급구분 (정의)</th>
+                <th className="px-5 py-5">등급 부여기준</th>
+                <th className="px-5 py-5">평가주기</th>
               </tr>
             </thead>
             <tbody>
@@ -105,7 +110,7 @@ export default function CareEstimate() {
             </tbody>
           </table>
         </section>
-        <text className="text-md font-normal leading-10">
+        <text className="text-sm lg:text-base font-normal leading-10">
           4개 영역, 18개 지표, 59개 평가항목에 대해 평가
           <br />
           어린이집 평가 운영체계
@@ -117,21 +122,22 @@ export default function CareEstimate() {
           height={1000}
           alt="이미지"
         />
-        <text className="text-lg font-medium leading-10 ">
+        <text className="text-base lg:text-lg font-medium leading-8 lg:leading-10 ">
           결과 공표
           <br />
           평가결과(A~D등급) 등 전체 어린이집에 대한 평가 이력정보를
-          <a
-            href="www.childinfo.go.kr"
-            className="no-underline hover:underline"
+          <Link
+            href="http://www.childinfo.go.kr"
+            className="underline"
+            target="_blank"
           >
-            통합정보공시 홈페이지 (www.childinfo.go.kr)
-          </a>
+            {" 통합정보공시 홈페이지 (www.childinfo.go.kr) "}
+          </Link>
           를 통해 공개
         </text>
-        <section className="mt-[1rem]">
-          <table className=" text-lg text-left text-gray-500 mt-[1.5rem] ">
-            <thead className="text-lg text-gray-700  bg-gray-100">
+        <section className="mt-[0.5rem]">
+          <table className="text-base lg:text-lg text-left text-gray-500 mt-[1.5rem] ">
+            <thead className="text-base lg:text-lg text-gray-700  bg-gray-100">
               <tr className="px-4 py-4">
                 <th colSpan={2} className="px-4 py-4">
                   구분
@@ -206,14 +212,13 @@ export default function CareEstimate() {
                   인증취소·인증종료·인증유효기간만료
                 </td>
                 <td className="bg-white px-3 py-3 border-r-2 border-slate-200">
-                  {" "}
                   인증취소/인증조료/인증 유효기간 만료
                 </td>
               </tr>
             </tbody>
           </table>
         </section>
-        <text className="text-md font-normal leading-10 ">
+        <text className="text-sm lg:text-base font-normal leading-10 ">
           * D등급(등급조정)은 통합정보공시 홈페이지 최하위 등급 조정에 포함되는
           사유 안내
           <br />* ‘평가예정’은 신규개원, 대표자변경, 6개월 이상 운영 중단 후
