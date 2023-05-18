@@ -28,14 +28,18 @@ export default function MapSearchFrame() {
   return (
     <main className="w-screen flex flex-col items-center justify-between">
       <div className="mt-[3rem]">
-        <text className="text-3xl font-bold">관악구 복지 시설 알아보기</text>
+        <text className="text-xl md:text-2xl lg:text-3xl font-bold">
+          관악구 복지 시설 알아보기
+        </text>
       </div>
-      <SearchCard category="야외시설" data={dummy} />
-      <SearchCard category="체험시설" data={dummy} />
-      <SearchCard category="관공서" data={dummy} />
-      <SearchCard category="문화행사" data={dummy} />
-      <SearchCard category="도서관" data={dummy} />
-      <SearchCard category="의료시설" data={dummy} />
+      <div className="my-[4rem] flex flex-col gap-10">
+        <SearchCard category="야외시설" data={dummy} />
+        <SearchCard category="체험시설" data={dummy} />
+        <SearchCard category="관공서" data={dummy} />
+        <SearchCard category="문화행사" data={dummy} />
+        <SearchCard category="도서관" data={dummy} />
+        <SearchCard category="의료시설" data={dummy} />
+      </div>
     </main>
   );
 }
