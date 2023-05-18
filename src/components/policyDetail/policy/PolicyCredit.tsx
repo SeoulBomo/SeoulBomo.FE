@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PolicyCredit() {
   return (
@@ -275,12 +276,13 @@ export default function PolicyCredit() {
         <text className="text-lg lg:text-xl font-normal leading-8 pt-3 ">
           신용카드 연회비 부모부담 없음
         </text>
-        <a
-          className="text-xl lg:text-2xl font-semibold pt-[5rem] underline"
+        <Link
+          className="text-xl lg:text-2xl font-semibold mt-[5rem] underline"
           href="https://www.childcare.go.kr/"
+          target="_blank"
         >
           임신육아종합포털 아이사랑 바로가기
-        </a>
+        </Link>
         <text className="text-lg lg:text-xl font-normal leading-8 pt-3">
           신용카드 연회비 부모부담 없음
         </text>
