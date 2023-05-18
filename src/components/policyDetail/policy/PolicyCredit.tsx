@@ -11,7 +11,7 @@ export default function PolicyCredit() {
         </text>
       </div>
       {/* 본문 */}
-      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[2rem] lg:px-[4rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+      <div className="bg-white shadow-md py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
         <text className="text-xl lg:text-2xl font-semibold">
           보육전자바우처 도입(前 아이사랑카드 → 現 아이행복카드)
         </text>

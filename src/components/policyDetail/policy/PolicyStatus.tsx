@@ -8,7 +8,7 @@ export default function PolicyStatus() {
         </text>
       </div>
 
-      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[3rem] rounded-[1rem] flex flex-col justify-start gap-[2rem]">
+      <div className="bg-white shadow-md py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
         <section className="flex flex-col">
           <text className="text-xl lg:text-2xl font-bold">
             연도별 어린이집 현황

@@ -8,7 +8,7 @@ export default function BusinessCare() {
         </text>
       </div>
       {/* 본문 */}
-      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+      <div className="bg-white shadow-md py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
         <text className="text-xl lg:text-2xl font-semibold ">시간제 보육</text>
         <text className="text-bases lg:text-lg font-normal leading-8 pt-3 border-l-4 border-yellow-200 pl-2">
           시간제보육 :가정양육가구(양육수당(현금) 또는 가정양육수당 수급 중)가
