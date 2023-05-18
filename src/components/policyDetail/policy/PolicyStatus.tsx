@@ -1,4 +1,4 @@
-export default function PolicyState() {
+export default function PolicyStatus() {
   return (
     <main>
       <div className=" bg-yellowColor rounded-[0.7rem] w-[18.9rem] h-[5.6rem] flex items-center justify-center mt-[6rem] mb-[4rem]">

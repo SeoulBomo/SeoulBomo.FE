@@ -1,4 +1,4 @@
-export default function PolicyExpert() {
+export default function PolicyProfessional() {
   return (
     <main>
       {/* 타이틀 */}
