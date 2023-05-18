@@ -2,21 +2,24 @@ export default function PolicyCenter() {
   return (
     <main>
       {/* 타이틀 */}
-      <div className=" bg-yellowColor rounded-[0.7rem] w-[18.9rem] h-[5.6rem] flex items-center justify-center mt-[6rem] mb-[4rem]">
-        <text className="font-bold text-2xl">육아종합지원센터</text>
+      <div className="flex items-center justify-center p-[3rem]">
+        <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
+          육아종합지원센터
+        </text>
       </div>
-
-      <div className=" bg-white w-[70rem] py-[2rem] pl-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col">
-        <text className="text-2xl font-semibold">육아종합지원센터</text>
-        <text className="text-xl font-normal leading-8 pt-3">
+      {/* 본문 */}
+      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+        <text className="text-xl lg:text-2xl font-semibold">
+          육아종합지원센터
+        </text>
+        <text className="text-base lg:text-lg font-normal leading-8 pt-3">
           육아종합지원센터 : 보육에 관한 정보의 수집·제공 및 상담 등을 제공하기
           위하여 <br />
           보건복지부장관과 지방자치단체의 장이 설치·운영하는 육아지원전문기관
         </text>
-        <section className="mt-[4rem]">
-          <text>지원내용</text>
-          <table className=" text-lg text-left text-gray-500 mt-[1.5rem] ">
-            <thead className="text-lg text-gray-700  bg-gray-100 ">
+        <section className="mt-[1rem]">
+          <table className="table-fixed text-base lg:text-lg text-left text-gray-500 mt-[1.5rem]">
+            <thead className="text-base lg:text-lg text-gray-700 bg-gray-100">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   어린이집 대상 지원

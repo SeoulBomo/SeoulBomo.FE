@@ -1,15 +1,22 @@
 export default function PolicyHistory() {
   return (
     <main>
-      <div className=" bg-yellowColor rounded-[0.7rem] w-[18.9rem] h-[5.6rem] flex items-center justify-center mt-[6rem] mb-[4rem]">
-        <text className="font-bold text-2xl">보육 정책 연혁</text>
+      {/* 타이틀 */}
+      <div className="flex items-center justify-center p-[3rem]">
+        <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
+          보육 정책 연혁
+        </text>
       </div>
-      <div className=" bg-white w-[70rem] py-[2rem] pl-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem]">
-        <text className="text-xl font-semibold leading-[4rem]">
-          저소득층 자녀위주의 탁아사업(1921)<br></br>
-          「유아교육진흥법」제정, 새마을유아원 운영(1982)<br></br>
-          「남녀고용평등법」에 따라 직장 탁아제 도입(1987)<br></br>
-          「영유아보육법」을 제정, ‘탁아’에서 ‘보육’으로 전환(1991)<br></br>
+      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+        <text className="text-lg lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
+          저소득층 자녀위주의 탁아사업(1921)
+          <br />
+          「유아교육진흥법」제정, 새마을유아원 운영(1982)
+          <br />
+          「남녀고용평등법」에 따라 직장 탁아제 도입(1987)
+          <br />
+          「영유아보육법」을 제정, ‘탁아’에서 ‘보육’으로 전환(1991)
+          <br />
           제1차 중장기보육기본계획 ‘새싹플랜’ (2006~2008, 여성가족부) - 여성의
           사회진출 증가에 대응한 보육서비스 공급 중점
           <br />
