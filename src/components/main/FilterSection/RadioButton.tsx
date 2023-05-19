@@ -2,7 +2,7 @@ export default function RadioButton({ name }: { name: string }) {
   return (
     <label className="cursor-pointer">
       <input type="radio" name="place" className="peer sr-only" value={name} />
-      <div className="lg:w-[10rem] rounded-md bg-white p-5 shadow-sm text-gray-400 ring-2 ring-transparent transition-all hover:shadow-md peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2">
+      <div className="lg:w-[10rem] rounded-md bg-white p-5 shadow-md text-gray-400 ring-2 ring-transparent transition-all peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2">
         <div className="flex flex-col">
           <div className="flex items-end justify-between">
             <p>
