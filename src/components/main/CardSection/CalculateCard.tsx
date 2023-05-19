@@ -44,7 +44,7 @@ const dummy = [
 ];
 export default function CalculateCard() {
   return (
-    <div className="bg-cardColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] h-[28rem] lg:w-[20.5rem] lg:h-[30rem]">
+    <div className="bg-cardColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
       <text className="font-bold text-[1.5rem] lg:text-[1.75rem]">
         모의 계산
       </text>
