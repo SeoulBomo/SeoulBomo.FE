@@ -2,7 +2,7 @@ import MainSearchFrame from "@/components/mainSearch/MainSearchFrame";
 
 export default function Search() {
   return (
-    <div className="bg-cardFrameColor flex justify-center items-center flex-wrap">
+    <div className="flex justify-center items-center flex-wrap">
       <MainSearchFrame />
     </div>
   );

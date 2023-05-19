@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={Pretendard.className}>
         <Header />
-        {children}
+        <div className="bg-cardFrameColor">{children}</div>
       </body>
     </html>
   );
