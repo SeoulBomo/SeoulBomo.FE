@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { Dialog, Popover } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { Dialog, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import Logo from "./Logo";
@@ -16,9 +16,9 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="/">
+          <Link href="/">
             <Logo />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -32,28 +32,28 @@ export default function Header() {
         {/* nav 그룹 */}
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           {/* Home 버튼 */}
-          <a
+          <Link
             href="/"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
             Home
-          </a>
+          </Link>
 
           {/* Information 버튼 */}
-          <a
+          <Link
             href="/information"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
             Information
-          </a>
+          </Link>
 
           {/* About us 버튼 */}
-          <a
+          <Link
             href="/about-us"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
             About us
-          </a>
+          </Link>
         </Popover.Group>
 
         {/* 로그인/회원가입 버튼 */}
@@ -68,67 +68,92 @@ export default function Header() {
         </div>
       </nav>
       {/* 모바일 Dialog */}
-      <Dialog
-        as="div"
-        className="lg:hidden"
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
+      <Transition
+        show={mobileMenuOpen}
+        appear
+        as={Fragment}
+        enter="ease-in-out duration-700"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="ease-in-out duration-700"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
-        <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5">
-              <Logo />
-            </a>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
+        <Dialog
+          as="div"
+          className="lg:hidden"
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+        >
+          <div className="fixed inset-0 z-10" />
+          <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <Transition.Child
+              enter="transform transition ease-in-out duration-700"
+              enterFrom="opacity-0 translate-x-full"
+              enterTo="opacity-100 translate-x-0"
+              leave="transform transition ease-in-out duration-700"
+              leaveFrom="opacity-100 translate-x-0"
+              leaveTo="opacity-0 translate-x-full"
             >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                {/* 모바일 홈버튼 */}
-                <Link
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Home
+              <div className="flex items-center justify-between">
+                <Link href="/" className="-m-1.5 p-1.5">
+                  <Logo />
                 </Link>
-                {/* 모바일 Information 버튼 */}
-                <Link
-                  href="/information"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                <button
+                  type="button"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Information
-                </Link>
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-gray-500/10">
+                  <div className="space-y-2 py-6">
+                    {/* 모바일 홈버튼 */}
+                    <Link
+                      href="/"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Home
+                    </Link>
+                    {/* 모바일 Information 버튼 */}
+                    <Link
+                      href="/information"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Information
+                    </Link>
 
-                {/* 모바일 About us 버튼 */}
-                <Link
-                  href="/about-us"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  About us
-                </Link>
+                    {/* 모바일 About us 버튼 */}
+                    <Link
+                      href="/about-us"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      About us
+                    </Link>
+                  </div>
+                  <div className="py-6">
+                    <Link
+                      href="/login"
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <text className="font-bold text-gray-900 text-sm">
+                        로그인 / 회원가입
+                      </text>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="py-6">
-                <a
-                  href="/login"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  <text className="font-bold text-gray-900 text-sm">
-                    로그인 / 회원가입
-                  </text>
-                </a>
-              </div>
-            </div>
-          </div>
-        </Dialog.Panel>
-      </Dialog>
+            </Transition.Child>
+          </Dialog.Panel>
+        </Dialog>
+      </Transition>
     </header>
   );
 }
