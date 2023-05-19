@@ -28,7 +28,7 @@ export default function PolicyReform() {
           <br />
         </text>
         <Image
-          className="h-[35rem] w-[65rem] my-[4rem]"
+          className="h-[35rem]"
           src="/images/reform1.jpg"
           width={1000}
           height={1000}

@@ -20,37 +20,34 @@ export default function BusinessPay() {
         </text>
         (월 기준, 단위: 천원)
         <section className="mt-[3rem]">
-          <table className="table-fixed text-sm lg:text-base text-left text-gray-500 lg:px-3 py-3">
+          <table className="table-fixed text-sm lg:text-base text-left text-gray-500 lg:px-3 lg:py-3">
             <thead>
               <tr>
                 <th
                   rowSpan={3}
-                  className="text-gray-700 bg-gray-100 lg:px-4 py-4"
+                  className="text-gray-700 bg-gray-100 lg:px-4 lg:py-4"
                 >
                   구분
                 </th>
                 <th
                   colSpan={5}
-                  className="text-gray-700 bg-gray-100 lg:px-3 py-3"
+                  className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3"
                 >
                   연령 (적용시기)
                 </th>
               </tr>
 
               <tr>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3">
                   0세반 (23.1.1~)
                 </th>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3">
                   1세반 (23.1.1~)
                 </th>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3">
                   2세반 (23.1.1~)
                 </th>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">
-                  3~5세반 (23.1.1~2.28)
-                </th>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3">
                   3~5세반 (23.3.1~)
                 </th>
               </tr>
@@ -58,32 +55,33 @@ export default function BusinessPay() {
 
             <tbody>
               <tr>
-                <th className="text-gray-700 bg-gray-100 lg:px-3 py-3">계</th>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">1,113</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">778</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">596</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">280</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">280</td>
+                <th className="text-gray-700 bg-gray-100 lg:px-3 lg:py-3">
+                  계
+                </th>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">
+                  1,113
+                </td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">778</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">596</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">280</td>
               </tr>
               <tr>
-                <th className="text-gray-700 bg-gray-100  lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100  lg:px-3 lg:py-3">
                   부모보육료
                 </th>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">514</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">452</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">375</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">280</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">280</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">514</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">452</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">375</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">280</td>
               </tr>
               <tr>
-                <th className="text-gray-700 bg-gray-100  lg:px-3 py-3">
+                <th className="text-gray-700 bg-gray-100  lg:px-3 lg:py-3">
                   기관보육료
                 </th>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">599</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">326</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">221</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">-</td>
-                <td className="text-gray-700 bg-white lg:px-3 py-3">-</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">599</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">326</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">221</td>
+                <td className="text-gray-700 bg-white lg:px-3 lg:py-3">-</td>
               </tr>
             </tbody>
           </table>
