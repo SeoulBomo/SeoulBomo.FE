@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PolicyCredit() {
   return (
@@ -10,7 +11,7 @@ export default function PolicyCredit() {
         </text>
       </div>
       {/* 본문 */}
-      <div className="bg-white border-r-2 border-b-2 border-slate-300 py-[3rem] px-[1rem] sm:px-[2rem] lg:px-[4rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
+      <div className="bg-white shadow-md py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">
         <text className="text-xl lg:text-2xl font-semibold">
           보육전자바우처 도입(前 아이사랑카드 → 現 아이행복카드)
         </text>
@@ -275,12 +276,13 @@ export default function PolicyCredit() {
         <text className="text-lg lg:text-xl font-normal leading-8 pt-3 ">
           신용카드 연회비 부모부담 없음
         </text>
-        <a
-          className="text-xl lg:text-2xl font-semibold pt-[5rem] underline"
+        <Link
+          className="text-xl lg:text-2xl font-semibold mt-[5rem] underline"
           href="https://www.childcare.go.kr/"
+          target="_blank"
         >
           임신육아종합포털 아이사랑 바로가기
-        </a>
+        </Link>
         <text className="text-lg lg:text-xl font-normal leading-8 pt-3">
           신용카드 연회비 부모부담 없음
         </text>

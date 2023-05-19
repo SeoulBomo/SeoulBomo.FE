@@ -66,17 +66,17 @@ export default function InformationFrame() {
     {
       id: 1,
       name: "3-5세 누리 과정",
-      path: "/information/3-5",
+      path: "/information/process",
     },
     {
       id: 2,
       name: "그 밖의 연장형 보육",
-      path: "/information/extension",
+      path: "/information/extension-care",
     },
     {
       id: 3,
       name: "어린이 집입소 대기",
-      path: "/information/waiting",
+      path: "/information/waiting-admission",
     },
     {
       id: 4,

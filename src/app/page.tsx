@@ -5,7 +5,7 @@ import MapFrame from "@/components/main/map/MapFrame";
 
 export default function Home() {
   return (
-    <div className="bg-cardFrameColor shadow-lg flex justify-center items-center flex-wrap">
+    <div className="bg-cardFrameColor shadow-lg flex flex-col justify-center items-center flex-wrap">
       <SearchSection />
       <FilterSection />
       <MapFrame />
