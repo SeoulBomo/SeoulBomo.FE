@@ -1,4 +1,5 @@
-import SearchCard from "../SearchCard";
+import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
+import SearchCard from "../commonSearch/SearchCard";
 
 export default function FilterSearchFrame() {
   const dummy = [
@@ -68,7 +69,7 @@ export default function FilterSearchFrame() {
         </section>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="야외 시설" data={dummy} />
+        <DetailSearchFrame />
       </div>
     </main>
   );
