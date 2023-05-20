@@ -44,15 +44,15 @@ const dummy = [
 ];
 export default function CalculateCard() {
   return (
-    <div className="bg-cardColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] h-[28rem] lg:w-[20.5rem] lg:h-[30rem]">
+    <div className="bg-cardColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
       <text className="font-bold text-[1.5rem] lg:text-[1.75rem]">
         모의 계산
       </text>
-      <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[16rem] lg:h-[28rem] p-[0.5rem]">
+      <div className="flex flex-col justify-evenly w-[14rem] lg:w-[16rem] p-[1rem]">
         {dummy?.map((item) => (
           <text
             key={item.id}
-            className="font-medium text-lg lg:text-2xl truncate"
+            className="font-medium text-lg lg:text-2xl truncate leading-8"
           >
             ✅ {item.name}
           </text>

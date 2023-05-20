@@ -75,7 +75,7 @@ export default function InformationFrame() {
     },
     {
       id: 3,
-      name: "어린이 집입소 대기",
+      name: "어린이집 입소 대기",
       path: "/information/waiting-admission",
     },
     {
