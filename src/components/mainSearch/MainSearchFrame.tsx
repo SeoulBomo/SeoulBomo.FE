@@ -1,4 +1,4 @@
-import SearchCard from "../SearchCard";
+import SearchCard from "../commonSearch/SearchCard";
 
 export default function MainSearchFrame() {
   const dummy = [
