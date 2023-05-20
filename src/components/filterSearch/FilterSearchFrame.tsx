@@ -26,14 +26,16 @@ export default function FilterSearchFrame() {
   ];
   //dummy 데이터
   return (
-    <main className="w-screen flex flex-col items-center justify-between">
-      <div className="mt-[3rem]">
-        <text className="text-xl font-medium">당신을 위한 필터링 서비스</text>
-        <section className="bg-yellowColor w-[46.8rem] h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex items-center justify-center gap-5">
+    <main className="flex flex-col items-center justify-between">
+      <div className="flex flex-col pt-[3rem]">
+        <text className="ml-[1rem] text-[0rem] sm:text-xl font-medium">
+          당신을 위한 필터링 서비스
+        </text>
+        <section className="bg-yellowColor px-[1em] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-3">
           <div>
             <select
               name="연령"
-              className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg w-[8rem] h-[2.6rem] "
+              className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg px-[0.4rem] lg:px-[1rem] h-[2.6rem] "
             >
               <option disabled selected>
                 연령
@@ -47,7 +49,7 @@ export default function FilterSearchFrame() {
           <div>
             <select
               name="카테고리"
-              className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg w-[8rem] h-[2.6rem] "
+              className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg px-[0.6rem] lg:px-[1rem] h-[2.6rem] "
             >
               <option disabled selected>
                 카테고리
@@ -60,12 +62,14 @@ export default function FilterSearchFrame() {
               <option value="teen">문화행사</option>
             </select>
           </div>
-          <button className="w-[8rem] h-[2.6rem]  bg-white rounded-lg shadow-md hover:bg-gray-100">
+          <button className="px-[0.6rem] lg:px-[1rem] py-[0.6rem] bg-white rounded-lg shadow-md hover:bg-gray-100">
             <text className="font-inter text-base font-semibold">GO</text>
           </button>
         </section>
       </div>
-      <SearchCard category="야외 시설" data={dummy} />
+      <div className="my-[4rem] flex flex-col gap-10">
+        <SearchCard category="야외 시설" data={dummy} />
+      </div>
     </main>
   );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import RadioButton from "./RadioButton";
 
 export default function RadioBox() {
@@ -9,11 +10,13 @@ export default function RadioBox() {
         <RadioButton name="도서관" />
         <RadioButton name="의료시설" />
         <RadioButton name="문화행사" />
-        <button className="lg:w-[10rem] lg:h-[4.4rem] shadow-md rounded-md bg-yellow-200 p-5 hover:bg-yellow-300">
-          <text className="text-sm md:text-md lg:text-xl font-semibold">
-            검색 🔎
-          </text>
-        </button>
+        <Link href="/filter-search">
+          <button className="lg:w-[10rem] lg:h-[4.4rem] shadow-md rounded-md bg-yellow-200 p-5 hover:bg-yellow-300">
+            <text className="text-sm md:text-md lg:text-xl font-semibold">
+              검색 🔎
+            </text>
+          </button>
+        </Link>
       </div>
     </div>
   );
