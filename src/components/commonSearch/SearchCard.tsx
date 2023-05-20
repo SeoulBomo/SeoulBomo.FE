@@ -23,7 +23,7 @@ export default function SearchCard({ category, data }: propsType) {
           </li>
         ))}
       </ul>
-      <Link href="/detail">
+      <Link href="/search-list">
         <text className="font-normal text-xs sm:text-sm text-gray-400 hover:underline underline-offset-4 hover:cursor-pointer">
           내용 더보기
         </text>
