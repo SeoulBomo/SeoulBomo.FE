@@ -1,4 +1,4 @@
-import SearchCard from "../SearchCard";
+import SearchCard from "../commonSearch/SearchCard";
 
 export default function MapSearchFrame() {
   const dummy = [
@@ -33,12 +33,9 @@ export default function MapSearchFrame() {
         </text>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="야외시설" data={dummy} />
-        <SearchCard category="체험시설" data={dummy} />
-        <SearchCard category="관공서" data={dummy} />
-        <SearchCard category="문화행사" data={dummy} />
-        <SearchCard category="도서관" data={dummy} />
-        <SearchCard category="의료시설" data={dummy} />
+        <SearchCard category="어린이집" data={dummy} />
+        <SearchCard category="공동나눔터" data={dummy} />
+        <SearchCard category="키움센터" data={dummy} />
       </div>
     </main>
   );

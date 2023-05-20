@@ -1,9 +1,9 @@
-import DetailSearchFrame from "@/components/commonSearch/DetailSearchFrame";
+import FilterSearchFrame from "@/components/filterSearch/FilterSearchFrame";
 
 export default function Search() {
   return (
     <div className="flex justify-center items-center flex-wrap">
-      <DetailSearchFrame />
+      <FilterSearchFrame />
     </div>
   );
 }
