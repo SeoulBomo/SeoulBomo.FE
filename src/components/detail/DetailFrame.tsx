@@ -36,14 +36,14 @@ export default function DetailFrame() {
             한 마음 어린이집
           </div>
           <div className="flex flex-col gap-[2rem] items-center">
-            <div className="p-[1rem] gap-[1rem] rounded=[0.625rem] h-[3rem] lg:h-[4rem] bg-amber-200 flex justify-start items-center font-bold texm-base sm:text-xl rounded-[0.625rem] whitespace-nowrap">
+            <div className="p-[1rem] gap-[0.1rem] sm:gap-[1rem] rounded=[0.625rem] h-[3rem] lg:h-[4rem] bg-amber-200 flex justify-start items-center font-bold text-[0.1rem] md:text-xl rounded-[0.625rem] sm:whitespace-nowrap">
               <Image
                 src={"/images/telephone.png"}
                 width={30}
                 height={30}
                 alt=""
               />
-              <text className="">02-2208-1891</text>
+              <text>02-2208-1891</text>
             </div>
             <div className="flex">
               <label className="cursor-pointer">

@@ -8,7 +8,7 @@ export default function ContentCard({
   content: string | number;
 }) {
   return (
-    <div className="bg-yellow-200 w-[4rem] h-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col">
+    <div className="bg-yellow-200 h-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col">
       <Image
         className="h-0 w-0 lg:h-[6.5rem] lg:w-[5.2rem]"
         src={`/images/${type}.png`}
