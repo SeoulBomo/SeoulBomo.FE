@@ -12,10 +12,7 @@ export default function KakaoMap() {
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38dab52ec8014cb1db58fc7fd6478faa&autoload=false"
         strategy="beforeInteractive"
       />
-      <Map
-        center={{ lat: lat, lng: lng }}
-        style={{ width: "35rem", height: "15rem" }}
-      >
+      <Map className="lg:px-[20rem] py-[10rem]" center={{ lat: lat, lng: lng }}>
         <MapMarker position={{ lat: lat, lng: lng }} />
       </Map>
     </>
