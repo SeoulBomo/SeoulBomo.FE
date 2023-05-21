@@ -1,10 +1,7 @@
 import Script from "next/script";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-export default function KakaoMap() {
-  const lat = 33.450701;
-  const lng = 126.570667;
-
+export default function KakaoMap({ lat, lng }: { lat: number; lng: number }) {
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}

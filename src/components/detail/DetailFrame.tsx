@@ -30,7 +30,7 @@ export default function DetailFrame() {
     <main className="flex flex-col w-screen justify-start items-center">
       {/* Wrapper */}
       <section className="flex flex-col-reverse lg:flex-row lg:items-start justify-center gap-[1rem] lg:gap-[6rem] p-[1rem]">
-        <KakaoMap />
+        <KakaoMap lat={dummy.latitude} lng={dummy.longitude} />
         <div className="flex lg:flex-col justify-center items-center gap-[1rem]">
           <div className="rounded=[0.625rem] px-[3rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
             한 마음 어린이집
