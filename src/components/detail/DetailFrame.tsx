@@ -29,14 +29,14 @@ export default function DetailFrame() {
   return (
     <main className="flex flex-col w-screen justify-start items-center">
       {/* Wrapper */}
-      <section className="flex flex-col-reverse lg:flex-row lg:items-start justify-center gap-[1rem] lg:gap-[6rem] p-[1rem]">
+      <section className="flex flex-col-reverse lg:flex-row lg:items-start justify-center gap-[1rem] p-[1rem]">
         <KakaoMap lat={dummy.latitude} lng={dummy.longitude} />
-        <div className="flex lg:flex-col justify-center items-center gap-[1rem]">
-          <div className="rounded=[0.625rem] px-[3rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
+        <div className="flex lg:flex-col justify-center items-center gap-[1rem] lg:pt-[3rem]">
+          <div className="rounded=[0.625rem] lg:px-[4rem] px-[2rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
             한 마음 어린이집
           </div>
-          <div className="flex flex-col gap-[2rem] items-center">
-            <div className="p-[1rem] gap-[0.1rem] sm:gap-[1rem] rounded=[0.625rem] h-[3rem] lg:h-[4rem] bg-amber-200 flex justify-start items-center font-bold text-[0.1rem] md:text-xl rounded-[0.625rem] sm:whitespace-nowrap">
+          <div className="flex flex-col lg:flex-row gap-[0.7rem] items-center">
+            <div className="p-[1rem] gap-[0.1rem] sm:gap-[1rem] rounded=[0.625rem] h-[3rem] lg:h-[4rem]   justify-start items-center font-bold text-[0.1rem] md:text-xl rounded-[0.625rem] sm:whitespace-nowrap lg:flex hidden">
               <Image
                 src={"/images/telephone.png"}
                 width={30}
@@ -48,16 +48,19 @@ export default function DetailFrame() {
             <div className="flex">
               <label className="cursor-pointer">
                 <input type="checkbox" className="peer hidden" />
-                <div className="p-[1rem] gap-[1rem] bg-amber-200/30 rounded=[0.625rem] bg-white-300 text-gray-600 flex justify-start items-center font-bold text-xl rounded-md shadow-lg hover:bg-amber-200 ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
+                <div className="p-[0.7rem] gap-[0.4rem] bg-amber-200/30 rounded=[0.625rem] bg-white-300 text-gray-600 flex justify-start items-center font-bold text-xl rounded-md shadow-lg hover:bg-amber-200 ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
+                  <text className="lg:text-gray-600 lg:font-medium lg:text-base lg:block hidden">
+                    스크랩
+                  </text>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
+                    width="30"
+                    height="30"
                     viewBox="0 0 48 48"
                   >
                     <path
-                      fill="#F44336"
-                      d="M34 9c-4.2 0-7.9 2.1-10 5.4C21.9 11.1 18.2 9 14 9C7.4 9 2 14.4 2 21c0 11.9 22 24 22 24s22-12 22-24c0-6.6-5.4-12-12-12z"
+                      fill="#ffff"
+                      d="m37 43l-13-6l-13 6V9c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v34z"
                     />
                   </svg>
                 </div>
