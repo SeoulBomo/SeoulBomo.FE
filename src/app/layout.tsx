@@ -22,7 +22,6 @@ export default function RootLayout({
     <html lang="ko">
       <body className={Pretendard.className}>
         <ReactQueryProvider>
-          <Header />
           <div className="bg-cardFrameColor">{children}</div>
         </ReactQueryProvider>
       </body>
