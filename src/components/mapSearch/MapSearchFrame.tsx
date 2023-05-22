@@ -1,30 +1,37 @@
+"use client";
 import SearchCard from "../commonSearch/SearchCard";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function MapSearchFrame() {
-  const dummy = [
+  const getMapSearch = async () => {
+    const { data } = await axios.get("/dummy/mapSearchDummy.json");
+    return data;
+  };
+
+  const { isLoading, isError, data, error } = useQuery(
+    ["mapSearch"],
+    getMapSearch,
     {
-      id: 1,
-      title: "모성보호육아지원",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 2,
-      title: "육아에 대해",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 3,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-  ];
-  //dummy 데이터
+      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+      retry: 0, // 실패시 재호출 몇번 할지
+      onSuccess: (data: any) => {
+        // 성공시 호출
+        console.log(data);
+        console.log("지도성공입니다");
+      },
+      onError: ({ e }: any) => {
+        console.log(e.message);
+      },
+    }
+  );
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
   return (
     <main className="w-screen flex flex-col items-center justify-between">
       <div className="mt-[3rem]">
@@ -33,9 +40,9 @@ export default function MapSearchFrame() {
         </text>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="어린이집" data={dummy} />
-        <SearchCard category="공동나눔터" data={dummy} />
-        <SearchCard category="키움센터" data={dummy} />
+        <SearchCard category="어린이집" data={data[2]} />
+        <SearchCard category="공동나눔터" data={data[1]} />
+        <SearchCard category="키움센터" data={data[0]} />
       </div>
     </main>
   );
