@@ -1,30 +1,38 @@
+"use client";
 import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
-import SearchCard from "../commonSearch/SearchCard";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export default function FilterSearchFrame() {
-  const dummy = [
+  const getFilterSearch = async () => {
+    const { data } = await axios.get("/dummy/filterSearchDummy.json");
+    return data;
+  };
+
+  const { isLoading, isError, data, error } = useQuery(
+    ["filterSearch"],
+    getFilterSearch,
     {
-      id: 1,
-      title: "모성보호육아지원",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 2,
-      title: "육아에 대해",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 3,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-  ];
+      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+      retry: 0, // 실패시 재호출 몇번 할지
+      onSuccess: (data: any) => {
+        // 성공시 호출
+        console.log(data.content[0]);
+        console.log("필터성공입니다");
+        console.log(data.content);
+      },
+      onError: ({ e }: any) => {
+        console.log(e.message);
+      },
+    }
+  );
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
   //dummy 데이터
   return (
     <main className="flex flex-col items-center justify-between">
@@ -69,7 +77,7 @@ export default function FilterSearchFrame() {
         </section>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <DetailSearchFrame />
+        <DetailSearchFrame data={data.content} />
       </div>
     </main>
   );
