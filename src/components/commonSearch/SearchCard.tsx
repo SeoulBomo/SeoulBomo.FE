@@ -12,21 +12,25 @@ export default function SearchCard({ category, data }: propsType) {
             key={item.id}
             className="flex flex-col justify-between gap-x-4 py-[2rem]"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col cursor-pointer">
               <p className="text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]">
-                {item.title}
+                {item.name}
               </p>
               <p className="mt-1 truncate text-sm sm:text-md leading-5 text-gray-500">
-                {item.content}
+                {item.address}
               </p>
             </div>
           </li>
         ))}
       </ul>
       <Link href="/search-list">
-        <text className="font-normal text-xs sm:text-sm text-gray-400 hover:underline underline-offset-4 hover:cursor-pointer">
-          내용 더보기
-        </text>
+        {data.length >= 3 ? (
+          <text className="font-normal text-xs sm:text-sm text-gray-400 hover:underline underline-offset-4 hover:cursor-pointer">
+            내용 더보기
+          </text>
+        ) : (
+          <text></text>
+        )}
       </Link>
     </section>
   );

@@ -1,80 +1,7 @@
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
-export default function DetailSearchFrame() {
-  const dummy = [
-    {
-      id: 1,
-      title: "모성보호육아지원",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 2,
-      title: "육아에 대해",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 3,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 4,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 5,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 6,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 7,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 8,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 9,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-    {
-      id: 10,
-      title: "돌봄",
-      date: "2022.12.31",
-      content:
-        "출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립 지원하고 모성보호를 도모합니다 출산전후 휴가급여, 육아휴직급여 등의 지급을 통해 일과 과정의 양립을 지원하고 모성보호를 도모합니다",
-    },
-  ];
-  //dummy 데이터
+export default function DetailSearchFrame({ data }: any) {
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="my-[1rem] flex flex-col gap-10">
@@ -83,7 +10,7 @@ export default function DetailSearchFrame() {
             <text className="text-xl sm:text-2xl">상세페이지</text>
           </div>
           <ul role="list" className="divide-y divide-gray-100">
-            {dummy?.map((item: any) => (
+            {data?.map((item: any) => (
               <li
                 key={item.id}
                 className="flex flex-col justify-between gap-x-4 py-[2rem]"
@@ -91,14 +18,11 @@ export default function DetailSearchFrame() {
                 <div className="flex flex-col">
                   <div className="flex justify-between">
                     <p className="text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]">
-                      {item.title}
-                    </p>
-                    <p className="hidden sm:flex sm:flex-col sm:items-end text-xs text-gray-500">
-                      {item.date}
+                      {item.name}
                     </p>
                   </div>
                   <p className="mt-1 truncate text-sm sm:text-md leading-5 text-gray-500">
-                    {item.content}
+                    {item.address}
                   </p>
                 </div>
               </li>
