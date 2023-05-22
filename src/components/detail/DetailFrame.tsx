@@ -50,7 +50,7 @@ export default function DetailFrame() {
                 <input type="checkbox" className="peer hidden" />
                 <div className="p-[0.7rem] gap-[0.4rem] bg-amber-200/30 rounded=[0.625rem] bg-white-300 text-gray-600 flex justify-start items-center font-bold text-xl rounded-md shadow-lg hover:bg-amber-200 ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
                   <text className="lg:text-gray-600 lg:font-medium lg:text-base lg:block hidden">
-                    스크랩
+                    22
                   </text>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ export default function DetailFrame() {
                     viewBox="0 0 48 48"
                   >
                     <path
-                      fill="#ffff"
+                      fill="#f59e0b"
                       d="m37 43l-13-6l-13 6V9c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v34z"
                     />
                   </svg>
