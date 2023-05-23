@@ -42,13 +42,13 @@ export default function MapSearchFrame() {
     <main className="w-screen flex flex-col items-center justify-between">
       <div className="mt-[3rem]">
         <div className="text-xl md:text-2xl lg:text-3xl font-bold">
-          관악구 복지 시설 알아보기
+          {borough} 복지 시설 알아보기
         </div>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="어린이집" data={data[2]} />
-        <SearchCard category="공동나눔터" data={data[1]} />
-        <SearchCard category="키움센터" data={data[0]} />
+        <SearchCard category="어린이집" data={data[2]} word={borough} />
+        <SearchCard category="공동나눔터" data={data[1]} word={borough} />
+        <SearchCard category="키움센터" data={data[0]} word={borough} />
       </div>
     </main>
   );

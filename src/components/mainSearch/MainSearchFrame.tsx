@@ -4,7 +4,6 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useSetRecoilState } from "recoil";
 
 export default function MainSearchFrame() {
   const router = useRouter(); //useRouter 설정
@@ -16,8 +15,7 @@ export default function MainSearchFrame() {
   const keyword = searchParams.get("keyword");
   const getMainSearch = async () => {
     const { data } = await axios.get(
-      // `${process.env.NEXT_PUBLIC_API_URL}/api/v1/search/keyword?keyword=${keyword}`
-      "/api"
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/search/keyword?keyword=${keyword}`
     );
     return data;
   };
@@ -66,9 +64,8 @@ export default function MainSearchFrame() {
         </section>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="복지서비스" data={data[1]} />
-        <SearchCard category="복지시설" data={data[0]} />
-        {/* <SearchCard category="정책" data={dummy} /> */}
+        <SearchCard category="복지서비스" data={data[1]} word={keyword} />
+        <SearchCard category="복지시설" data={data[0]} word={keyword} />
       </div>
     </main>
   );
