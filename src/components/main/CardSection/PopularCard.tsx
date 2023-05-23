@@ -1,14 +1,19 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MouseEventHandler } from "react";
 
 export default function PopularCard() {
+  const router = useRouter();
   const getPopularCard = async () => {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-care-info/popularity`
     );
     return data;
+  };
+  const HandleNavigate = (id: number) => {
+    router.push(`detail/${id}`); //해당 url로 이동
   };
 
   const { isLoading, isError, data, error } = useQuery(
@@ -44,6 +49,7 @@ export default function PopularCard() {
           <div
             key={item.id}
             className="font-medium text-lg lg:text-xl truncate hover:underline underline-offset-4 cursor-pointer"
+            onClick={() => HandleNavigate(item.id)}
           >
             {item.name}
           </div>
