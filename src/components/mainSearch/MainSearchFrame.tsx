@@ -2,10 +2,23 @@
 import SearchCard from "../commonSearch/SearchCard";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useSetRecoilState } from "recoil";
 
 export default function MainSearchFrame() {
+  const router = useRouter(); //useRouter 설정
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(`/main-search?keyword=${event.currentTarget.search.value}`); //해당 url로 이동
+  };
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get("keyword");
   const getMainSearch = async () => {
-    const { data } = await axios.get("/dummy/mainSearchDummy.json");
+    const { data } = await axios.get(
+      // `${process.env.NEXT_PUBLIC_API_URL}/api/v1/search/keyword?keyword=${keyword}`
+      "/api"
+    );
     return data;
   };
 
@@ -17,8 +30,6 @@ export default function MainSearchFrame() {
       retry: 0, // 실패시 재호출 몇번 할지
       onSuccess: (data: any) => {
         // 성공시 호출
-        console.log(data);
-        console.log("지도성공입니다");
       },
       onError: ({ e }: any) => {
         console.log(e.message);
@@ -40,15 +51,18 @@ export default function MainSearchFrame() {
           검색을 통해 각종 정보를 만나볼 수 있습니다
         </text>
         <section className="bg-yellowColor px-[1rem] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-3">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className="placeholder:text-gray-400 pl-[1rem] w-[12rem] h-[2rem] sm:w-[20rem] sm:h-[2.5rem] md:w-[28rem] lg:w-[33rem]border-4 border-white rounded-[28px] focus:outline-yellow-300  p-[1rem] text-xl"
-          ></input>
-          <button className="w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] bg-white rounded-[0.9rem] text-xs sm:text-sm font-bold hover:bg-gray-100">
-            Search
-          </button>
+          <form onSubmit={submitForm}>
+            <input
+              type="text"
+              name="search"
+              id="search"
+              defaultValue={keyword === null ? "" : keyword}
+              className="placeholder:text-gray-400 pl-[1rem] w-[12rem] h-[2rem] sm:w-[20rem] sm:h-[2.5rem] md:w-[28rem] lg:w-[33rem]border-4 border-white rounded-[28px] focus:outline-yellow-300  p-[1rem] text-xl"
+            ></input>
+            <button className="w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] bg-white rounded-[0.9rem] text-xs sm:text-sm font-bold hover:bg-gray-100">
+              Search
+            </button>
+          </form>
         </section>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">

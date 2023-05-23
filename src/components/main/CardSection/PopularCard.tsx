@@ -1,10 +1,13 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Link from "next/link";
 
 export default function PopularCard() {
   const getPopularCard = async () => {
-    const { data } = await axios.get("/dummy/popularCardDummy.json");
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-care-info/popularity`
+    );
     return data;
   };
 
@@ -38,12 +41,12 @@ export default function PopularCard() {
       </div>
       <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
         {data.list?.map((item: any) => (
-          <text
+          <div
             key={item.id}
             className="font-medium text-lg lg:text-xl truncate hover:underline underline-offset-4 cursor-pointer"
           >
             {item.name}
-          </text>
+          </div>
         ))}
       </div>
     </div>

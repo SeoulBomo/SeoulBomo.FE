@@ -1,7 +1,18 @@
-export default function RadioButton({ name }: { name: string }) {
+export default function RadioButton({
+  name,
+  buttonValue,
+}: {
+  name: string;
+  buttonValue: string;
+}) {
   return (
     <label className="cursor-pointer">
-      <input type="radio" name="place" className="peer sr-only" value={name} />
+      <input
+        type="radio"
+        name="place"
+        className="peer sr-only"
+        value={buttonValue}
+      />
       <div className="lg:w-[10rem] rounded-md bg-white px-1 py-3 md:p-5 shadow-md text-gray-400 ring-2 ring-transparent transition-all peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2">
         <div className="flex flex-col">
           <div className="flex items-end justify-between">

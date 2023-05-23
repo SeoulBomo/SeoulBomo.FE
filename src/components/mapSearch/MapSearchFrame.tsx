@@ -2,10 +2,16 @@
 import SearchCard from "../commonSearch/SearchCard";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 
 export default function MapSearchFrame() {
+  const searchParams = useSearchParams();
+
+  const borough = searchParams.get("borough");
   const getMapSearch = async () => {
-    const { data } = await axios.get("/dummy/mapSearchDummy.json");
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/search/borough-center?borough=${borough}`
+    );
     return data;
   };
 
@@ -35,9 +41,9 @@ export default function MapSearchFrame() {
   return (
     <main className="w-screen flex flex-col items-center justify-between">
       <div className="mt-[3rem]">
-        <text className="text-xl md:text-2xl lg:text-3xl font-bold">
+        <div className="text-xl md:text-2xl lg:text-3xl font-bold">
           관악구 복지 시설 알아보기
-        </text>
+        </div>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
         <SearchCard category="어린이집" data={data[2]} />

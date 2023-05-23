@@ -1,31 +1,55 @@
 "use client";
 import Image from "next/image";
 import RadioBox from "./RadioBox";
+import Swal from "sweetalert2";
+import { useSetRecoilState } from "recoil";
+import { filterState } from "@/state";
+import { useRouter } from "next/navigation";
 
 export default function FilterSection() {
+  const router = useRouter();
   const cardData = [
     {
       id: 1,
       path: "/images/infant.png",
       text: "영유아",
+      value: "INFANT",
     },
     {
       id: 2,
       path: "/images/child.png",
       text: "어린이",
+      value: "KINDERGARTEN",
     },
     {
       id: 3,
       path: "/images/teen.png",
       text: "청소년",
+      value: "ELEMENTARY",
     },
   ];
+
+  const setFilterState = useSetRecoilState(filterState);
+
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
     event.preventDefault();
 
-    console.log(event.currentTarget.age.value);
-    console.log(event.currentTarget.place.value);
+    if (!event.currentTarget.age.value || !event.currentTarget.place.value) {
+      Swal.fire({
+        icon: "info",
+        width: 300,
+        html: "아이의 연령대를 선택하고 필요한 정보를 받아보세요!",
+        confirmButtonColor: "#ececec",
+      });
+      return;
+    }
+
+    setFilterState({
+      ageType: String(event.currentTarget.age.value),
+      infoType: String(event.currentTarget.place.value),
+    });
+    router.push("/filter-search");
   };
 
   return (
@@ -48,7 +72,7 @@ export default function FilterSection() {
                   type="radio"
                   className="peer hidden"
                   name="age"
-                  value="연령무관"
+                  value="ALL"
                 />
                 <div className="bg-white text-gray-400 w-[4rem] h-[4rem] md:w-[8rem] md:h-[8rem] lg:w-[12rem] lg:h-[15.5rem] ml-[1rem] lg:ml-[4rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-of ring-2 ring-transparent">
                   <text className="font-semibold text-lg">연령무관</text>
@@ -60,7 +84,7 @@ export default function FilterSection() {
                     type="radio"
                     className="peer hidden"
                     name="age"
-                    value={item.text}
+                    value={item.value}
                   />
                   <div className="bg-white text-gray-400 w-[4rem] h-[4rem] md:w-[8rem] md:h-[8rem] lg:w-[12rem] lg:h-[15.5rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
                     <Image
