@@ -2,7 +2,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
 
 export default function PopularCard() {
   const router = useRouter();
