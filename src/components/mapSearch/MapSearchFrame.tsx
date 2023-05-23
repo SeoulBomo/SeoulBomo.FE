@@ -46,9 +46,9 @@ export default function MapSearchFrame() {
         </div>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="어린이집" data={data[2]} />
-        <SearchCard category="공동나눔터" data={data[1]} />
-        <SearchCard category="키움센터" data={data[0]} />
+        <SearchCard category="어린이집" data={data[2]} word={borough} />
+        <SearchCard category="공동나눔터" data={data[1]} word={borough} />
+        <SearchCard category="키움센터" data={data[0]} word={borough} />
       </div>
     </main>
   );

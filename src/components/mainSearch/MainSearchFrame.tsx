@@ -64,8 +64,8 @@ export default function MainSearchFrame() {
         </section>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <SearchCard category="복지서비스" data={data[1]} />
-        <SearchCard category="복지시설" data={data[0]} />
+        <SearchCard category="복지서비스" data={data[1]} word={keyword} />
+        <SearchCard category="복지시설" data={data[0]} word={keyword} />
       </div>
     </main>
   );
