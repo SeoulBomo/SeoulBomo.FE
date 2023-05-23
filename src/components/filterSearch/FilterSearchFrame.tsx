@@ -2,11 +2,28 @@
 import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function FilterSearchFrame() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
+  const ageType = searchParams.get("age-type");
+  const infoType = searchParams.get("info-type");
   const getFilterSearch = async () => {
-    const { data } = await axios.get("/dummy/filterSearchDummy.json");
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-care-info/list?page=${page}&age-type=${ageType}&info-type=${infoType}`
+    );
     return data;
+  };
+
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(event.currentTarget.age.value);
+    router.push(
+      `filter-search?page=1&age-type=${event.currentTarget.age.value}&info-type=${event.currentTarget.info.value}`
+    );
   };
 
   const { isLoading, isError, data, error } = useQuery(
@@ -40,41 +57,39 @@ export default function FilterSearchFrame() {
         <text className="ml-[1rem] text-[0rem] sm:text-xl font-medium">
           당신을 위한 필터링 서비스
         </text>
-        <section className="bg-yellowColor px-[1em] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-3">
+        <form
+          onSubmit={submitForm}
+          className="flex justify-center items-center gap-3 bg-yellowColor px-[1em] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] "
+        >
           <div>
             <select
-              name="연령"
+              name="age"
               className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg px-[0.4rem] lg:px-[1rem] h-[2.6rem] "
+              defaultValue={String(ageType)}
             >
-              <option disabled selected>
-                연령
-              </option>
-              <option value="all">연령무관</option>
-              <option value="infant">영유아</option>
-              <option value="child">어린이</option>
-              <option value="teen">청소년</option>
+              <option value="ALL">연령무관</option>
+              <option value="INFANT">영유아</option>
+              <option value="KINDERGARTEN">어린이</option>
+              <option value="ELEMENTARY">청소년</option>
             </select>
           </div>
           <div>
             <select
-              name="카테고리"
+              name="info"
               className="bg-gray-50 border focus:outline-none font-medium text-base rounded-lg px-[0.6rem] lg:px-[1rem] h-[2.6rem] "
+              defaultValue={String(infoType)}
             >
-              <option disabled selected>
-                카테고리
-              </option>
-              <option value="all">야외시설</option>
-              <option value="infant">체험시설</option>
-              <option value="child">도서관</option>
-              <option value="teen">의료시설</option>
-              <option value="child">관공서</option>
-              <option value="teen">문화행사</option>
+              <option value="OUTDOOR_FACILITY">야외시설</option>
+              <option value="LIBRARY">도서관</option>
+              <option value="MEDICAL_FACILITY">의료시설</option>
+              <option value="OFFICES">관공서</option>
+              <option value="CULTURE_EVENT">문화행사</option>
             </select>
           </div>
           <button className="px-[0.6rem] lg:px-[1rem] py-[0.6rem] bg-white rounded-lg shadow-md hover:bg-gray-100">
             <text className="font-inter text-base font-semibold">GO</text>
           </button>
-        </section>
+        </form>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
         <DetailSearchFrame data={data.content} />
