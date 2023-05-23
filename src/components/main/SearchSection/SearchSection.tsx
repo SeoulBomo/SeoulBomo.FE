@@ -11,15 +11,30 @@ export default function SearchSection() {
   return (
     <div className="p-[2rem] lg:p-[3rem] my-[4rem] bg-white rounded-[1.375rem] drop-shadow-xl flex justify-center items-center">
       <div>
-        <div className=" pb-[2rem]">
-          <text className="font-semibold text-[0.8rem] md:text-base">
+        <div className=" pb-[1.2rem]">
+          <text className="font-semibold text-[0.8rem] md:text-base ">
             추천 검색어
           </text>
           <br />
 
           <text className="font-medium text-[0.8rem] md:text-base text-slate-500">
-            <Link href="#">어린이집</Link> ㅣ <Link href="#">돌봄 서비스</Link>
-            ㅣ <Link href="#">정책</Link>
+            <span
+              onClick={() => {
+                router.push(`/main-search?keyword=어린이집`);
+              }}
+              className="cursor-pointer"
+            >
+              어린이집
+            </span>
+            ㅣ
+            <span
+              onClick={() => {
+                router.push(`/main-search?keyword=돌봄`);
+              }}
+              className="cursor-pointer"
+            >
+              돌봄
+            </span>
           </text>
         </div>
         <div className=" ">
