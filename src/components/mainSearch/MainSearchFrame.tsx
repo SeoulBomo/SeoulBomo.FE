@@ -48,8 +48,8 @@ export default function MainSearchFrame() {
         <text className="ml-[1rem] text-[0rem] sm:text-xl font-medium">
           검색을 통해 각종 정보를 만나볼 수 있습니다
         </text>
-        <section className="bg-yellowColor px-[1rem] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-3">
-          <form onSubmit={submitForm}>
+        <form onSubmit={submitForm}>
+          <section className="bg-yellowColor px-[1rem] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-[1rem]">
             <input
               type="text"
               name="search"
@@ -60,8 +60,8 @@ export default function MainSearchFrame() {
             <button className="w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] bg-white rounded-[0.9rem] text-xs sm:text-sm font-bold hover:bg-gray-100">
               Search
             </button>
-          </form>
-        </section>
+          </section>
+        </form>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
         <SearchCard category="복지서비스" data={data[1]} word={keyword} />
