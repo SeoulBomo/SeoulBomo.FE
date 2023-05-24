@@ -12,7 +12,7 @@ export default function SearchCard({ category, data, word }: propsType) {
       router.push(
         `/map-search-list?page=1&size=10&borough=${borough}&center-type=어린이집`
       );
-    } else if (category === "공동나눔터") {
+    } else if (category === "공동육아나눔터") {
       router.push(
         `/map-search-list?page=1&size=10&borough=${borough}&center-type=공동육아나눔터`
       );
