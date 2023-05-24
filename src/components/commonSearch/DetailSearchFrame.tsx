@@ -12,13 +12,27 @@ export default function DetailSearchFrame({
   const searchParams = useSearchParams();
   const ageType = searchParams.get("age-type");
   const infoType = searchParams.get("info-type");
+  const borough = searchParams.get("borough");
+  const keyword = searchParams.get("keyword");
+  const centerType = searchParams.get("center-type");
+  const type = searchParams.get("type");
 
   const handlePageChange = (page: number) => {
-    if (ageType && infoType)
+    if (ageType && infoType) {
       router.push(
         `${pathname}?page=${page}&age-type=${ageType}&info-type=${infoType}`
       );
-    else router.push(`${pathname}?page=${page}`);
+    } // 필터 정보 전체 조회
+    else if (borough && centerType) {
+      router.push(
+        `${pathname}?page=${page}&size=10&borough=${borough}&center-type=${centerType}`
+      );
+    } // 자치구명 전체 조회
+    else if (keyword && type) {
+      router.push(
+        `/main-search-list?page=${page}&size=10&keyword=${keyword}&type=${type}`
+      );
+    }
   };
 
   return (
@@ -26,7 +40,13 @@ export default function DetailSearchFrame({
       <div className="my-[1rem] flex flex-col gap-10">
         <section className="flex flex-col w-[20rem] sm:w-[40rem] md:w-[50rem] lg:w-[60rem] border-2 border-gray-200 bg-white rounded-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] hover:drop-shadow-[0_2rem_2rem_rgba(0,0,0,0.07)] p-[3rem] ">
           <div className="rounded=[0.625rem] sm:w-[11.6rem] h-[3rem] sm:h-[5rem] bg-amber-200 flex justify-center items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem]">
-            <div className="text-xl sm:text-2xl">상세페이지</div>
+            <div className="text-xl sm:text-2xl">
+              {centerType !== null
+                ? centerType
+                : type === "center"
+                ? "복지시설"
+                : "복지서비스"}
+            </div>
           </div>
           {content.length !== 0 ? (
             <>
