@@ -26,7 +26,7 @@ export default function SearchCard({ category, data, word }: propsType) {
         ) : (
           <li className="flex flex-col justify-between gap-x-4 py-[2rem]">
             <div className="flex flex-col ">
-              <p className="text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]">
+              <p className="text-lg sm:text-xl font-semibold text-gray-900  pb-[0.25rem]">
                 {category} 카테고리에서는 ‘{word}’ 에 대한 결과가 존재하지
                 않습니다!
               </p>

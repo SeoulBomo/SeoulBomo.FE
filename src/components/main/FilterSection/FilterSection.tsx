@@ -29,8 +29,6 @@ export default function FilterSection() {
     },
   ];
 
-  const setFilterState = useSetRecoilState(filterState);
-
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
     event.preventDefault();
@@ -45,11 +43,9 @@ export default function FilterSection() {
       return;
     }
 
-    setFilterState({
-      ageType: String(event.currentTarget.age.value),
-      infoType: String(event.currentTarget.place.value),
-    });
-    router.push("/filter-search");
+    router.push(
+      `/filter-search?page=1&age-type=${event.currentTarget.age.value}&info-type=${event.currentTarget.place.value}`
+    );
   };
 
   return (
