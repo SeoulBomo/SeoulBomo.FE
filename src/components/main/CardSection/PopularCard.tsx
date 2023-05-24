@@ -2,7 +2,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
 
 export default function PopularCard() {
   const router = useRouter();
@@ -33,11 +32,42 @@ export default function PopularCard() {
     }
   );
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
+        <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+          인기 복지
+        </div>
+        <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
+          <div
+            role="status"
+            className="animate-pulse flex flex-col flex-1 justify-between py-[2rem]"
+          >
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return (
+      <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
+        <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+          인기 복지
+        </div>
+        <div className="flex flex-col items-center justify-center w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
+          알 수 없는 에러가 발생했습니다.
+          <br />
+          인터넷 연결을 확인하고 새로고침 해주세요.
+        </div>
+      </div>
+    );
   }
   return (
     <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">

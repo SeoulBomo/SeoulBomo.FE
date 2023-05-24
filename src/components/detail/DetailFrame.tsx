@@ -2,6 +2,8 @@
 import Image from "next/image";
 import KakaoMap from "./KakaoMap";
 import ContentCard from "./ContentCard";
+import { Tab } from "@headlessui/react";
+import { useState } from "react";
 
 const dummy = {
   id: 21,
@@ -25,7 +27,47 @@ const dummy = {
   serviceType: "COMMON",
 };
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
 export default function DetailFrame() {
+  let [categories] = useState({
+    좋아요: [
+      {
+        id: 1,
+        title: "Does drinking coffee make you smarter?",
+        date: "5h ago",
+        commentCount: 5,
+        shareCount: 2,
+      },
+      {
+        id: 2,
+        title: "So you've bought coffee... now what?",
+        date: "2h ago",
+        commentCount: 3,
+        shareCount: 2,
+      },
+    ],
+    "내가 작성한 리뷰": [
+      {
+        id: 1,
+        title:
+          "Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?",
+        date: "Jan 7",
+        commentCount: 29,
+        shareCount: 16,
+      },
+      {
+        id: 2,
+        title: "The most innovative things happening in coffee",
+        date: "Mar 19",
+        commentCount: 24,
+        shareCount: 12,
+      },
+    ],
+  });
+
   return (
     <main className="flex flex-col w-screen justify-start items-center">
       {/* Wrapper */}
@@ -69,30 +111,111 @@ export default function DetailFrame() {
           </div>
         </div>
       </section>
-      <div className="bg-white shadow-md lg:w-[60rem] py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start gap-[1rem]">
-        <div className="flex gap-[1rem]">
-          <ContentCard
-            type="kindergarten"
-            content={dummy.preschoolType === "PUBLIC" ? "국공립" : "사립"}
-          />
-          <ContentCard type="isFree" content={dummy.isFree ? "무료" : "유료"} />
-          <ContentCard type="cctv" content={"CCTV " + dummy.cctvNum + "개"} />
-          <ContentCard
-            type="playground"
-            content={"놀이터 " + dummy.playgroundNum + "개"}
-          />
-          <ContentCard
-            type="bus"
-            content={dummy.isSchoolBus ? "통학 차량 있음" : "통학 차량 없음"}
-          />
-          <ContentCard
-            type="calender"
-            content={dummy.isSatOpen ? "토요일 운영" : "토요일 미운영"}
-          />
+      {/* 개요 및 리뷰 */}
+      <div className="bg-white shadow-md lg:w-[60rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start gap-[1rem]">
+        <div className="flex flex-col">
+          <Tab.Group>
+            <Tab.List className="bg-yellowColor flex rounded-xl p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-gray-600 hover:border-gray-30">
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                    "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                    selected
+                      ? "text-gray-900 bg-white shadow-md"
+                      : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                  )
+                }
+              >
+                개요
+              </Tab>
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                    "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                    selected
+                      ? "text-gray-900 bg-white shadow-md"
+                      : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                  )
+                }
+              >
+                리뷰
+              </Tab>
+            </Tab.List>
+            <Tab.Panels className="mt-2">
+              <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+                <div className="flex flex-col gap-[1rem]">
+                  <div className="flex gap-[1rem]">
+                    <ContentCard
+                      type="kindergarten"
+                      content={
+                        dummy.preschoolType === "PUBLIC" ? "국공립" : "사립"
+                      }
+                    />
+                    <ContentCard
+                      type="isFree"
+                      content={dummy.isFree ? "무료" : "유료"}
+                    />
+                    <ContentCard
+                      type="cctv"
+                      content={"CCTV " + dummy.cctvNum + "개"}
+                    />
+                    <ContentCard
+                      type="playground"
+                      content={"놀이터 " + dummy.playgroundNum + "개"}
+                    />
+                    <ContentCard
+                      type="bus"
+                      content={
+                        dummy.isSchoolBus ? "통학 차량 있음" : "통학 차량 없음"
+                      }
+                    />
+                    <ContentCard
+                      type="calender"
+                      content={
+                        dummy.isSatOpen ? "토요일 운영" : "토요일 미운영"
+                      }
+                    />
+                  </div>
+                  <text className="text-lg lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
+                    주소: 서울특별시 중랑구 양원역로 92 (망우동)
+                  </text>
+                </div>
+              </Tab.Panel>
+              <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+                <ul>
+                  {categories["내가 작성한 리뷰"].map((post) => (
+                    <li
+                      key={post.id}
+                      className="relative rounded-md p-3 hover:bg-gray-100"
+                    >
+                      <h3 className="text-sm font-medium leading-5 truncate">
+                        {post.title}
+                      </h3>
+
+                      <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
+                        <li>{post.date}</li>
+                        <li>&middot;</li>
+                        <li>{post.commentCount} comments</li>
+                        <li>&middot;</li>
+                        <li>{post.shareCount} shares</li>
+                      </ul>
+
+                      <a
+                        href="#"
+                        className={classNames(
+                          "absolute inset-0 rounded-md",
+                          "ring-yellow-400 focus:z-10 focus:outline-none focus:ring-2"
+                        )}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
         </div>
-        <text className="text-lg lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
-          주소: 서울특별시 중랑구 양원역로 92 (망우동)
-        </text>
       </div>
     </main>
   );
