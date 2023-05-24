@@ -1,4 +1,4 @@
-import FilterSearchFrame from "@/components/filterSearch/FilterSearchFrame";
+import FilterSearchFrame from "@/components/searchList/FilterSearchFrame";
 
 export default function Search() {
   return (
