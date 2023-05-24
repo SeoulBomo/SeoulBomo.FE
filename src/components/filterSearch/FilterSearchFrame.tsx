@@ -92,7 +92,11 @@ export default function FilterSearchFrame() {
         </form>
       </div>
       <div className="my-[4rem] flex flex-col gap-10">
-        <DetailSearchFrame data={data.content} />
+        <DetailSearchFrame
+          content={data.content}
+          totalPages={data.totalPages}
+          page={page}
+        />
       </div>
     </main>
   );
