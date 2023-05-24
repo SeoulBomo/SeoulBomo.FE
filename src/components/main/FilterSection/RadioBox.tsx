@@ -5,7 +5,7 @@ export default function RadioBox() {
     <div className="flex rounded-[0.3rem] w-[25rem] mt-[1rem] lg:mt-0 lg:h-[15.5rem]">
       <div className="flex flex-wrap gap-2 items-center justify-center">
         <RadioButton name="야외시설" buttonValue="OUTDOOR_FACILITY" />
-        <RadioButton name="관공서" buttonValue="OFFICES" />
+        <RadioButton name="체험시설" buttonValue="EXPERIENCE_FACILITY" />
         <RadioButton name="도서관" buttonValue="LIBRARY" />
         <RadioButton name="의료시설" buttonValue="MEDICAL_FACILITY" />
         <RadioButton name="문화행사" buttonValue="CULTURE_EVENT" />

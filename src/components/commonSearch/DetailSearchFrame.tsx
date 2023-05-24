@@ -1,16 +1,32 @@
+import "rc-pagination/assets/index.css";
 import Pagination from "rc-pagination";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function DetailSearchFrame({
   content,
-  totalPages,
+  totalElements,
   page,
 }: propsType) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const ageType = searchParams.get("age-type");
+  const infoType = searchParams.get("info-type");
+
+  const handlePageChange = (page: number) => {
+    if (ageType && infoType)
+      router.push(
+        `${pathname}?page=${page}&age-type=${ageType}&info-type=${infoType}`
+      );
+    else router.push(`${pathname}?page=${page}`);
+  };
+
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="my-[1rem] flex flex-col gap-10">
         <section className="flex flex-col w-[20rem] sm:w-[40rem] md:w-[50rem] lg:w-[60rem] border-2 border-gray-200 bg-white rounded-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] hover:drop-shadow-[0_2rem_2rem_rgba(0,0,0,0.07)] p-[3rem] ">
           <div className="rounded=[0.625rem] sm:w-[11.6rem] h-[3rem] sm:h-[5rem] bg-amber-200 flex justify-center items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem]">
-            <text className="text-xl sm:text-2xl">상세페이지</text>
+            <div className="text-xl sm:text-2xl">상세페이지</div>
           </div>
           {content.length !== 0 ? (
             <>
@@ -33,10 +49,6 @@ export default function DetailSearchFrame({
                   </li>
                 ))}
               </ul>
-              <Pagination
-                showTotal={(totalPages: any) => `Total ${totalPages} items`}
-                total={455}
-              />
             </>
           ) : (
             <div className="2xl:py-[10rem] py-[5rem] sm:py-[7rem]">
@@ -45,6 +57,14 @@ export default function DetailSearchFrame({
               </p>
             </div>
           )}
+          <div className="flex justify-end">
+            <Pagination
+              total={totalElements - 10}
+              pageSize={10}
+              current={page ? parseInt(page) : 1}
+              onChange={(page) => handlePageChange(page)}
+            />
+          </div>
         </section>
       </div>
     </main>
@@ -52,6 +72,6 @@ export default function DetailSearchFrame({
 }
 interface propsType {
   content: any;
-  totalPages: number;
+  totalElements: number;
   page: string | null;
 }

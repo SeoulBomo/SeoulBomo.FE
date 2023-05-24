@@ -20,7 +20,6 @@ export default function FilterSearchFrame() {
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event.currentTarget.age.value);
     router.push(
       `filter-search?page=1&age-type=${event.currentTarget.age.value}&info-type=${event.currentTarget.info.value}`
     );
@@ -34,9 +33,6 @@ export default function FilterSearchFrame() {
       retry: 0, // 실패시 재호출 몇번 할지
       onSuccess: (data: any) => {
         // 성공시 호출
-        console.log(data.content[0]);
-        console.log("필터성공입니다");
-        console.log(data.content);
       },
       onError: ({ e }: any) => {
         console.log(e.message);
@@ -94,7 +90,7 @@ export default function FilterSearchFrame() {
       <div className="my-[4rem] flex flex-col gap-10">
         <DetailSearchFrame
           content={data.content}
-          totalPages={data.totalPages}
+          totalElements={data.totalElements}
           page={page}
         />
       </div>
