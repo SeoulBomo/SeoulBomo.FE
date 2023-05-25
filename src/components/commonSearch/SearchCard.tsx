@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SearchCard({ category, data, word }: propsType) {
@@ -22,12 +21,20 @@ export default function SearchCard({ category, data, word }: propsType) {
       );
     } else if (category === "복지서비스") {
       router.push(
-        `/main-search-list?page=1&size=10&keyword=${keyword}&type=care-info`
+        `/main-search-list?page=1&size=10&keyword=${keyword}&type=care`
       );
     } else if (category === "복지시설") {
       router.push(
         `/main-search-list?page=1&size=10&keyword=${keyword}&type=center`
       );
+    }
+  };
+
+  const handleChangeDetailPage = (id: any) => {
+    if (category === "복지서비스") {
+      router.push(`/care/${id}`);
+    } else {
+      router.push(`/center/${id}`);
     }
   };
 
@@ -43,7 +50,12 @@ export default function SearchCard({ category, data, word }: propsType) {
               key={item.id}
               className="flex flex-col justify-between gap-x-4 py-[2rem]"
             >
-              <div className="flex flex-col cursor-pointer">
+              <div
+                className="flex flex-col cursor-pointer"
+                onClick={() => {
+                  handleChangeDetailPage(item.id);
+                }}
+              >
                 <p className="text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]">
                   {item.name}
                 </p>
