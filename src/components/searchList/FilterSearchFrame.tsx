@@ -78,7 +78,7 @@ export default function FilterSearchFrame() {
               <option value="OUTDOOR_FACILITY">야외시설</option>
               <option value="LIBRARY">도서관</option>
               <option value="MEDICAL_FACILITY">의료시설</option>
-              <option value="OFFICES">관공서</option>
+              <option value="EXPERIENCE_FACILITY">체험시설</option>
               <option value="CULTURE_EVENT">문화행사</option>
             </select>
           </div>
