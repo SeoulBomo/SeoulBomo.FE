@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { KAKAO_AUTH_URL } from "./Oauth";
+import { KAKAO_AUTH_URL, NAVER_AUTH_URL } from "./Oauth";
 
 export default function LoginFrame() {
   return (
@@ -44,19 +44,21 @@ export default function LoginFrame() {
                   카카오 로그인
                 </div>
               </button>
-            </Link> 
-            <button className="w-[15rem] h-[3rem] bg-[#02C759] flex items-center justify-center hover:shadow-md gap-[1rem] rounded-[1rem]">
-              <Image
-                className="h-[2rem] w-[2rem]"
-                src="/images/naverLogo.png"
-                width={1000}
-                height={1000}
-                alt="로고"
-              />
-              <div className="text-md lg:text-lg font-medium">
-                네이버 로그인
-              </div>
-            </button>
+            </Link>
+            <Link href={NAVER_AUTH_URL}>
+              <button className="w-[15rem] h-[3rem] bg-[#02C759] flex items-center justify-center hover:shadow-md gap-[1rem] rounded-[1rem]">
+                <Image
+                  className="h-[2rem] w-[2rem]"
+                  src="/images/naverLogo.png"
+                  width={1000}
+                  height={1000}
+                  alt="로고"
+                />
+                <div className="text-md lg:text-lg font-medium">
+                  네이버 로그인
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </section>
