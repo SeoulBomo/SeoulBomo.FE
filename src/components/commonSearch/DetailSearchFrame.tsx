@@ -19,19 +19,28 @@ export default function DetailSearchFrame({
 
   const handlePageChange = (page: number) => {
     if (ageType && infoType) {
+      // 필터 정보 전체 조회
       router.push(
         `${pathname}?page=${page}&age-type=${ageType}&info-type=${infoType}`
       );
-    } // 필터 정보 전체 조회
-    else if (borough && centerType) {
+    } else if (borough && centerType) {
+      // 자치구명 전체 조회
       router.push(
         `${pathname}?page=${page}&size=10&borough=${borough}&center-type=${centerType}`
       );
-    } // 자치구명 전체 조회
-    else if (keyword && type) {
+    } else if (keyword && type) {
+      // 검색어 전체 조회
       router.push(
         `/main-search-list?page=${page}&size=10&keyword=${keyword}&type=${type}`
       );
+    }
+  };
+
+  const handleDetailRouter = (id: number) => {
+    if (ageType && infoType) {
+      router.push(`/care/${id}`);
+    } else {
+      router.push(`/center/${id}`);
     }
   };
 
@@ -58,7 +67,12 @@ export default function DetailSearchFrame({
                   >
                     <div className="flex flex-col">
                       <div className="flex justify-between">
-                        <p className="text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]">
+                        <p
+                          onClick={() => {
+                            handleDetailRouter(item.id);
+                          }}
+                          className="cursor-pointer text-lg sm:text-xl font-semibold text-gray-900 truncate pb-[0.25rem]"
+                        >
                           {item.name}
                         </p>
                       </div>
