@@ -11,7 +11,7 @@ export default function MapSearchList() {
   const page = searchParams.get("page");
   const getMapSearchList = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/borough/center-list?page=${page}&size=10&borough=${borough}&center-type=${centerType}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-center-info/list/borough?page=${page}&size=10&borough=${borough}&center-type=${centerType}`
     );
     return data;
   };

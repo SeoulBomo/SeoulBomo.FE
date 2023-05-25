@@ -13,11 +13,10 @@ export default function MainSearchList() {
   console.log(keyword);
   const getMainSearchList = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/keyword/${type}-list?keyword=${keyword}&page=${page}&size=10`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-${type}-info/list/keyword?keyword=${keyword}&page=${page}&size=10`
     );
     return data;
   };
-
   const { isLoading, isError, data, error } = useQuery(
     ["mainSearchList"],
     getMainSearchList,
