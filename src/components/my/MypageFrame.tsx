@@ -52,14 +52,7 @@ export default function MypageFrame() {
 
   return (
     <main className="flex flex-col w-screen h-screen justify-center p-[2rem] gap-[2rem]">
-      <section className="flex flex-col gap-[1rem] mt-[2rem] justify-start items-center">
-        <Image
-          className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
-          src="/images/infant.png"
-          alt="profile_img"
-          width={100}
-          height={100}
-        />
+      <section className="flex flex-col gap-[1rem] justify-start items-center">
         <text className="font-bold text-2xl lg:text-4xl">000님</text>
         <text className="text-md lg:text-lg font-bold whitespace-nowrap">
           카카오톡으로 로그인 중
@@ -68,7 +61,7 @@ export default function MypageFrame() {
           className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
           onClick={() => {
             setAccessToken(undefined);
-            router.push("/"); 
+            router.push("/");
           }}
         >
           로그아웃
