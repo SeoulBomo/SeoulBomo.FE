@@ -13,6 +13,11 @@ export const isLoginSelector = selector({
   },
 });
 
+export const KakaoTokenAtom = atom({
+  key: "KakaoTokenAtom",
+  default: undefined,
+});
+
 export const filterState = atom({
   key: "filter",
   default: {},

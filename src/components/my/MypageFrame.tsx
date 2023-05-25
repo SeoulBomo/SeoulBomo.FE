@@ -1,9 +1,8 @@
 "use client";
 import { Tab } from "@headlessui/react";
-import Image from "next/image";
 import { useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { TokenAtom } from "@/state";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { KakaoTokenAtom, TokenAtom, isLoginSelector } from "@/state";
 import { useRouter } from "next/navigation";
 
 function classNames(...classes: string[]) {
@@ -12,6 +11,10 @@ function classNames(...classes: string[]) {
 
 export default function MypageFrame() {
   const router = useRouter();
+
+  const isLogin = useRecoilValue(isLoginSelector);
+  const kakaoToken = useSetRecoilState(KakaoTokenAtom);
+
   let [categories] = useState({
     좋아요: [
       {
@@ -50,18 +53,24 @@ export default function MypageFrame() {
 
   const setAccessToken = useSetRecoilState(TokenAtom);
 
+  if (!isLogin) {
+    router.replace("/");
+    return <></>;
+  }
+
   return (
     <main className="flex flex-col w-screen h-screen justify-center p-[2rem] gap-[2rem]">
       <section className="flex flex-col gap-[1rem] justify-start items-center">
-        <text className="font-bold text-2xl lg:text-4xl">000님</text>
-        <text className="text-md lg:text-lg font-bold whitespace-nowrap">
+        <div className="font-bold text-2xl lg:text-4xl">000님</div>
+        <div className="text-md lg:text-lg font-bold whitespace-nowrap">
           카카오톡으로 로그인 중
-        </text>
+        </div>
         <button
           className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
           onClick={() => {
             setAccessToken(undefined);
-            router.push("/");
+            kakaoToken(undefined);
+            router.replace("/");
           }}
         >
           로그아웃
