@@ -1,10 +1,10 @@
 "use client";
 import { KAKAO_TOKEN_URL } from "@/components/login/Oauth";
 import { TokenAtom } from "@/state";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 export default function OAuth2RedirectHandler() {
