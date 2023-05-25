@@ -48,8 +48,10 @@ export default function MypageFrame() {
       <section className="flex flex-col gap-[1rem] mt-[2rem] justify-start items-center">
         <Image
           className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src="/images/infant .png"
           alt="profile_img"
+          width={100}
+          height={100}
         />
         <text className="font-bold text-2xl lg:text-4xl">000님</text>
         <text className="text-md lg:text-lg font-bold whitespace-nowrap">
