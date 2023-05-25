@@ -2,11 +2,16 @@
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { TokenAtom } from "@/state";
+import { useRouter } from "next/navigation";
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function MypageFrame() {
+  const router = useRouter();
   let [categories] = useState({
     좋아요: [
       {
@@ -43,19 +48,22 @@ export default function MypageFrame() {
     ],
   });
 
+  const setAccessToken = useSetRecoilState(TokenAtom);
+
   return (
     <main className="flex flex-col w-screen h-screen justify-center p-[2rem] gap-[2rem]">
-      <section className="flex flex-col gap-[1rem] mt-[2rem] justify-start items-center">
-        <Image
-          className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt="profile_img"
-        />
+      <section className="flex flex-col gap-[1rem] justify-start items-center">
         <text className="font-bold text-2xl lg:text-4xl">000님</text>
         <text className="text-md lg:text-lg font-bold whitespace-nowrap">
           카카오톡으로 로그인 중
         </text>
-        <button className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100">
+        <button
+          className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
+          onClick={() => {
+            setAccessToken(undefined);
+            router.push("/");
+          }}
+        >
           로그아웃
         </button>
       </section>

@@ -5,9 +5,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import Logo from "./Logo";
 import Link from "next/link";
+import { useRecoilValue } from "recoil";
+import { isLoginSelector } from "@/state";
+import Image from "next/image";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const isLogin = useRecoilValue(isLoginSelector);
+  console.log(isLogin);
 
   return (
     <header className="bg-white">
@@ -58,13 +64,23 @@ export default function Header() {
 
         {/* 로그인/회원가입 버튼 */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="/login">
-            <button className="w-[8.3rem] h-[2.3rem] bg-yellowColor rounded-xl">
-              <text className="font-bold text-gray-900 text-sm">
-                로그인 / 회원가입
-              </text>
-            </button>
-          </Link>
+          {isLogin ? (
+            <Link href="/mypage">
+              <button className="w-[6rem] h-[2.3rem] bg-yellowColor rounded-xl">
+                <div className="font-bold text-gray-900 text-sm">
+                  마이페이지
+                </div>
+              </button>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <button className="w-[8.3rem] h-[2.3rem] bg-yellowColor rounded-xl">
+                <div className="font-bold text-gray-900 text-sm">
+                  로그인 / 회원가입
+                </div>
+              </button>
+            </Link>
+          )}
         </div>
       </nav>
       {/* 모바일 Dialog */}
@@ -143,9 +159,9 @@ export default function Header() {
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      <text className="font-bold text-gray-900 text-sm">
+                      <div className="font-bold text-gray-900 text-sm">
                         로그인 / 회원가입
-                      </text>
+                      </div>
                     </Link>
                   </div>
                 </div>
