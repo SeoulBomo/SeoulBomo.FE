@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import KakaoMap from "./KakaoMap";
 import { useQuery } from "@tanstack/react-query";
 import ContentCard from "./ContentCard";
@@ -8,27 +7,6 @@ import { useState } from "react";
 import { useParams, usePathname } from "next/navigation";
 import axios from "axios";
 
-const dummy = {
-  id: 21,
-  name: "행복어린이집",
-  centerType: "PRE_SCHOOL",
-  borough: "JUNGNANG",
-  address: "서울특별시 중랑구 양원역로 92 (망우동)",
-  preschoolType: "PUBLIC",
-  contactNumber: "02-2208-1891",
-  homepage: "",
-  classNum: 5,
-  playgroundNum: 1,
-  cctvNum: 11,
-  teacherNum: 18,
-  latitude: 37.60916279874149,
-  longitude: 127.10675103372358,
-  isSchoolBus: false,
-  isFree: false,
-  fee: "0",
-  isSatOpen: false,
-  serviceType: "COMMON",
-};
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }

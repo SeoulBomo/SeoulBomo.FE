@@ -1,14 +1,16 @@
 "use client";
 import { KAKAO_TOKEN_URL } from "@/components/login/Oauth";
-import { TokenAtom } from "@/state";
+import { KakaoTokenAtom, TokenAtom } from "@/state";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 export default function OAuth2RedirectHandler() {
   const router = useRouter();
+
+  const [kakaoToken, setKakaoToken] = useRecoilState(KakaoTokenAtom);
 
   // redirect_uri로 받은 code를 이용하여 access_token을 받아옵니다.
   const searchParams = useSearchParams();
@@ -34,7 +36,8 @@ export default function OAuth2RedirectHandler() {
   } = useMutation(["getKakaoToken"], getKakaoToken, {
     onSuccess: (kakao) => {
       // access_token을 받아온 후 임시 저장합니다.
-      localStorage.setItem("kakaoToken", kakao.data.access_token);
+      setKakaoToken(kakao.data.access_token);
+      getKakaoUserInfoMutate();
     },
   });
 
@@ -44,7 +47,7 @@ export default function OAuth2RedirectHandler() {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/accounts/oauth/login`,
       {
         socialType: "Kakao",
-        accessToken: localStorage.getItem("kakaoToken"),
+        accessToken: kakaoToken,
       }
     );
   };
@@ -57,13 +60,12 @@ export default function OAuth2RedirectHandler() {
   } = useMutation(["getKakaoUserInfo"], getKakaoUserInfo, {
     onSuccess: (res) => {
       setAccessToken(res.data.accessToken);
-      router.push("/");
+      router.replace("/");
     },
   });
 
   useEffect(() => {
     getKakaoTokenMutate();
-    getKakaoUserInfoMutate();
   }, []);
 
   if (kakaoTokenIsError || kakaoUserInfoIsError) {
