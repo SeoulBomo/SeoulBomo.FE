@@ -1,16 +1,16 @@
 "use client";
-import { KAKAO_TOKEN_URL } from "@/components/login/Oauth";
-import { kakaoTokenAtom, userAtom } from "@/state";
+import { NAVER_TOKEN_URL } from "@/components/login/Oauth";
+import { naverTokenAtom, userAtom } from "@/state";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-export default function KakaoLoginHandler() {
+export default function NaverLoginHandler() {
   const router = useRouter();
 
-  const [kakaoToken, setKakaoToken] = useRecoilState(kakaoTokenAtom);
+  const [naverToken, setNaverToken] = useRecoilState(naverTokenAtom);
 
   // redirect_uri로 받은 code를 이용하여 access_token을 받아옵니다.
   const searchParams = useSearchParams();
@@ -19,45 +19,45 @@ export default function KakaoLoginHandler() {
   // TokenAtom에 access_token을 저장하기 위해 recoil을 사용합니다.
   const setAccessToken = useSetRecoilState(userAtom);
 
-  const kakaoTokenLink = `${KAKAO_TOKEN_URL}${code}`;
+  const naverTokenLink = `${NAVER_TOKEN_URL}${code}`;
 
-  //1. 인가코드 보내서 토큰 받기(from Kakao)
-  const getKakaoToken = async () => {
-    return await axios.post(kakaoTokenLink, {
+  //1. 인가코드 보내서 토큰 받기(from Naver)
+  const getNaverToken = async () => {
+    return await axios.post(naverTokenLink, {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       maxRedirects: 0,
     });
   };
 
   const {
-    mutate: getKakaoTokenMutate,
-    isLoading: kakaoTokenIsLoding,
-    isError: kakaoTokenIsError,
-  } = useMutation(["getKakaoToken"], getKakaoToken, {
-    onSuccess: (kakao) => {
+    mutate: getNaverTokenMutate,
+    isLoading: naverTokenIsLoding,
+    isError: naverTokenIsError,
+  } = useMutation(["getNaverToken"], getNaverToken, {
+    onSuccess: (naver) => {
       // access_token을 받아온 후 임시 저장합니다.
-      setKakaoToken(kakao.data.access_token);
-      getKakaoUserInfoMutate();
+      setNaverToken(naver.data.access_token);
+      getNaverUserInfoMutate();
     },
   });
 
   //2. 토큰 보내서 사용자 정보 받기(from Backend)
-  const getKakaoUserInfo = async () => {
+  const getNaverUserInfo = async () => {
     return await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/accounts/oauth/login`,
       {
-        socialType: "Kakao",
-        accessToken: kakaoToken,
+        socialType: "Naver",
+        accessToken: naverToken,
       }
     );
   };
 
   const {
-    mutate: getKakaoUserInfoMutate,
-    data: kakaoUserInfo,
-    isLoading: kakaoUserInfoIsLoding,
-    isError: kakaoUserInfoIsError,
-  } = useMutation(["getKakaoUserInfo"], getKakaoUserInfo, {
+    mutate: getNaverUserInfoMutate,
+    data: NaverUserInfo,
+    isLoading: naverUserInfoIsLoding,
+    isError: naverUserInfoIsError,
+  } = useMutation(["getNaverUserInfo"], getNaverUserInfo, {
     onSuccess: (res) => {
       setAccessToken(res.data);
       router.replace("/");
@@ -65,15 +65,15 @@ export default function KakaoLoginHandler() {
   });
 
   useEffect(() => {
-    getKakaoTokenMutate();
+    getNaverTokenMutate();
   }, []);
 
-  if (kakaoTokenIsError || kakaoUserInfoIsError) {
+  if (naverTokenIsError || naverUserInfoIsError) {
     alert("오류가 발생했습니다. 다시 로그인 해주세요");
     router.push("/login");
   }
 
-  if (kakaoTokenIsLoding || kakaoUserInfoIsLoding) {
+  if (naverTokenIsLoding || naverUserInfoIsLoding) {
     return (
       <div className="flex h-screen justify-center items-center">
         <button

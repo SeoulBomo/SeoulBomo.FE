@@ -1,20 +1,32 @@
 import { atom, selector } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-export const TokenAtom = atom({
-  key: "TokenAtom",
+const sessionStorage =
+  typeof window !== "undefined" ? window.sessionStorage : undefined;
+
+const { persistAtom: tokenPersistAtom } = recoilPersist({
+  key: "persistAtom",
+  storage: sessionStorage,
+});
+
+export const userAtom = atom({
+  key: "userAtom",
   default: undefined,
+  effects_UNSTABLE: [tokenPersistAtom],
 });
 
 export const isLoginSelector = selector({
   key: "isLoginSelector",
-  get: ({ get }) => {
-    const token = get(TokenAtom);
-    return !!token;
-  },
+  get: ({ get }) => !!get(userAtom),
 });
 
-export const KakaoTokenAtom = atom({
-  key: "KakaoTokenAtom",
+export const kakaoTokenAtom = atom({
+  key: "kakaoTokenAtom",
+  default: undefined,
+});
+
+export const naverTokenAtom = atom({
+  key: "naverTokenAtom",
   default: undefined,
 });
 

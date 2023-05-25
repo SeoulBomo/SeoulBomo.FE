@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "./Logo";
 import Link from "next/link";
 import { useRecoilValue } from "recoil";
-import { TokenAtom, isLoginSelector } from "@/state";
+import { isLoginSelector } from "@/state";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

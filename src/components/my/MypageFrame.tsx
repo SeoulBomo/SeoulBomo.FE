@@ -2,7 +2,7 @@
 import { Tab } from "@headlessui/react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { KakaoTokenAtom, TokenAtom, isLoginSelector } from "@/state";
+import { isLoginSelector, userAtom } from "@/state";
 import { useRouter } from "next/navigation";
 
 function classNames(...classes: string[]) {
@@ -13,7 +13,12 @@ export default function MypageFrame() {
   const router = useRouter();
 
   const isLogin = useRecoilValue(isLoginSelector);
-  const kakaoToken = useSetRecoilState(KakaoTokenAtom);
+  const setUser = useSetRecoilState(userAtom);
+
+  const handleLogout = () => {
+    setUser(null);
+    router.replace("/");
+  };
 
   let [categories] = useState({
     좋아요: [
@@ -51,8 +56,6 @@ export default function MypageFrame() {
     ],
   });
 
-  const setAccessToken = useSetRecoilState(TokenAtom);
-
   if (!isLogin) {
     router.replace("/");
     return <></>;
@@ -68,9 +71,7 @@ export default function MypageFrame() {
         <button
           className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
           onClick={() => {
-            setAccessToken(undefined);
-            kakaoToken(undefined);
-            router.replace("/");
+            handleLogout();
           }}
         >
           로그아웃
