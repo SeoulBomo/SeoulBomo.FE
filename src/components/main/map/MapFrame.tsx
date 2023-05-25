@@ -215,7 +215,7 @@ export default function MapFrame() {
             </Link>
           </g>
           <g filter="url(#dropshadow2)">
-            <Link href="/map-search">
+            <Link href="/map-search?borough=종로구">
               <text
                 id="LCD11110"
                 className="TEXT hover:fill-yellow-400"
@@ -227,7 +227,7 @@ export default function MapFrame() {
                 종로구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=중구">
               <text
                 id="LCD11140"
                 className="TEXT hover:fill-yellow-400"
@@ -239,7 +239,7 @@ export default function MapFrame() {
                 중구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=용산구">
               <text
                 id="LCD11170"
                 className="TEXT hover:fill-yellow-400"
@@ -251,7 +251,7 @@ export default function MapFrame() {
                 용산구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=성동구">
               <text
                 id="LCD11200"
                 className="TEXT hover:fill-yellow-400"
@@ -263,7 +263,7 @@ export default function MapFrame() {
                 성동구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=광진구">
               <text
                 id="LCD11215"
                 className="TEXT hover:fill-yellow-400"
@@ -275,7 +275,7 @@ export default function MapFrame() {
                 광진구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=동대문구">
               <text
                 id="LCD11230"
                 className="TEXT hover:fill-yellow-400"
@@ -287,7 +287,7 @@ export default function MapFrame() {
                 동대문구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=중랑구">
               <text
                 id="LCD11260"
                 className="TEXT hover:fill-yellow-400"
@@ -299,7 +299,7 @@ export default function MapFrame() {
                 중랑구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=성북구">
               <text
                 id="LCD11290"
                 className="TEXT hover:fill-yellow-400"
@@ -311,7 +311,7 @@ export default function MapFrame() {
                 성북구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=강북구">
               <text
                 id="LCD11305"
                 className="TEXT hover:fill-yellow-400"
@@ -323,7 +323,7 @@ export default function MapFrame() {
                 강북구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=도봉구">
               <text
                 id="LCD11320"
                 className="TEXT hover:fill-yellow-400"
@@ -335,7 +335,7 @@ export default function MapFrame() {
                 도봉구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=노원구">
               <text
                 id="LCD11350"
                 className="TEXT hover:fill-yellow-400"
@@ -347,7 +347,7 @@ export default function MapFrame() {
                 노원구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=은평구">
               <text
                 id="LCD11380"
                 className="TEXT hover:fill-yellow-400"
@@ -359,7 +359,7 @@ export default function MapFrame() {
                 은평구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=서대문구">
               <text
                 id="LCD11410"
                 className="TEXT hover:fill-yellow-400"
@@ -371,7 +371,7 @@ export default function MapFrame() {
                 서대문구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=마포구">
               <text
                 id="LCD11440"
                 className="TEXT hover:fill-yellow-400"
@@ -383,7 +383,7 @@ export default function MapFrame() {
                 마포구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=양천구">
               <text
                 id="LCD11470"
                 className="TEXT hover:fill-yellow-400"
@@ -395,7 +395,7 @@ export default function MapFrame() {
                 양천구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=강서구">
               <text
                 id="LCD11500"
                 className="TEXT hover:fill-yellow-400"
@@ -407,7 +407,7 @@ export default function MapFrame() {
                 강서구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=구로구">
               <text
                 id="LCD11530"
                 className="TEXT hover:fill-yellow-400"
@@ -419,7 +419,7 @@ export default function MapFrame() {
                 구로구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=금천구">
               <text
                 id="LCD11545"
                 className="TEXT hover:fill-yellow-400"
@@ -431,7 +431,7 @@ export default function MapFrame() {
                 금천구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=영등포구">
               <text
                 id="LCD11560"
                 className="TEXT hover:fill-yellow-400"
@@ -443,7 +443,7 @@ export default function MapFrame() {
                 영등포구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=동작구">
               <text
                 id="LCD11590"
                 className="TEXT hover:fill-yellow-400"
@@ -455,7 +455,7 @@ export default function MapFrame() {
                 동작구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=관악구">
               <text
                 id="LCD11620"
                 className="TEXT hover:fill-yellow-400"
@@ -467,7 +467,7 @@ export default function MapFrame() {
                 관악구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=서초구">
               <text
                 id="LCD11650"
                 className="TEXT hover:fill-yellow-400"
@@ -479,7 +479,7 @@ export default function MapFrame() {
                 서초구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=강남구">
               <text
                 id="LCD11680"
                 className="TEXT hover:fill-yellow-400"
@@ -491,7 +491,7 @@ export default function MapFrame() {
                 강남구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=송파구">
               <text
                 id="LCD11710"
                 className="TEXT hover:fill-yellow-400"
@@ -503,7 +503,7 @@ export default function MapFrame() {
                 송파구
               </text>
             </Link>
-            <Link href="/map-search">
+            <Link href="/map-search?borough=강동구">
               <text
                 id="LCD11740"
                 className="TEXT hover:fill-yellow-400"
