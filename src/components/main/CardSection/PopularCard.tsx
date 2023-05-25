@@ -12,7 +12,7 @@ export default function PopularCard() {
     return data;
   };
   const HandleNavigate = (id: number) => {
-    router.push(`detail/${id}`); //해당 url로 이동
+    router.push(`/care/${id}`); //해당 url로 이동
   };
 
   const { isLoading, isError, data, error } = useQuery(
