@@ -76,7 +76,7 @@ export default function MypageFrame() {
         />
         <div className="font-bold text-2xl lg:text-4xl">{user.name}님</div>
         <div className="text-md lg:text-lg font-bold whitespace-nowrap">
-          {user.socialType === "KAKAO" ? "카카오톡" : "네이버"}으로 로그인 중
+          {user.socialType === "KAKAO" ? "카카오톡" : "네이버"} 로그인 중
         </div>
         <button
           className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
