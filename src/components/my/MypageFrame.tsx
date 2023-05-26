@@ -88,7 +88,7 @@ export default function MypageFrame() {
         </button>
       </section>
       <section className="flex flex-col justify-start mt-[2rem] lg:px-[8rem]">
-        <text className="font-bold text-3xl py-[2rem]">나의 활동</text>
+        <div className="font-bold text-3xl py-[2rem]">나의 활동</div>
         <div className="flex flex-col">
           <Tab.Group>
             <Tab.List className="bg-yellowColor flex rounded-xl p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-gray-600 hover:border-gray-30">
