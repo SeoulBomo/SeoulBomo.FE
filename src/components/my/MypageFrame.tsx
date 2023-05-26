@@ -1,9 +1,10 @@
 "use client";
 import { Tab } from "@headlessui/react";
 import { useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -13,7 +14,9 @@ export default function MypageFrame() {
   const router = useRouter();
 
   const isLogin = useRecoilValue(isLoginSelector);
-  const setUser = useSetRecoilState(userAtom);
+  const [user, setUser] = useRecoilState(userAtom);
+
+  console.log(user);
 
   const handleLogout = () => {
     setUser(null);
@@ -64,9 +67,16 @@ export default function MypageFrame() {
   return (
     <main className="flex flex-col w-screen h-screen justify-center p-[2rem] gap-[2rem]">
       <section className="flex flex-col gap-[1rem] justify-start items-center">
-        <div className="font-bold text-2xl lg:text-4xl">000님</div>
+        <Image
+          className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
+          src={user.profileImage}
+          alt="profile_img"
+          width={100}
+          height={100}
+        />
+        <div className="font-bold text-2xl lg:text-4xl">{user.name}님</div>
         <div className="text-md lg:text-lg font-bold whitespace-nowrap">
-          카카오톡으로 로그인 중
+          {user.socialType === "KAKAO" ? "카카오톡" : "네이버"}으로 로그인 중
         </div>
         <button
           className="w-[6rem] lg:w-[8rem] h-[1.7rem] lg:h-[2rem] font-[500] text-sm lg:text-[1rem] bg-white rounded-xl hover:bg-gray-100"
