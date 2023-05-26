@@ -343,8 +343,8 @@ function EditActiveIcon(props) {
     >
       <path
         d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#8B5CF6"
-        stroke="#C4B5FD"
+        fill="#FDE047"
+        stroke="#FDE047"
         strokeWidth="2"
       />
     </svg>
@@ -387,12 +387,12 @@ function DeleteActiveIcon(props) {
         y="6"
         width="10"
         height="10"
-        fill="#8B5CF6"
-        stroke="#C4B5FD"
+        fill="#FDE047"
+        stroke="#FDE047"
         strokeWidth="2"
       />
-      <path d="M3 6H17" stroke="#C4B5FD" strokeWidth="2" />
-      <path d="M8 6V4H12V6" stroke="#C4B5FD" strokeWidth="2" />
+      <path d="M3 6H17" stroke="#FDE047" strokeWidth="2" />
+      <path d="M8 6V4H12V6" stroke="#FDE047" strokeWidth="2" />
     </svg>
   );
 }
