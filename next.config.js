@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["k.kakaocdn.net"],
+    domains: ["k.kakaocdn.net", "phinf.pstatic.net"],
   },
 };
 
