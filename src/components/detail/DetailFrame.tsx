@@ -3,9 +3,9 @@ import KakaoMap from "./KakaoMap";
 import { useQuery } from "@tanstack/react-query";
 import ContentCard from "./ContentCard";
 import { Tab } from "@headlessui/react";
-import { useState } from "react";
 import { useParams, usePathname } from "next/navigation";
 import axios from "axios";
+import Review from "./Review";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -29,41 +29,6 @@ export default function DetailFrame() {
     }
   };
 
-  let [categories] = useState({
-    좋아요: [
-      {
-        id: 1,
-        title: "Does drinking coffee make you smarter?",
-        date: "5h ago",
-        commentCount: 5,
-        shareCount: 2,
-      },
-      {
-        id: 2,
-        title: "So you've bought coffee... now what?",
-        date: "2h ago",
-        commentCount: 3,
-        shareCount: 2,
-      },
-    ],
-    "내가 작성한 리뷰": [
-      {
-        id: 1,
-        title:
-          "Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?Is tech making coffee better or worse?",
-        date: "Jan 7",
-        commentCount: 29,
-        shareCount: 16,
-      },
-      {
-        id: 2,
-        title: "The most innovative things happening in coffee",
-        date: "Mar 19",
-        commentCount: 24,
-        shareCount: 12,
-      },
-    ],
-  });
   const { isLoading, isError, data, error } = useQuery(
     ["detail"],
     getDetailData,
@@ -208,34 +173,7 @@ export default function DetailFrame() {
                 </div>
               </Tab.Panel>
               <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
-                <ul>
-                  {categories["내가 작성한 리뷰"].map((post) => (
-                    <li
-                      key={post.id}
-                      className="relative rounded-md p-3 hover:bg-gray-100"
-                    >
-                      <h3 className="text-sm font-medium leading-5 truncate">
-                        {post.title}
-                      </h3>
-
-                      <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                        <li>{post.date}</li>
-                        <li>&middot;</li>
-                        <li>{post.commentCount} comments</li>
-                        <li>&middot;</li>
-                        <li>{post.shareCount} shares</li>
-                      </ul>
-
-                      <a
-                        href="#"
-                        className={classNames(
-                          "absolute inset-0 rounded-md",
-                          "ring-yellow-400 focus:z-10 focus:outline-none focus:ring-2"
-                        )}
-                      />
-                    </li>
-                  ))}
-                </ul>
+                <Review />
               </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>

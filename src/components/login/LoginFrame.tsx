@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { KAKAO_AUTH_URL, NAVER_AUTH_URL } from "./Oauth";
+import Logo from "../Logo";
 
 export default function LoginFrame() {
   return (
     <main className="w-screen h-screen flex justify-center">
+      <Link href="/">
+        <div className="fixed top-5 left-5">
+          <Logo />
+        </div>
+      </Link>
       <section className="w-[40rem] h-screen bg-amber-200 hidden lg:flex flex-col items-center justify-center">
         <div className="font-extrabold text-3xl leading-loose">
           로그인하고
