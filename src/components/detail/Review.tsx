@@ -53,7 +53,7 @@ export default function Review() {
                 <Menu.Button className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50">
                   <svg
                     className="w-5 h-5"
-                    aria-hidden="true"
+                    aria-hidden={true}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -85,12 +85,12 @@ export default function Review() {
                           {active ? (
                             <EditActiveIcon
                               className="mr-2 h-5 w-5"
-                              aria-hidden="true"
+                              aria-hidden={true}
                             />
                           ) : (
                             <EditInactiveIcon
                               className="mr-2 h-5 w-5"
-                              aria-hidden="true"
+                              aria-hidden={true}
                             />
                           )}
                           수정
@@ -111,12 +111,12 @@ export default function Review() {
                           {active ? (
                             <DeleteActiveIcon
                               className="mr-2 h-5 w-5 text-yellow-400"
-                              aria-hidden="true"
+                              aria-hidden={true}
                             />
                           ) : (
                             <DeleteInactiveIcon
                               className="mr-2 h-5 w-5 text-yellow-400"
-                              aria-hidden="true"
+                              aria-hidden={true}
                             />
                           )}
                           삭제
@@ -161,7 +161,7 @@ export default function Review() {
             >
               <svg
                 className="w-5 h-5"
-                aria-hidden="true"
+                aria-hidden={true}
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@ export default function Review() {
               className="flex items-center text-sm text-gray-500 hover:underline"
             >
               <svg
-                aria-hidden="true"
+                aria-hidden={true}
                 className="mr-1 w-4 h-4"
                 fill="none"
                 stroke="currentColor"
@@ -249,7 +249,7 @@ export default function Review() {
             >
               <svg
                 className="w-5 h-5"
-                aria-hidden="true"
+                aria-hidden={true}
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -293,7 +293,7 @@ export default function Review() {
               className="flex items-center text-sm text-gray-500 hover:underline"
             >
               <svg
-                aria-hidden="true"
+                aria-hidden={true}
                 className="mr-1 w-4 h-4"
                 fill="none"
                 stroke="currentColor"
@@ -315,7 +315,13 @@ export default function Review() {
     </section>
   );
 }
-function EditInactiveIcon(props: { className: string }) {
+
+type IconProps = {
+  className?: string;
+  "aria-hidden"?: boolean;
+};
+
+function EditInactiveIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -333,7 +339,7 @@ function EditInactiveIcon(props: { className: string }) {
   );
 }
 
-function EditActiveIcon(props) {
+function EditActiveIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -351,7 +357,7 @@ function EditActiveIcon(props) {
   );
 }
 
-function DeleteInactiveIcon(props) {
+function DeleteInactiveIcon(props: IconProps) {
   return (
     <svg
       {...props}
@@ -374,7 +380,7 @@ function DeleteInactiveIcon(props) {
   );
 }
 
-function DeleteActiveIcon(props) {
+function DeleteActiveIcon(props: IconProps) {
   return (
     <svg
       {...props}
