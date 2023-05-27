@@ -10,9 +10,9 @@ export default function ContentCard({
   return (
     <div className="bg-yellow-200 h-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col">
       {type === "ageType" ? (
-        <text className="text-center font-bold text-sm md:text-base lg:text-xl ">
+        <div className="text-center font-bold text-sm md:text-base lg:text-xl ">
           {content}
-        </text>
+        </div>
       ) : (
         <>
           <Image
@@ -22,9 +22,9 @@ export default function ContentCard({
             height={200}
             alt=""
           />
-          <text className="text-center font-bold text-sm md:text-base lg:text-xl lg:mt-[2rem]">
+          <div className="text-center font-bold text-sm md:text-base lg:text-xl lg:mt-[2rem]">
             {content}
-          </text>
+          </div>
         </>
       )}
     </div>
