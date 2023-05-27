@@ -8,6 +8,7 @@ export default function KakaoMap({ lat, lng }: { lat: number; lng: number }) {
       <Map
         className="lg:px-[19.5rem] py-[10rem]"
         center={{ lat: lat, lng: lng }}
+        level={1}
       >
         <MapMarker position={{ lat: lat, lng: lng }} />
       </Map>
