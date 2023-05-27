@@ -9,12 +9,12 @@ import { useRecoilValue } from "recoil";
 import { isLoginSelector } from "@/state";
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const isLogin = useRecoilValue(isLoginSelector);
 
   // SSR Hydration 때문에 필요한 코드
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
   //Wait till NextJS rehydration completes
   useEffect(() => {
