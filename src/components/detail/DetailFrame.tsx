@@ -40,9 +40,6 @@ export default function DetailFrame() {
     }
   };
 
-  //  두 타입을 합쳐서 서로 공통된 프로퍼티는 그대로 두고 나머지는 선택적으로 처리하여 어떤 타입이 들어오던지 처리할 수 있도록 합니다.
-  type IDetailData = IChildCareData & IChildCenterData;
-
   const { isLoading, isError, data, error } = useQuery(
     ["detail"],
     getDetailData,
@@ -289,6 +286,10 @@ export default function DetailFrame() {
 // }
 // 위 두가지 형태로 데이터가 들어옵니다. 각각 타입을 만들어서 합쳐 처리해줍니다.
 // 공통된 프로퍼티는 id, name, borough, latitude, longitude, address, isFree, reviewCount, likeCount 입니다.
+
+//  두 타입을 합쳐서 서로 공통된 프로퍼티는 그대로 두고 나머지는 선택적으로 처리하여 어떤 타입이 들어오던지 처리할 수 있도록 합니다.
+// Intersection Type
+type IDetailData = IChildCareData & IChildCenterData;
 interface IChildCareData {
   id: number;
   name: string;
