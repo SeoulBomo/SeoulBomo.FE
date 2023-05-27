@@ -63,25 +63,35 @@ export default function DetailFrame() {
       alert("로그인이 필요합니다.");
       return;
     }
-    postCenterScrapMutate();
+    postScrapMutate();
   };
 
   //2. 토큰 보내서 사용자 정보 받기(from Backend)
-  const postCenterScrap = async () => {
-    return await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/center-info`,
-      {
-        userId: user?.id,
-        centerId: params.id,
-      }
-    );
+  const postScrap = async () => {
+    if (pathname.search("care") === 1) {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/care-info`,
+        {
+          userId: user?.id,
+          careInfoId: params.id,
+        }
+      );
+    } else {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/center-info`,
+        {
+          userId: user?.id,
+          centerId: params.id,
+        }
+      );
+    }
   };
 
   const {
-    mutate: postCenterScrapMutate,
-    isLoading: postCenterScrapIsLoding,
-    isError: postCenterScrapIsError,
-  } = useMutation(["postCenterScrap"], postCenterScrap, {
+    mutate: postScrapMutate,
+    isLoading: postScrapIsLoding,
+    isError: postScrapIsError,
+  } = useMutation(["postScrap"], postScrap, {
     onSuccess: () => {
       alert("게시물이 스크랩 되었습니다.");
       queryClient.invalidateQueries({ queryKey: ["detail"] });
@@ -92,7 +102,7 @@ export default function DetailFrame() {
     },
   });
 
-  if (isLoading || postCenterScrapIsLoding) {
+  if (isLoading || postScrapIsLoding) {
     return <></>;
   }
 
@@ -107,7 +117,7 @@ export default function DetailFrame() {
           }
         />
         <div className="flex lg:flex-col justify-center items-center gap-[1rem] lg:pt-[3rem]">
-          <div className="rounded=[0.625rem] lg:px-[4rem] px-[2rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
+          <div className="rounded=[0.625rem] lg:px-[4rem] px-[2rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-base md:text-xl lg:text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
             {data?.name}
           </div>
           <form onSubmit={submitForm}>
