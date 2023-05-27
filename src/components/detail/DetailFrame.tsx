@@ -131,9 +131,6 @@ export default function DetailFrame() {
       retry: 0, // 실패시 재호출 몇번 할지
       onSuccess: (data: IDetailData) => {
         // 성공시 호출
-        console.log(data);
-        console.log(data.latitude);
-        console.log(data.longitude);
       },
       onError: ({ e }: any) => {
         console.log(e.message);
@@ -152,37 +149,35 @@ export default function DetailFrame() {
     <main className="flex flex-col w-screen justify-start items-center">
       {/* Wrapper */}
       <section className="flex flex-col-reverse lg:flex-row lg:items-start justify-center gap-[1rem] p-[1rem]">
-        {data.latitude && data.longitude ? (
-          <KakaoMap
-            lat={parseFloat(data.latitude)}
-            lng={parseFloat(data.longitude)}
-          />
-        ) : (
-          <>111</>
-        )}
+        <KakaoMap
+          lat={Number.parseFloat(data.latitude)}
+          lng={Number.parseFloat(data.longitude)}
+        />
         <div className="flex lg:flex-col justify-center items-center gap-[1rem] lg:pt-[3rem]">
           <div className="rounded=[0.625rem] lg:px-[4rem] px-[2rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
             {data.name}
           </div>
-          <label className="cursor-pointer">
-            <input type="checkbox" className="peer hidden" />
-            <div className="p-[0.7rem] gap-[0.4rem] bg-amber-200/30 rounded=[0.625rem] bg-white-300 text-gray-600 flex justify-start items-center font-bold text-xl rounded-md shadow-lg hover:bg-amber-200 ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
-              <text className="lg:text-gray-600 lg:font-medium lg:text-base lg:block hidden">
-                22
-              </text>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  fill="#f59e0b"
-                  d="m37 43l-13-6l-13 6V9c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v34z"
-                />
-              </svg>
-            </div>
-          </label>
+          <form>
+            <label className="cursor-pointer">
+              <input type="button" className="peer hidden" />
+              <div className="p-[0.7rem] gap-[0.4rem] bg-amber-200/30 rounded=[0.625rem] bg-white-300 text-gray-600 flex justify-start items-center font-bold text-xl rounded-md shadow-lg hover:bg-amber-200 ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-2 ring-transparent">
+                <div className="lg:text-gray-600 lg:font-medium lg:text-base lg:block hidden">
+                  {data.likeCount}
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 48 48"
+                >
+                  <path
+                    fill="#f59e0b"
+                    d="m37 43l-13-6l-13 6V9c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v34z"
+                  />
+                </svg>
+              </div>
+            </label>
+          </form>
         </div>
       </section>
       {/* 개요 및 리뷰 */}
