@@ -14,6 +14,7 @@ function classNames(...classes: string[]) {
 export default function DetailFrame() {
   const pathname = usePathname();
   const params = useParams();
+
   console.log(`/center/${params.id}`);
   const getDetailData = async () => {
     if (`/center/${params.id}` === pathname) {
@@ -47,7 +48,12 @@ export default function DetailFrame() {
     }
   );
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <span>
+        {" "}
+        <KakaoMap lat={Number(127.12721)} lng={Number(37.49834)} />
+      </span>
+    );
   }
 
   if (isError) {
@@ -58,8 +64,8 @@ export default function DetailFrame() {
     <main className="flex flex-col w-screen justify-start items-center">
       {/* Wrapper */}
       <section className="flex flex-col-reverse lg:flex-row lg:items-start justify-center gap-[1rem] p-[1rem]">
-        {/* <KakaoMap lat={Number(data.latitude)} lng={Number(data.longitude)} /> */}
-        <KakaoMap lat={data.latitude} lng={data.longitude} />
+        <KakaoMap lat={Number(data.latitude)} lng={Number(data.longitude)} />
+
         <div className="flex lg:flex-col justify-center items-center gap-[1rem] lg:pt-[3rem]">
           <div className="rounded=[0.625rem] lg:px-[4rem] px-[2rem] h-[5rem] bg-amber-200 shadow-md flex items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem] whitespace-nowrap">
             {data.name}
