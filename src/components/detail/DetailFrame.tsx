@@ -69,21 +69,23 @@ export default function DetailFrame() {
   //2. 토큰 보내서 사용자 정보 받기(from Backend)
   const postScrap = async () => {
     if (pathname.search("care") === 1) {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/care-info`,
-        {
+      await axios
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/care-info`, {
           userId: user?.id,
           careInfoId: params.id,
-        }
-      );
+        })
+        .then((res) => {
+          alert(res.data);
+        });
     } else {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/center-info`,
-        {
+      await axios
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/center-info`, {
           userId: user?.id,
           centerId: params.id,
-        }
-      );
+        })
+        .then((res) => {
+          alert(res.data);
+        });
     }
   };
 
@@ -92,12 +94,11 @@ export default function DetailFrame() {
     isLoading: postScrapIsLoding,
     isError: postScrapIsError,
   } = useMutation(["postScrap"], postScrap, {
-    onSuccess: () => {
-      alert("게시물이 스크랩 되었습니다.");
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["detail"] });
     },
     onError: (error: any) => {
-      alert("이미 스크랩하신 게시물입니다.");
+      alert("알 수 없는 오류입니다.");
       router.push(pathname);
     },
   });
