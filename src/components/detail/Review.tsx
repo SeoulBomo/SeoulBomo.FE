@@ -351,7 +351,7 @@ export default function Review() {
                 </div>
               </form>
             ) : (
-              <p className="text-gray-500">{item.content}</p>
+              <p className="text-sm lg:text-base">{item.content}</p>
             )}
           </article>
         ))}
