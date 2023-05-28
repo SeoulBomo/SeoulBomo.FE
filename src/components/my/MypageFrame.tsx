@@ -61,7 +61,7 @@ export default function MypageFrame() {
   //로그아웃 로직
 
   return (
-    <main className="flex flex-col w-screen  min-h-screen justify-center p-[2rem] gap-[0.5rem]">
+    <main className="flex flex-col w-screen justify-center p-[5rem] gap-[0.5rem]">
       <section className="flex flex-col gap-[1rem] justify-start items-center">
         <Image
           className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
@@ -91,7 +91,7 @@ export default function MypageFrame() {
         </button>
       </section>
 
-      <section className="flex flex-col justify-start mt-[2rem] lg:px-[8rem]">
+      <section className="flex flex-col justify-start mt-[1rem] lg:px-[8rem]">
         <div className="font-bold lg:text-3xl py-[2rem] text-xl">나의 활동</div>
         <div className="flex flex-col">
           <Tab.Group>
@@ -126,7 +126,7 @@ export default function MypageFrame() {
             <Tab.Panels className="mt-2">
               <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
                 {likeData[0].length < 1 && likeData[1].length < 1 ? (
-                  <div className="flex items-center justify-center flex-col gap-[2rem]">
+                  <div className="flex items-center justify-center flex-col gap-[2rem] sm:p-[2rem]">
                     <div className="lg:text-xl lg:font-bold p-[1rem] lg:leading-10 text-sm font-medium ">
                       아직 스크랩한 글이 없어요
                     </div>
