@@ -5,14 +5,9 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useRecoilValue } from "recoil";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function MypageReview() {
   const user = useRecoilValue(userAtom);
   const router = useRouter();
-
 
   const getMypageReviewData = async () => {
     if (user !== undefined) {
@@ -84,36 +79,68 @@ export default function MypageReview() {
         </div>
       ) : (
         <ul key={reviewData.id}>
-          {reviewData.list.map((post: any) =>
+          {reviewData.list.map((post: IReviewData) =>
             post.targetType === "childCareInfo" ? (
               <li
-                key={post.id}
-                className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                key={post.createdAt + post.id}
+                className="flex justify-between rounded-md p-3 hover:bg-gray-100 cursor-pointer"
                 onClick={() => {
-                  router.push(`/care/${post.id}`);
+                  router.push(`/care/${post.targetId}`);
                 }}
               >
-                <h3 className="text-sm font-medium leading-5 truncate">
-                  {post.content}
-                </h3>
+                <div className="flex flex-col">
+                  <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
+                    {post.targetName}
+                  </h3>
+                  <p className="text-xs lg:text-sm text-gray-600 truncate">
+                    {post.content}
+                  </p>
+                </div>
+                <p className="text-xs truncate">
+                  <time dateTime={post.createdAt} title="리뷰 작성일">
+                    {`${new Date(post.createdAt).getFullYear()}-`}
+                    {`${new Date(post.createdAt).getMonth() + 1}-`}
+                    {`${new Date(post.createdAt).getDate()} `}
+                    {`${new Date(post.createdAt).getHours()}:`}
+                    {`${new Date(post.createdAt).getMinutes()}`}
+                  </time>
+                </p>
               </li>
             ) : (
               <li
-                key={post.id}
-                className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                key={post.createdAt + post.id}
+                className="flex justify-between rounded-md p-3 hover:bg-gray-100 cursor-pointer"
                 onClick={() => {
-                  router.push(`/center/${post.id}`);
+                  router.push(`/center/${post.targetId}`);
                 }}
               >
                 <h3 className="text-sm font-medium leading-5 truncate">
                   {post.content}
                 </h3>
+                <p className="text-xs">
+                  <time dateTime={post.createdAt} title="리뷰 작성일">
+                    {`${new Date(post.createdAt).getFullYear()}-`}
+                    {`${new Date(post.createdAt).getMonth() + 1}-`}
+                    {`${new Date(post.createdAt).getDate()} `}
+                    {`${new Date(post.createdAt).getHours()}:`}
+                    {`${new Date(post.createdAt).getMinutes()}`}
+                  </time>
+                </p>
               </li>
             )
           )}
-i
         </ul>
       )}
     </>
   );
+}
+
+interface IReviewData {
+  id: number;
+  name: string;
+  content: string;
+  createdAt: string;
+  targetType: string;
+  targetId: number;
+  targetName: string;
 }
