@@ -3,7 +3,6 @@ import { userAtom } from "@/state";
 import { Menu, Transition } from "@headlessui/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { headers } from "next/dist/client/components/headers";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { Fragment, useState } from "react";
@@ -286,7 +285,12 @@ export default function Review() {
                                 /* Read more about isConfirmed, isDenied below */
                                 if (result.isConfirmed) {
                                   deleteReviewMutation(item.id);
-                                  Swal.fire("리뷰가 삭제되었습니다 :D");
+                                  Swal.fire({
+                                    title: "리뷰가 삭제되었습니다 :D",
+                                    icon: "success",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                  });
                                 } else if (result.isDenied) {
                                   return;
                                 }
