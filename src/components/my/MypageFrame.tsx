@@ -21,13 +21,11 @@ export default function MypageFrame() {
     if (user !== undefined) {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/me?userId=${user.id}`
-
       );
       return data;
     }
   };
 
-  type IMypageData = IMyChildCareData & IMyChildCenterData;
   const {
     isLoading,
     isError,
@@ -36,7 +34,7 @@ export default function MypageFrame() {
   } = useQuery(["mypageLikeData"], getMypageLikeData, {
     refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
     retry: 0, // 실패시 재호출 몇번 할지
-    onSuccess: (data: any) => {
+    onSuccess: (data: IMypageData[]) => {
       console.log(data);
     },
     onError: ({ e }: any) => {},
@@ -47,7 +45,6 @@ export default function MypageFrame() {
   console.log(user);
   if (isError) {
     router.push("/error");
-
   }
   //마이페이지 스크랩 데이터 조회
 
@@ -78,9 +75,9 @@ export default function MypageFrame() {
         <div className="text-md lg:text-lg font-bold whitespace-nowrap">
           {user !== undefined
             ? user.socialType === "KAKAO"
-              ? "카카오톡"
-              : "네이버"
-            : ""}{" "}
+              ? "카카오톡 "
+              : "네이버 "
+            : ""}
           로그인 중
         </div>
         <button
@@ -127,78 +124,80 @@ export default function MypageFrame() {
             </Tab.List>
             <Tab.Panels className="mt-2">
               <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
-                {likeData[0].length < 1 && likeData[1].length < 1 ? (
-                  <div className="flex items-center justify-center flex-col gap-[2rem] sm:p-[2rem]">
-                    <div className="lg:text-xl lg:font-bold p-[1rem] lg:leading-10 text-sm font-medium ">
-                      아직 스크랩한 글이 없어요
+                {likeData !== undefined ? (
+                  likeData[0].length < 1 && likeData[1].length < 1 ? (
+                    <div className="flex items-center justify-center flex-col gap-[2rem] sm:p-[2rem]">
+                      <div className="lg:text-xl lg:font-bold p-[1rem] lg:leading-10 text-sm font-medium ">
+                        아직 스크랩한 글이 없어요
+                      </div>
+                      <div className="hidden lg:block">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="100"
+                          height="100"
+                          viewBox="0 0 36 36"
+                        >
+                          <path
+                            fill="#FFCC4D"
+                            d="M36 18c0 9.941-8.059 18-18 18c-9.94 0-18-8.059-18-18C0 8.06 8.06 0 18 0c9.941 0 18 8.06 18 18"
+                          />
+                          <ellipse
+                            cx="11.5"
+                            cy="17"
+                            fill="#664500"
+                            rx="2.5"
+                            ry="3.5"
+                          />
+                          <ellipse
+                            cx="24.5"
+                            cy="17"
+                            fill="#664500"
+                            rx="2.5"
+                            ry="3.5"
+                          />
+                          <path
+                            fill="#664500"
+                            d="M5.999 13.5a1 1 0 0 1-.799-1.6c3.262-4.35 7.616-4.4 7.8-4.4a1 1 0 0 1 .004 2c-.155.002-3.568.086-6.204 3.6a.998.998 0 0 1-.801.4zm24.002 0a.998.998 0 0 1-.801-.4c-2.641-3.521-6.061-3.599-6.206-3.6a1.002 1.002 0 0 1-.991-1.005A.997.997 0 0 1 23 7.5c.184 0 4.537.05 7.8 4.4a1 1 0 0 1-.799 1.6zm-6.516 14.879C23.474 28.335 22.34 24 18 24s-5.474 4.335-5.485 4.379a.496.496 0 0 0 .232.544a.51.51 0 0 0 .596-.06C13.352 28.855 14.356 28 18 28c3.59 0 4.617.83 4.656.863a.5.5 0 0 0 .829-.484z"
+                          />
+                          <path
+                            fill="#5DADEC"
+                            d="M16 31c0 2.762-2.238 5-5 5s-5-2.238-5-5s4-10 5-10s5 7.238 5 10z"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="hidden lg:block">
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100"
-                        height="100"
-                        viewBox="0 0 36 36"
-                      >
-                        <path
-                          fill="#FFCC4D"
-                          d="M36 18c0 9.941-8.059 18-18 18c-9.94 0-18-8.059-18-18C0 8.06 8.06 0 18 0c9.941 0 18 8.06 18 18"
-                        />
-                        <ellipse
-                          cx="11.5"
-                          cy="17"
-                          fill="#664500"
-                          rx="2.5"
-                          ry="3.5"
-                        />
-                        <ellipse
-                          cx="24.5"
-                          cy="17"
-                          fill="#664500"
-                          rx="2.5"
-                          ry="3.5"
-                        />
-                        <path
-                          fill="#664500"
-                          d="M5.999 13.5a1 1 0 0 1-.799-1.6c3.262-4.35 7.616-4.4 7.8-4.4a1 1 0 0 1 .004 2c-.155.002-3.568.086-6.204 3.6a.998.998 0 0 1-.801.4zm24.002 0a.998.998 0 0 1-.801-.4c-2.641-3.521-6.061-3.599-6.206-3.6a1.002 1.002 0 0 1-.991-1.005A.997.997 0 0 1 23 7.5c.184 0 4.537.05 7.8 4.4a1 1 0 0 1-.799 1.6zm-6.516 14.879C23.474 28.335 22.34 24 18 24s-5.474 4.335-5.485 4.379a.496.496 0 0 0 .232.544a.51.51 0 0 0 .596-.06C13.352 28.855 14.356 28 18 28c3.59 0 4.617.83 4.656.863a.5.5 0 0 0 .829-.484z"
-                        />
-                        <path
-                          fill="#5DADEC"
-                          d="M16 31c0 2.762-2.238 5-5 5s-5-2.238-5-5s4-10 5-10s5 7.238 5 10z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+                  ) : (
+                    <ul>
+                      {likeData[0].map((post: IMyChildCenterData) => (
+                        <li
+                          key={post.id + post.name}
+                          className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                          onClick={() => {
+                            router.push(`/center/${post.id}`);
+                          }}
+                        >
+                          <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
+                            {post.name}
+                          </h3>
+                        </li>
+                      ))}
+                      {likeData[1].map((post: IMyChildCareData) => (
+                        <li
+                          key={post.id + post.name}
+                          className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                          onClick={() => {
+                            router.push(`/care/${post.id}`);
+                          }}
+                        >
+                          <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
+                            {post.name}
+                          </h3>
+                        </li>
+                      ))}
+                    </ul>
+                  )
                 ) : (
-                  <ul>
-                    {likeData[0].map((post: any) => (
-                      <li
-                        key={post.id}
-                        className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => {
-                          router.push(`/center/${post.id}`);
-                        }}
-                      >
-                        <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
-                          {post.name}
-                        </h3>
-                      </li>
-                    ))}
-                    {likeData[1].map((post: any) => (
-                      <li
-                        key={post.id}
-                        className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => {
-                          router.push(`/care/${post.id}`);
-                        }}
-                      >
-                        <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
-                          {post.name}
-                        </h3>
-                      </li>
-                    ))}
-                  </ul>
-
+                  <div>알 수 없는 오류입니다.</div>
                 )}
               </Tab.Panel>
             </Tab.Panels>
@@ -213,6 +212,9 @@ export default function MypageFrame() {
     </main>
   );
 }
+
+type IMypageData = IMyChildCareData[] & IMyChildCenterData[];
+
 interface IMyChildCenterData {
   createdAt: string;
   modifiedAt: string;
@@ -240,6 +242,7 @@ interface IMyChildCareData {
   createdAt: string;
   modifiedAt: string;
   id: number;
+  name: string;
   borough: string;
   latitude: string;
   longitude: string;
