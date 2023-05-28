@@ -13,6 +13,7 @@ export default function MypageReview() {
   const [user, setUser] = useRecoilState(userAtom);
   const router = useRouter();
 
+
   const getMypageReviewData = async () => {
     if (user !== undefined) {
       const { data } = await axios.get(
@@ -110,6 +111,7 @@ export default function MypageReview() {
               </li>
             )
           )}
+i
         </ul>
       )}
     </>

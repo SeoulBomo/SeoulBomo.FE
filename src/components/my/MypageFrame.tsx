@@ -21,6 +21,7 @@ export default function MypageFrame() {
     if (user !== undefined) {
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/me?userId=${user.id}`
+
       );
       return data;
     }
@@ -46,6 +47,7 @@ export default function MypageFrame() {
   console.log(user);
   if (isError) {
     router.push("/error");
+
   }
   //마이페이지 스크랩 데이터 조회
 
@@ -196,6 +198,7 @@ export default function MypageFrame() {
                       </li>
                     ))}
                   </ul>
+
                 )}
               </Tab.Panel>
             </Tab.Panels>
