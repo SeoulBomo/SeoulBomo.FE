@@ -278,10 +278,12 @@ export default function Review() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                               onClick={() => {
                                 Swal.fire({
-                                  title: "리뷰를 삭제하시겠습니까?",
-                                  showDenyButton: true,
+                                  titleText: "리뷰를 삭제하시겠습니까?",
+                                  icon: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#FBBF24",
                                   confirmButtonText: "네",
-                                  denyButtonText: `아니요`,
+                                  cancelButtonText: "아니요",
                                 }).then((result) => {
                                   /* Read more about isConfirmed, isDenied below */
                                   if (result.isConfirmed) {
@@ -292,8 +294,6 @@ export default function Review() {
                                       showConfirmButton: false,
                                       timer: 1500,
                                     });
-                                  } else if (result.isDenied) {
-                                    return;
                                   }
                                 });
                               }}
