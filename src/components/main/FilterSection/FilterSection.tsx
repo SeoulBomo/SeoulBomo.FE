@@ -3,7 +3,6 @@ import Image from "next/image";
 import RadioBox from "./RadioBox";
 import Swal from "sweetalert2";
 import { useSetRecoilState } from "recoil";
-import { filterState } from "@/state";
 import { useRouter } from "next/navigation";
 
 export default function FilterSection() {

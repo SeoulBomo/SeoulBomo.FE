@@ -20,12 +20,8 @@ export default function MypageFrame() {
   const getMypageLikeData = async () => {
     if (user !== undefined) {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/me?userId=${user.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/me?userId=${user.id}`
+
       );
       return data;
     }
@@ -48,9 +44,10 @@ export default function MypageFrame() {
   if (isLoading) {
     return <></>;
   }
-
+  console.log(user);
   if (isError) {
-    return <span>Error:</span>;
+    router.push("/error");
+
   }
   //마이페이지 스크랩 데이터 조회
 
@@ -173,30 +170,35 @@ export default function MypageFrame() {
                     </div>
                   </div>
                 ) : (
-                  likeData.map((item: any) => (
-                    <ul key={item.id}>
-                      {item.map((post: any) => (
-                        <li
-                          key={post.id}
-                          className="relative rounded-md p-3 hover:bg-gray-100"
-                        >
-                          <h3 className="text-sm font-medium leading-5 truncate">
-                            {post.name}
-                          </h3>
+                  <ul>
+                    {likeData[0].map((post: any) => (
+                      <li
+                        key={post.id}
+                        className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          router.push(`/center/${post.id}`);
+                        }}
+                      >
+                        <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
+                          {post.name}
+                        </h3>
+                      </li>
+                    ))}
+                    {likeData[1].map((post: any) => (
+                      <li
+                        key={post.id}
+                        className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          router.push(`/care/${post.id}`);
+                        }}
+                      >
+                        <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
+                          {post.name}
+                        </h3>
+                      </li>
+                    ))}
+                  </ul>
 
-                          <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500"></ul>
-
-                          <a
-                            href="#"
-                            className={classNames(
-                              "absolute inset-0 rounded-md",
-                              "ring-yellow-400 focus:z-10 focus:outline-none focus:ring-2"
-                            )}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  ))
                 )}
               </Tab.Panel>
             </Tab.Panels>
