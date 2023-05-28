@@ -152,8 +152,10 @@ export default function Review() {
 
   if (isError || reviewIsError || editIsError || deleteIsError) {
     return (
-      <div className="flex gap-1 justify-center items-center">
-        <div>로그인 후에 리뷰를 보실 수 있습니다 :D </div>
+      <div className="flex gap-[1rem] justify-center items-center">
+        <div className="text-base md:text-lg">
+          로그인 후에 리뷰를 보실 수 있습니다 :D
+        </div>
         <Link href="/login">
           <div className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-yellow-400 rounded-lg focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-300">
             로그인 하러 가기
