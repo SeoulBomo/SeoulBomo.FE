@@ -8,6 +8,7 @@ import Review from "./Review";
 import KakaoMap from "./KakaoMap";
 import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
+import Swal from "sweetalert2";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -56,7 +57,19 @@ export default function DetailFrame() {
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!isLogin) {
-      alert("로그인이 필요합니다.");
+      Swal.fire({
+        titleText: "스크랩을 하려면 로그인이 필요합니다 :D",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#FBBF24",
+        confirmButtonText: "로그인",
+        cancelButtonText: "아니요",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          router.replace("/login");
+        }
+      });
       return;
     }
     postScrapMutate();
