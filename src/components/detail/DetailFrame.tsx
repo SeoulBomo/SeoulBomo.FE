@@ -8,7 +8,6 @@ import Review from "./Review";
 import KakaoMap from "./KakaoMap";
 import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
-import { useEffect } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -151,7 +150,7 @@ export default function DetailFrame() {
         </div>
       </section>
       {/* 개요 및 리뷰 */}
-      <div className="bg-white shadow-md lg:w-[60rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start gap-[1rem]">
+      <div className="bg-white shadow-md w-[20rem] sm:w-[30rem] md:w-[40rem] lg:w-[60rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start gap-[1rem]">
         <div className="flex flex-col">
           <Tab.Group>
             <Tab.List className="bg-yellowColor flex rounded-xl p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-gray-600 hover:border-gray-30">
@@ -234,9 +233,9 @@ export default function DetailFrame() {
                       <ContentCard type="ageType" content={data?.ageType} />
                     )}
                   </div>
-                  <text className="text-lg lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
+                  <div className="text-lg lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
                     {data?.address}
-                  </text>
+                  </div>
                 </div>
               </Tab.Panel>
               <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
