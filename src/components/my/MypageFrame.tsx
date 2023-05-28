@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MypageReview from "./MypageReview";
+import Swal from "sweetalert2";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -46,8 +47,26 @@ export default function MypageFrame() {
   //마이페이지 스크랩 데이터 조회
 
   const handleLogout = () => {
-    setUser(undefined);
-    router.replace("/");
+    Swal.fire({
+      titleText: "로그아웃 하시겠습니까?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#FBBF24",
+      confirmButtonText: "네",
+      cancelButtonText: "아니요",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        setUser(undefined);
+        router.replace("/");
+        Swal.fire({
+          title: "로그아웃 되었습니다 :D",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      }
+    });
   };
 
   if (!isLogin) {
