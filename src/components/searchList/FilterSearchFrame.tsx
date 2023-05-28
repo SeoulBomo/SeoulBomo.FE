@@ -1,11 +1,13 @@
 "use client";
 import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function FilterSearchFrame() {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page");
@@ -17,6 +19,11 @@ export default function FilterSearchFrame() {
     );
     return data;
   };
+
+  // 검색 조건이 바뀔 때마다 쿼리를 재호출합니다.
+  useEffect(() => {
+    queryClient.fetchQuery(["filterSearch"], getFilterSearch);
+  }, [searchParams]);
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
