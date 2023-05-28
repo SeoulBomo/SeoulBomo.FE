@@ -30,13 +30,10 @@ export default function MypageFrame() {
     isLoading,
     isError,
     data: likeData,
-    error,
   } = useQuery(["mypageLikeData"], getMypageLikeData, {
     refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
     retry: 0, // 실패시 재호출 몇번 할지
-    onSuccess: (data: IMypageData[]) => {
-      console.log(data);
-    },
+    onSuccess: (data: IMypageData[]) => {},
     onError: ({ e }: any) => {},
   });
   if (isLoading) {
@@ -60,7 +57,7 @@ export default function MypageFrame() {
   //로그아웃 로직
 
   return (
-    <main className="flex flex-col w-screen justify-center p-[5rem] gap-[0.5rem]">
+    <main className="flex flex-col w-screen justify-center p-[1rem] lg:p-[5rem] gap-[0.5rem]">
       <section className="flex flex-col gap-[1rem] justify-start items-center">
         <Image
           className="w-[6rem] h-[6rem] rounded-full ring-2 ring-white"
@@ -90,7 +87,7 @@ export default function MypageFrame() {
         </button>
       </section>
 
-      <section className="flex flex-col justify-start mt-[1rem] lg:px-[8rem]">
+      <section className="flex flex-col justify-start mt-[1rem] px-[0] lg:px-[8rem]">
         <div className="font-bold lg:text-3xl py-[2rem] text-xl">나의 활동</div>
         <div className="flex flex-col">
           <Tab.Group>
@@ -119,7 +116,7 @@ export default function MypageFrame() {
                   )
                 }
               >
-                리뷰
+                리뷰 단 글
               </Tab>
             </Tab.List>
             <Tab.Panels className="mt-2">
@@ -179,6 +176,9 @@ export default function MypageFrame() {
                           <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
                             {post.name}
                           </h3>
+                          <p className="text-xs lg:text-sm text-gray-600 truncate">
+                            {post.address}
+                          </p>
                         </li>
                       ))}
                       {likeData[1].map((post: IMyChildCareData) => (
@@ -192,6 +192,9 @@ export default function MypageFrame() {
                           <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
                             {post.name}
                           </h3>
+                          <p className="text-xs lg:text-sm text-gray-600">
+                            {post.address}
+                          </p>
                         </li>
                       ))}
                     </ul>
@@ -201,7 +204,7 @@ export default function MypageFrame() {
                 )}
               </Tab.Panel>
             </Tab.Panels>
-            <Tab.Panels className="mt-2">
+            <Tab.Panels className="">
               <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
                 <MypageReview />
               </Tab.Panel>
