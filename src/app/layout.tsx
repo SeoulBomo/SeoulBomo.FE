@@ -16,10 +16,10 @@ export default function RootLayout({
   const kakaoUrl = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&autoload=false`;
   return (
     <html lang="ko">
-      <body className={Pretendard.className}>
+      <body className="bg-cardFrameColor">
         <Script src={kakaoUrl} strategy="beforeInteractive" />
         <NextProvider>
-          <div className="bg-cardFrameColor">{children}</div>
+          <div className={Pretendard.className}>{children}</div>
         </NextProvider>
       </body>
     </html>
