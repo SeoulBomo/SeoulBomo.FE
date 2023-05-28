@@ -3,14 +3,14 @@ import { Tab } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function MypageReview() {
-  const [user, setUser] = useRecoilState(userAtom);
+  const user = useRecoilValue(userAtom);
   const router = useRouter();
 
   const getMypageReviewData = async () => {
@@ -53,7 +53,7 @@ export default function MypageReview() {
   return (
     <>
       {reviewData.list.length < 1 ? (
-        <div className="flex items-center justify-center flex-col gap-[2rem]">
+        <div className="flex items-center justify-center flex-col gap-[2rem] sm:p-[2rem]">
           <div className="lg:text-xl lg:font-bold p-[1rem] lg:leading-10 text-sm font-medium ">
             아직 리뷰한 글이 없어요
           </div>
@@ -83,7 +83,7 @@ export default function MypageReview() {
         </div>
       ) : (
         <ul key={reviewData.id}>
-          {reviewData.map((post: any) =>
+          {reviewData.list.map((post: any) =>
             post.targetType === "childCareInfo" ? (
               <li
                 key={post.id}
