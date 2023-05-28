@@ -2,6 +2,7 @@ import { userAtom } from "@/state";
 import { Tab } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
 
 function classNames(...classes: string[]) {
@@ -10,6 +11,7 @@ function classNames(...classes: string[]) {
 
 export default function MypageReview() {
   const [user, setUser] = useRecoilState(userAtom);
+  const router = useRouter();
 
   const getMypageReviewData = async () => {
     if (user !== undefined) {
@@ -81,26 +83,33 @@ export default function MypageReview() {
         </div>
       ) : (
         <ul key={reviewData.id}>
-          {reviewData.map((post: any) => (
-            <li
-              key={post.id}
-              className="relative rounded-md p-3 hover:bg-gray-100"
-            >
-              <h3 className="text-sm font-medium leading-5 truncate">
-                {post.content}
-              </h3>
-
-              <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500"></ul>
-
-              <a
-                href="#"
-                className={classNames(
-                  "absolute inset-0 rounded-md",
-                  "ring-yellow-400 focus:z-10 focus:outline-none focus:ring-2"
-                )}
-              />
-            </li>
-          ))}
+          {reviewData.map((post: any) =>
+            post.targetType === "childCareInfo" ? (
+              <li
+                key={post.id}
+                className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  router.push(`/care/${post.id}`);
+                }}
+              >
+                <h3 className="text-sm font-medium leading-5 truncate">
+                  {post.content}
+                </h3>
+              </li>
+            ) : (
+              <li
+                key={post.id}
+                className="relative rounded-md p-3 hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  router.push(`/center/${post.id}`);
+                }}
+              >
+                <h3 className="text-sm font-medium leading-5 truncate">
+                  {post.content}
+                </h3>
+              </li>
+            )
+          )}
         </ul>
       )}
     </>
