@@ -1,12 +1,12 @@
 "use client";
 import { Tab } from "@headlessui/react";
-import { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import MypageReview from "./MypageReview";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -16,10 +16,6 @@ export default function MypageFrame() {
   const router = useRouter();
   const isLogin = useRecoilValue(isLoginSelector);
   const [user, setUser] = useRecoilState(userAtom);
-  let Token = "Bearer";
-  if (user !== undefined) {
-    Token = "Bearer".concat(user.accessToken);
-  }
 
   const getMypageLikeData = async () => {
     if (user !== undefined) {
@@ -27,17 +23,14 @@ export default function MypageFrame() {
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/like/me?userId=${user.id}`,
         {
           headers: {
-            Authorization: Token,
+            Authorization: `Bearer ${user.accessToken}`,
           },
         }
       );
       return data;
     }
   };
-  const handleLogout = () => {
-    setUser(undefined);
-    router.replace("/");
-  };
+
   type IMypageData = IMyChildCareData & IMyChildCenterData;
   const {
     isLoading,
@@ -59,11 +52,18 @@ export default function MypageFrame() {
   if (isError) {
     return <span>Error:</span>;
   }
+  //마이페이지 스크랩 데이터 조회
+
+  const handleLogout = () => {
+    setUser(undefined);
+    router.replace("/");
+  };
 
   if (!isLogin) {
     router.replace("/");
     return <></>;
   }
+  //로그아웃 로직
 
   return (
     <main className="flex flex-col w-screen  min-h-screen justify-center p-[2rem] gap-[0.5rem]">
@@ -201,41 +201,9 @@ export default function MypageFrame() {
               </Tab.Panel>
             </Tab.Panels>
             <Tab.Panels className="mt-2">
-              {/* {Object.values(categories).map((posts, idx) => (
-                <Tab.Panel
-                  key={idx}
-                  className={classNames("rounded-xl bg-white p-3")}
-                >
-                  <ul>
-                    {posts.map((post) => (
-                      <li
-                        key={post.id}
-                        className="relative rounded-md p-3 hover:bg-gray-100"
-                      >
-                        <h3 className="text-sm font-medium leading-5 truncate">
-                          {post.title}
-                        </h3>
-
-                        <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                          <li>{post.date}</li>
-                          <li>&middot;</li>
-                          <li>{post.commentCount} comments</li>
-                          <li>&middot;</li>
-                          <li>{post.shareCount} shares</li>
-                        </ul>
-
-                        <a
-                          href="#"
-                          className={classNames(
-                            "absolute inset-0 rounded-md",
-                            "ring-yellow-400 focus:z-10 focus:outline-none focus:ring-2"
-                          )}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </Tab.Panel> */}
-              {/* ))} */}
+              <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+                <MypageReview />
+              </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>
