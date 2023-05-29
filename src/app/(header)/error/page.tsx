@@ -1,6 +1,6 @@
 export default function Error() {
   return (
-    <div className="flex flex-col items-center gap-[2rem] lg:h-[40rem] h-[30rem] justify-center flex-wrap bg-white">
+    <div className="flex flex-col items-center gap-[2rem] lg:h-[40rem] h-[30rem] justify-center flex-wrap">
       <div className="block">
         <svg
           xmlns="http://www.w3.org/2000/svg"
