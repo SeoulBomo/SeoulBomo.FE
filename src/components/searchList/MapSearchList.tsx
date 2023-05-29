@@ -37,7 +37,13 @@ export default function MapSearchList() {
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return (
+      <main className="flex flex-col items-center justify-between">
+        <div className="flex flex-col pt-[3rem]">
+          해당 정보에 대한 결과를 불러올 수 없습니다!
+        </div>
+      </main>
+    );
   }
 
   return (
