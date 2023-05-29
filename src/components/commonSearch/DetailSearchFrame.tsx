@@ -53,8 +53,8 @@ export default function DetailSearchFrame({
               {centerType !== null
                 ? centerType
                 : type === "center"
-                ? "복지시설"
-                : "복지서비스"}
+                ? "보육시설"
+                : "보육정보"}
             </div>
           </div>
           {content.length !== 0 ? (
