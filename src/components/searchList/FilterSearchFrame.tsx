@@ -41,9 +41,7 @@ export default function FilterSearchFrame() {
       onSuccess: (data: any) => {
         // 성공시 호출
       },
-      onError: ({ e }: any) => {
-        console.log(e.message);
-      },
+      onError: ({ e }: any) => {},
     }
   );
   if (isLoading) {
@@ -51,7 +49,13 @@ export default function FilterSearchFrame() {
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return (
+      <main className="flex flex-col items-center justify-between">
+        <div className="flex flex-col pt-[3rem]">
+          해당 정보에 대한 결과를 불러올 수 없습니다!
+        </div>
+      </main>
+    );
   }
   //dummy 데이터
   return (
