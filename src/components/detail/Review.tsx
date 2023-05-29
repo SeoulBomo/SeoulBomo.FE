@@ -58,8 +58,6 @@ export default function Review() {
     }
   );
 
-  console.log(data);
-
   interface IcommentType {
     comment: string;
   }
