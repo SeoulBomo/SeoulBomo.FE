@@ -98,25 +98,22 @@ export default function DetailFrame() {
     }
   };
 
-  const {
-    mutate: postScrapMutate,
-    isLoading: postScrapIsLoding,
-    isError: postScrapIsError,
-  } = useMutation(["postScrap"], postScrap, {
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["detail"] });
-    },
-    onError: (error: any) => {
-      alert("알 수 없는 오류입니다.");
-      router.push(pathname);
-    },
-  });
+  const { mutate: postScrapMutate, isLoading: postScrapIsLoding } = useMutation(
+    ["postScrap"],
+    postScrap,
+    {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries({ queryKey: ["detail"] });
+      },
+      onError: (error: any) => {
+        alert("알 수 없는 오류입니다.");
+        router.push(pathname);
+      },
+    }
+  );
 
   if (isLoading || postScrapIsLoding) {
     return <></>;
-  }
-  if (isError) {
-    router.push("/");
   }
 
   return (
