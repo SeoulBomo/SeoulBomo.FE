@@ -39,7 +39,7 @@ export default function AboutUs() {
           서울 보육의 모든 것 : 보모
         </div>
         <p className="lg:text-xl text-base text-gray-500 leading-8">
-          우리 아이를 위한 각종 복지 정보과 시설들을 알고 싶지만 그동안 찾기
+          우리 아이를 위한 각종 보육 정보과 시설들을 알고 싶지만 그동안 찾기
           어려웠나요?
           <br />
           보육의 모든 것은 바쁜 당신을 위해 필요한 정보만 모아봤어요
@@ -84,10 +84,10 @@ export default function AboutUs() {
       >
         <div className="flex flex-col gap-[1rem]">
           <div className="lg:text-4xl text-xl font-bold ">
-            우리 동네 복지 시설 찾기
+            우리 동네 보육 시설 찾기
           </div>
           <p className="lg:text-xl text-base text-gray-500 leading-8">
-            내가 사는 곳을 선택하고 각종 복지 시설에
+            내가 사는 곳을 선택하고 각종 보육 시설에
             <br /> 대한 정보를 알아보아요!
           </p>
         </div>
