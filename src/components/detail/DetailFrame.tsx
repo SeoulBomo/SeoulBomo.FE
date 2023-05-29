@@ -115,6 +115,9 @@ export default function DetailFrame() {
   if (isLoading || postScrapIsLoding) {
     return <></>;
   }
+  if (isError) {
+    router.push("/");
+  }
 
   return (
     <main className="flex flex-col w-screen justify-start items-center">
