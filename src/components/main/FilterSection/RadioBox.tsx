@@ -2,7 +2,7 @@ import RadioButton from "./RadioButton";
 
 export default function RadioBox() {
   return (
-    <div className="flex rounded-[0.3rem] w-[25rem] mt-[1rem] lg:mt-0 lg:h-[15.5rem]">
+    <div className="flex rounded-[0.3rem] lg:w-[25rem] mt-[1rem] lg:mt-0 lg:h-[15.5rem]">
       <div className="flex flex-wrap gap-2 items-center justify-center">
         <RadioButton name="야외시설" buttonValue="OUTDOOR_FACILITY" />
         <RadioButton name="체험시설" buttonValue="EXPERIENCE_FACILITY" />

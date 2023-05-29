@@ -13,7 +13,7 @@ export default function KakaoMap({
     <>
       {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
       <Map
-        className="lg:px-[19.5rem] py-[10rem]"
+        className="px-[0rem] sm:px-[15rem] md:px-[25rem] lg:px-[32rem] py-[10rem]"
         center={{ lat: lat, lng: lng }}
         level={1}
       >

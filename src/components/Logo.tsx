@@ -3,6 +3,7 @@ import * as React from "react";
 function Logo() {
   return (
     <svg
+      className="w-[3 rem] h-[3rem] lg:w-[4rem] lg:h-[4rem]"
       xmlns="http://www.w3.org/2000/svg"
       width="80"
       height="70"

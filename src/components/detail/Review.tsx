@@ -3,7 +3,6 @@ import { userAtom } from "@/state";
 import { Menu, Transition } from "@headlessui/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { headers } from "next/dist/client/components/headers";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { Fragment, useState } from "react";
@@ -153,8 +152,10 @@ export default function Review() {
 
   if (isError || reviewIsError || editIsError || deleteIsError) {
     return (
-      <div className="flex gap-1 justify-center items-center">
-        <div>로그인 후에 리뷰를 보실 수 있습니다 :D </div>
+      <div className="flex gap-[1rem] justify-center items-center">
+        <div className="text-base md:text-lg">
+          로그인 후에 리뷰를 보실 수 있습니다 :D
+        </div>
         <Link href="/login">
           <div className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-yellow-400 rounded-lg focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-300">
             로그인 하러 가기
@@ -213,105 +214,112 @@ export default function Review() {
                   </time>
                 </p>
               </div>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50">
-                    <svg
-                      className="w-5 h-5"
-                      aria-hidden={true}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                    </svg>
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="px-1 py-1 ">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <button
-                            className={`${
-                              active
-                                ? "bg-amber-300 text-white"
-                                : "text-gray-900"
-                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                            onClick={() => {
-                              setIsEdit(true);
-                              setReviewId(item.id);
-                            }}
-                          >
-                            {active ? (
-                              <EditActiveIcon
-                                className="mr-2 h-5 w-5"
-                                aria-hidden={true}
-                              />
-                            ) : (
-                              <EditInactiveIcon
-                                className="mr-2 h-5 w-5"
-                                aria-hidden={true}
-                              />
-                            )}
-                            수정
-                          </button>
-                        )}
-                      </Menu.Item>
-                    </div>
-                    <div className="px-1 py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <button
-                            className={`${
-                              active
-                                ? "bg-amber-300 text-white"
-                                : "text-gray-900"
-                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                            onClick={() => {
-                              Swal.fire({
-                                title: "리뷰를 삭제하시겠습니까?",
-                                showDenyButton: true,
-                                confirmButtonText: "네",
-                                denyButtonText: `아니요`,
-                              }).then((result) => {
-                                /* Read more about isConfirmed, isDenied below */
-                                if (result.isConfirmed) {
-                                  deleteReviewMutation(item.id);
-                                  Swal.fire("리뷰가 삭제되었습니다 :D");
-                                } else if (result.isDenied) {
-                                  return;
-                                }
-                              });
-                            }}
-                          >
-                            {active ? (
-                              <DeleteActiveIcon
-                                className="mr-2 h-5 w-5 text-yellow-400"
-                                aria-hidden={true}
-                              />
-                            ) : (
-                              <DeleteInactiveIcon
-                                className="mr-2 h-5 w-5 text-yellow-400"
-                                aria-hidden={true}
-                              />
-                            )}
-                            삭제
-                          </button>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+              {item.isWriter ? (
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50">
+                      <svg
+                        className="w-5 h-5"
+                        aria-hidden={true}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                      </svg>
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="px-1 py-1 ">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-amber-300 text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                              onClick={() => {
+                                setIsEdit(true);
+                                setReviewId(item.id);
+                              }}
+                            >
+                              {active ? (
+                                <EditActiveIcon
+                                  className="mr-2 h-5 w-5"
+                                  aria-hidden={true}
+                                />
+                              ) : (
+                                <EditInactiveIcon
+                                  className="mr-2 h-5 w-5"
+                                  aria-hidden={true}
+                                />
+                              )}
+                              수정
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-amber-300 text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                              onClick={() => {
+                                Swal.fire({
+                                  titleText: "리뷰를 삭제하시겠습니까?",
+                                  icon: "warning",
+                                  showCancelButton: true,
+                                  confirmButtonColor: "#FBBF24",
+                                  confirmButtonText: "네",
+                                  cancelButtonText: "아니요",
+                                }).then((result) => {
+                                  /* Read more about isConfirmed, isDenied below */
+                                  if (result.isConfirmed) {
+                                    deleteReviewMutation(item.id);
+                                    Swal.fire({
+                                      title: "리뷰가 삭제되었습니다 :D",
+                                      icon: "success",
+                                      showConfirmButton: false,
+                                      timer: 1500,
+                                    });
+                                  }
+                                });
+                              }}
+                            >
+                              {active ? (
+                                <DeleteActiveIcon
+                                  className="mr-2 h-5 w-5 text-yellow-400"
+                                  aria-hidden={true}
+                                />
+                              ) : (
+                                <DeleteInactiveIcon
+                                  className="mr-2 h-5 w-5 text-yellow-400"
+                                  aria-hidden={true}
+                                />
+                              )}
+                              삭제
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              ) : null}
             </footer>
             {isEdit && reviewId === item.id ? (
               <form onSubmit={editForm} className="mb-6">
@@ -345,7 +353,7 @@ export default function Review() {
                 </div>
               </form>
             ) : (
-              <p className="text-gray-500">{item.content}</p>
+              <p className="text-sm lg:text-base">{item.content}</p>
             )}
           </article>
         ))}
@@ -359,6 +367,7 @@ interface IReviewData {
   name: string;
   content: string;
   createdAt: string;
+  isWriter: boolean;
 }
 
 type IconProps = {
