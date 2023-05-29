@@ -35,7 +35,7 @@ export default function PopularCard() {
     return (
       <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
         <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
-          인기 복지
+          인기 정보
         </div>
         <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
           <div
@@ -59,7 +59,7 @@ export default function PopularCard() {
     return (
       <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
         <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
-          인기 복지
+          인기 정보
         </div>
         <div className="flex flex-col items-center justify-center w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
           알 수 없는 에러가 발생했습니다.
@@ -72,7 +72,7 @@ export default function PopularCard() {
   return (
     <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
       <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
-        인기 복지
+        인기 정보
       </div>
       <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
         {data.list?.map((item: any) => (
