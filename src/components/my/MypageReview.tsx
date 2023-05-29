@@ -34,16 +34,20 @@ export default function MypageReview() {
     onSuccess: (data: any) => {
       console.log(data);
     },
-    onError: ({ e }: any) => {
-      console.log(error);
-    },
+    onError: ({ e }: any) => {},
   });
   if (isLoading) {
     return <></>;
   }
 
   if (isError) {
-    return <span>Error:</span>;
+    return (
+      <div className="flex items-center justify-center flex-col gap-[2rem] sm:p-[2rem]">
+        <div className="lg:text-xl lg:font-bold p-[1rem] lg:leading-10 text-sm font-medium ">
+          지금은 리뷰 글을 확인할 수 없습니다!
+        </div>
+      </div>
+    );
   }
 
   return (
