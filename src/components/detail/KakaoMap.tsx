@@ -7,7 +7,6 @@ export default function KakaoMap({
   lat: number | undefined;
   lng: number | undefined;
 }) {
-  console.log(lat, lng);
   if (lat === undefined || lng === undefined) return <></>;
   return (
     <>

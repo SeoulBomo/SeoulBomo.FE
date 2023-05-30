@@ -10,8 +10,6 @@ export default function MainSearchList() {
   const keyword = searchParams.get("keyword");
   const type = searchParams.get("type");
   const page = searchParams.get("page");
-  console.log(type);
-  console.log(keyword);
   const getMainSearchList = async () => {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-${type}-info/list/keyword?keyword=${keyword}&page=${page}&size=10`
