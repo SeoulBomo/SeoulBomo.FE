@@ -4,7 +4,7 @@ export default function BusinessCare() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          시간제 보육
+          시간제보육
         </text>
       </div>
       {/* 본문 */}
