@@ -90,21 +90,53 @@ export default function SearchCard({ category, data, word }: propsType) {
 }
 interface propsType {
   category: String;
-  data: IMainSearchType[];
+  data: SearchType;
   word: any;
 }
 
-interface IMainSearchType {
-  totalPages: number;
-  totalElements: number;
-  islast: boolean;
-  content: {
-    id: number;
-    name: string;
-    borough: string;
-    address: string;
-    centerType: string;
-    latitude: number;
-    longitude: number;
-  }[];
+type SearchType = Center[] & Info[];
+
+interface Center {
+  createdAt: string;
+  modifiedAt: string;
+  id: number;
+  name: string;
+  centerType: string;
+  borough: string;
+  address: string;
+  preschoolType: any;
+  contactNumber: string;
+  homepage?: string;
+  classNum: number;
+  playgroundNum: number;
+  cctvNum: number;
+  teacherNum: number;
+  latitude: number;
+  longitude: number;
+  isSchoolBus: boolean;
+  isFree: boolean;
+  fee: string;
+  isSatOpen: boolean;
+  serviceType: any;
+  visible: boolean;
+}
+
+interface Info {
+  createdAt: string;
+  modifiedAt: string;
+  id: number;
+  name: string;
+  infoType: string;
+  borough: string;
+  ageType: string;
+  latitude: string;
+  longitude: string;
+  address: string;
+  isFree: boolean;
+  fee: string;
+  startAt: any;
+  endAt: any;
+  infoUrl: string;
+  facilityName: string;
+  visible: boolean;
 }
