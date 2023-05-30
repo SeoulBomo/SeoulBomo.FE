@@ -1,13 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
+import { KAKAO_AUTH_URL, NAVER_AUTH_URL } from "./Oauth";
+import Logo from "../Logo";
 
 export default function LoginFrame() {
   return (
     <main className="w-screen h-screen flex justify-center">
+      <Link href="/">
+        <div className="fixed top-5 left-5">
+          <Logo />
+        </div>
+      </Link>
       <section className="w-[40rem] h-screen bg-amber-200 hidden lg:flex flex-col items-center justify-center">
-        <text className="font-extrabold text-3xl leading-loose">
+        <div className="font-extrabold text-3xl leading-loose">
           로그인하고
           <br />더 많은 서비스를 받아보세요!
-        </text>
+        </div>
         <Image
           className="h-[16rem] w-[25.7rem] mt-[7rem]"
           src="/images/loginIcon.png"
@@ -25,34 +33,24 @@ export default function LoginFrame() {
           alt="로고"
         />
         <div className="z-10 w-[20rem] h-[14rem] lg:w-[22rem] lg:h-[15rem] bg-white shadow-md rounded-[1rem] flex flex-col justify-evenly items-center">
-          <text className="font-[600] text-md lg:text-lg py-[1rem]">
+          <div className="font-[600] text-lg lg:text-2xl py-[1rem]">
             소셜 로그인
-          </text>
+          </div>
           <div className="flex flex-col gap-[1rem] justify-center items-center">
-            <button className="w-[15rem] h-[3rem] bg-[#FEE500] flex items-center justify-center hover:shadow-md gap-[1rem] rounded-[1rem]">
-              <Image
-                className="h-[2 rem] w-[2rem]"
-                src="/images/kakaoLogo.png"
-                width={1000}
-                height={1000}
-                alt="로고"
-              />
-              <text className="text-md lg:text-lg font-medium">
-                카카오 로그인
-              </text>
-            </button>
-            <button className="w-[15rem] h-[3rem] bg-[#02C759] flex items-center justify-center hover:shadow-md gap-[1rem] rounded-[1rem]">
-              <Image
-                className="h-[2rem] w-[2rem]"
-                src="/images/naverLogo.png"
-                width={1000}
-                height={1000}
-                alt="로고"
-              />
-              <text className="text-md lg:text-lg font-medium">
-                네이버 로그인
-              </text>
-            </button>
+            <Link href={KAKAO_AUTH_URL}>
+              <button className="w-[15rem] h-[3rem] bg-[#FEE500] flex items-center justify-center hover:shadow-md gap-[1rem] rounded-[1rem]">
+                <Image
+                  className="h-[2 rem] w-[2rem]"
+                  src="/images/kakaoLogo.png"
+                  width={1000}
+                  height={1000}
+                  alt="로고"
+                />
+                <div className="text-md lg:text-lg font-medium">
+                  카카오 로그인
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
       </section>

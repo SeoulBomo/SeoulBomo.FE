@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import { Pretendard } from "@/utils/font";
 import "./globals.css";
-import Header from "@/components/Header";
+import NextProvider from "./NextProvider";
+import Script from "next/script";
 
 export const metadata = {
   title: "서울보모",
@@ -12,11 +14,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const kakaoUrl = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&autoload=false`;
   return (
     <html lang="ko">
-      <body className={Pretendard.className}>
-        <Header />
-        <div className="bg-cardFrameColor">{children}</div>
+      <body className="bg-cardFrameColor">
+        <Script src={kakaoUrl} strategy="beforeInteractive" />
+        <NextProvider>
+          <div className={Pretendard.className}>{children}</div>
+        </NextProvider>
       </body>
     </html>
   );

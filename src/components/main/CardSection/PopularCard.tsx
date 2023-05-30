@@ -1,49 +1,94 @@
+"use client";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 export default function PopularCard() {
-  const dummy = [
+  const router = useRouter();
+  const getPopularCard = async () => {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/child-care-info/popularity`
+    );
+    return data;
+  };
+  const HandleNavigate = (id: number) => {
+    router.push(`/care/${id}`); //해당 url로 이동
+  };
+
+  const { isLoading, isError, data, error } = useQuery(
+    ["popularCard"],
+    getPopularCard,
     {
-      id: 1,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 2,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 3,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 4,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 5,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 6,
-      name: "오늘 어린이 집에서 ~",
-    },
-    {
-      id: 7,
-      name: "오늘 어린이 집에서 가나다라마바사 아자차카",
-    },
-  ];
+      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+      retry: 0, // 실패시 재호출 몇번 할지
+      onSuccess: (data: IPopularCardData) => {
+        // 성공시 호출
+      },
+    }
+  );
+  if (isLoading) {
+    return (
+      <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
+        <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+          인기 정보
+        </div>
+        <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
+          <div
+            role="status"
+            className="animate-pulse flex flex-col flex-1 justify-between py-[2rem]"
+          >
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+            <div className="flex h-4 bg-gray-200 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
+        <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+          인기 정보
+        </div>
+        <div className="flex flex-col items-center justify-center w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
+          알 수 없는 에러가 발생했습니다.
+          <br />
+          인터넷 연결을 확인하고 새로고침 해주세요.
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="bg-yellowColor rounded-[1rem] flex flex-col items-center shadow-lg p-[1rem] w-[18rem] lg:w-[20.5rem] lg:h-[30rem]">
-      <text className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
-        인기 복지
-      </text>
+      <div className="font-bold text-[1.5rem] lg:text-[1.75rem] mb-[1rem]">
+        인기 정보
+      </div>
       <div className="flex flex-col justify-evenly w-[14rem] h-[28rem] lg:w-[18rem] lg:h-[26rem] p-[0.5rem] rounded-[1rem] bg-white">
-        {dummy?.map((item) => (
-          <text
+        {data.list?.map((item: any) => (
+          <div
             key={item.id}
-            className="font-medium text-lg lg:text-2xl truncate hover:underline underline-offset-4 cursor-pointer"
+            className="font-medium text-lg lg:text-xl truncate hover:underline underline-offset-4 cursor-pointer"
+            onClick={() => HandleNavigate(item.id)}
           >
             {item.name}
-          </text>
+          </div>
         ))}
       </div>
     </div>
   );
+}
+
+interface IPopularCardData {
+  list: List[];
+}
+
+interface List {
+  id: number;
+  name: string;
 }
