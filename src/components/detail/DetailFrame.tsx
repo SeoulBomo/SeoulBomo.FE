@@ -9,9 +9,7 @@ import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import Swal from "sweetalert2";
 import DetailSkeleton from "./DetailSkeleton";
-import dynamic from "next/dynamic";
-
-const KakaoMap = dynamic(() => import("./KakaoMap"), { ssr: false });
+import KakaoMap from "./KakaoMap";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
