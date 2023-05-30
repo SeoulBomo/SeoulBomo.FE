@@ -1,5 +1,5 @@
 "use client";
-import { Map, MapMarker, useInjectKakaoMapApi } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function KakaoMap({
   lat,
@@ -8,9 +8,6 @@ export default function KakaoMap({
   lat: number | undefined;
   lng: number | undefined;
 }) {
-  const { loading, error } = useInjectKakaoMapApi({
-    appkey: `${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}`,
-  });
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}

@@ -14,12 +14,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const kakaoUrl = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&autoload=false`;
   return (
     <html lang="ko">
       <body className="bg-cardFrameColor">
         <NextProvider>
-          <Script src={kakaoUrl} strategy="beforeInteractive" />
           <div className={Pretendard.className}>{children}</div>
         </NextProvider>
       </body>
