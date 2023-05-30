@@ -4,7 +4,7 @@ export default function PolicyExpansion() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          국공립 어린이집 확충
+          국공립어린이집 확충
         </text>
       </div>
 
