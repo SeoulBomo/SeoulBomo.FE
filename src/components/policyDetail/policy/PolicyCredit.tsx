@@ -7,7 +7,7 @@ export default function PolicyCredit() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          아이행복카드
+          아이 행복 카드
         </text>
       </div>
       {/* 본문 */}
