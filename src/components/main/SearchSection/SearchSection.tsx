@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SearchSection() {
@@ -16,7 +15,6 @@ export default function SearchSection() {
             추천 검색어
           </text>
           <br />
-
           <text className="font-medium text-[0.8rem] md:text-base text-slate-500">
             <span
               onClick={() => {
@@ -37,7 +35,7 @@ export default function SearchSection() {
             </span>
           </text>
         </div>
-        <div className=" ">
+        <div>
           <form onSubmit={submitForm}>
             <input
               type="text"

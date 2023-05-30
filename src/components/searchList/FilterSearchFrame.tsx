@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import FilterSearchSkeleton from "./FilterSearchSkeleton";
 
 export default function FilterSearchFrame() {
   const queryClient = useQueryClient();
@@ -38,14 +39,14 @@ export default function FilterSearchFrame() {
     {
       refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
       retry: 0, // 실패시 재호출 몇번 할지
-      onSuccess: (data: any) => {
+      onSuccess: (data: IFilterSearchData) => {
         // 성공시 호출
       },
       onError: ({ e }: any) => {},
     }
   );
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <FilterSearchSkeleton />;
   }
 
   if (isError) {
@@ -57,7 +58,6 @@ export default function FilterSearchFrame() {
       </main>
     );
   }
-  //dummy 데이터
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="flex flex-col pt-[3rem]">
@@ -93,8 +93,8 @@ export default function FilterSearchFrame() {
               <option value="CULTURE_EVENT">문화행사</option>
             </select>
           </div>
-          <button className="px-[0.6rem] lg:px-[1rem] py-[0.6rem] bg-white rounded-lg shadow-md hover:bg-gray-100">
-            <text className="font-inter text-base font-semibold">GO</text>
+          <button className="bg-white shadow-lg hover:bg-gray-100 w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] rounded-[0.9rem] text-sm sm:text-base">
+            검색 🔍
           </button>
         </form>
       </div>
@@ -107,4 +107,28 @@ export default function FilterSearchFrame() {
       </div>
     </main>
   );
+}
+
+export interface IFilterSearchData {
+  totalPages: number;
+  totalElements: number;
+  islast: boolean;
+  content: Content[];
+}
+
+interface Content {
+  id: number;
+  name: string;
+  infoType: string;
+  borough: string;
+  ageType: string;
+  latitude: string;
+  longitude: string;
+  address: string;
+  isFree: boolean;
+  fee: string;
+  startAt: string;
+  endAt: string;
+  infoUrl: string;
+  facilityName: string;
 }
