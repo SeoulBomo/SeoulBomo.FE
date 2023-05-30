@@ -4,7 +4,7 @@ export default function PolicyHistory() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          보육 정책 연혁
+          보육정책 연혁
         </text>
       </div>
       <div className="bg-white shadow-md py-[3rem] px-[1rem] sm:px-[3rem] lg:px-[6rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] flex flex-col justify-start">

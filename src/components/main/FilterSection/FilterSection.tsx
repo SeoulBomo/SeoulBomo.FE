@@ -67,7 +67,7 @@ export default function FilterSection() {
                   name="age"
                   value="ALL"
                 />
-                <div className="bg-white text-gray-400 w-[4rem] h-[4rem] md:w-[8rem] md:h-[8rem] lg:w-[12rem] lg:h-[15.5rem] ml-[1rem] lg:ml-[4rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-of ring-2 ring-transparent">
+                <div className="bg-white text-gray-400 w-[5rem] h-[5rem] md:w-[8rem] md:h-[8rem] lg:w-[12rem] lg:h-[15.5rem] ml-[1rem] lg:ml-[4rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col ease-in-out duration-300 peer-checked:bg-yellow-200 peer-checked:text-black peer-checked:ring-yellow-400 peer-checked:ring-offset-2 ring-of ring-2 ring-transparent">
                   <div className="font-semibold text-lg">연령무관</div>
                 </div>
               </label>

@@ -4,7 +4,7 @@ export default function PolicyStatus() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          보육 정책 현황
+          보육정책 현황
         </text>
       </div>
 
