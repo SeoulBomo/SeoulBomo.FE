@@ -4,7 +4,7 @@ export default function CareWaitingAdmission() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-2xl lg:text-3xl">
-          어린이집 입소 대기
+          어린이집입소대기
         </text>
       </div>
 
