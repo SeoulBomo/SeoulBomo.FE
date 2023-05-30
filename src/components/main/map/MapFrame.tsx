@@ -8,7 +8,7 @@ export default function MapFrame() {
     <div className="w-screen mt-[8rem] flex items-center justify-center">
       <text className="font-bold text-[3rem] hidden lg:block" x="0" y="153">
         우리 동네
-        <br /> <text className="text-yellow-300">복지 시설</text> 알아보기
+        <br /> <text className="text-yellow-300">보육 시설</text> 알아보기
       </text>
       <div className="hidden lg:flex">
         <svg height="656" width="800" xmlns="http://www.w3.org/2000/svg">

@@ -19,11 +19,11 @@ export default function SearchCard({ category, data, word }: propsType) {
       router.push(
         `/map-search-list?page=1&size=10&borough=${borough}&center-type=우리동네키움센터`
       );
-    } else if (category === "복지서비스") {
+    } else if (category === "보육정보") {
       router.push(
         `/main-search-list?page=1&size=10&keyword=${keyword}&type=care`
       );
-    } else if (category === "복지시설") {
+    } else if (category === "보육시설") {
       router.push(
         `/main-search-list?page=1&size=10&keyword=${keyword}&type=center`
       );
@@ -31,7 +31,7 @@ export default function SearchCard({ category, data, word }: propsType) {
   };
 
   const handleChangeDetailPage = (id: any) => {
-    if (category === "복지서비스") {
+    if (category === "보육정보") {
       router.push(`/care/${id}`);
     } else {
       router.push(`/center/${id}`);

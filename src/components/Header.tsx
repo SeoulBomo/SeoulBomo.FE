@@ -48,7 +48,7 @@ export default function Header() {
             href="/"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
-            Home
+            홈
           </Link>
 
           {/* Information 버튼 */}
@@ -56,7 +56,7 @@ export default function Header() {
             href="/information"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
-            Information
+            보육정책
           </Link>
 
           {/* About us 버튼 */}
@@ -64,7 +64,7 @@ export default function Header() {
             href="/about-us"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
-            About us
+            소개
           </Link>
         </Popover.Group>
 
