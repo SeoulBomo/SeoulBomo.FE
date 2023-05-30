@@ -5,11 +5,13 @@ import { Tab } from "@headlessui/react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import Review from "./Review";
-import KakaoMap from "./KakaoMap";
 import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import Swal from "sweetalert2";
 import DetailSkeleton from "./DetailSkeleton";
+import dynamic from "next/dynamic";
+
+const KakaoMap = dynamic(() => import("./KakaoMap"), { ssr: false });
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -58,7 +60,7 @@ export default function DetailFrame() {
     event.preventDefault();
     if (!isLogin) {
       Swal.fire({
-        titleText: "스크랩을 하려면 로그인이 필요합니다 :D",
+        titleText: "스크랩을 하려면 로그인이 필요합니다.",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#FBBF24",
