@@ -1,12 +1,14 @@
 "use client";
 import SearchCard from "../commonSearch/SearchCard";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import SearchSkeleton from "../commonSearch/SearchSkeleton";
+import { useEffect } from "react";
 
 export default function MainSearchFrame() {
+  const queryClient = useQueryClient();
   const router = useRouter(); //useRouter 설정
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,6 +22,10 @@ export default function MainSearchFrame() {
     );
     return data;
   };
+
+  useEffect(() => {
+    queryClient.fetchQuery(["filterSearch"], getMainSearch);
+  }, [searchParams]);
 
   const { isLoading, isError, data, error } = useQuery(
     ["mainSearch"],
