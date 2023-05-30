@@ -4,7 +4,7 @@ export default function InformationFrame() {
   const policy = [
     {
       id: 1,
-      name: "보육 정책 연혁",
+      name: "보육정책 연혁",
       path: "/information/history",
     },
     {
