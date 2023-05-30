@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-cardFrameColor">
-        <Script src={kakaoUrl} strategy="beforeInteractive" />
         <NextProvider>
+          <Script src={kakaoUrl} strategy="beforeInteractive" />
           <div className={Pretendard.className}>{children}</div>
         </NextProvider>
       </body>
