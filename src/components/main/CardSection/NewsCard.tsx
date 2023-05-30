@@ -29,7 +29,7 @@ export default function NewsCard() {
           >
             <SwiperSlide>
               <Image
-                src={"/../public/images/news/1.png"}
+                src={"/images/news/1.png"}
                 width={250}
                 height={100}
                 alt=""
@@ -37,7 +37,7 @@ export default function NewsCard() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                src={"/../public/images/news/2.jpeg"}
+                src={"/images/news/2.jpeg"}
                 width={250}
                 height={100}
                 alt=""
@@ -45,7 +45,7 @@ export default function NewsCard() {
             </SwiperSlide>
             <SwiperSlide>
               <Image
-                src={"/../public/images/news/3.jpeg"}
+                src={"/images/news/3.jpeg"}
                 width={250}
                 height={100}
                 alt=""
