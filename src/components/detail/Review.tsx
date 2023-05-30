@@ -51,12 +51,15 @@ export default function Review() {
     {
       refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
       retry: 0, // 실패시 재호출 몇번 할지
-      onSuccess: (data: any) => {
+      onSuccess: (data: IReviewData) => {
         // 성공시 호출
       },
-      onError: ({ e }: any) => {},
     }
   );
+
+  interface IReviewData {
+    list: IReviewType[];
+  }
 
   interface IcommentType {
     comment: string;
@@ -145,14 +148,81 @@ export default function Review() {
   });
 
   if (isLoading || reviewIsLoding || editIsLoding || deleteIsLoding) {
-    return <span>Loading...</span>;
+    return (
+      <section className="bg-white py-8 lg:py-16">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900">
+              전체 리뷰
+            </h2>
+          </div>
+
+          <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
+            <textarea
+              id="comment"
+              name="comment"
+              rows={6}
+              className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
+              placeholder="리뷰를 작성해주세요!"
+              required
+            ></textarea>
+          </div>
+          <div className="flex flex-1 justify-end">
+            <button
+              type="submit"
+              className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-yellow-400 rounded-lg focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-300"
+            >
+              리뷰 남기기
+            </button>
+          </div>
+          <div role="status" className="animate-pulse">
+            <article className="p-6 mb-6 text-base bg-white border-t border-gray-200">
+              <footer className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <div className="bg-gray-400 w-12 h-4 rounded-full inline-flex items-center mr-3"></div>
+                  <div className="w-12 h-2 bg-gray-600 rounded-full"></div>
+                </div>
+              </footer>
+              <div className="flex flex-col gap-[0.5rem]">
+                <div className="bg-gray-400 w-[12rem] h-[0.8rem] rounded-full"></div>
+                <div className="bg-gray-500 w-[24rem] h-[0.8rem] rounded-full"></div>
+              </div>
+            </article>
+            <article className="p-6 mb-6 text-base bg-white border-t border-gray-200">
+              <footer className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <div className="bg-gray-400 w-12 h-4 rounded-full inline-flex items-center mr-3"></div>
+                  <div className="w-12 h-2 bg-gray-600 rounded-full"></div>
+                </div>
+              </footer>
+              <div className="flex flex-col gap-[0.5rem]">
+                <div className="bg-gray-400 w-[12rem] h-[0.8rem] rounded-full"></div>
+                <div className="bg-gray-500 w-[24rem] h-[0.8rem] rounded-full"></div>
+              </div>
+            </article>
+            <article className="p-6 mb-6 text-base bg-white border-t border-gray-200">
+              <footer className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <div className="bg-gray-400 w-12 h-4 rounded-full inline-flex items-center mr-3"></div>
+                  <div className="w-12 h-2 bg-gray-600 rounded-full"></div>
+                </div>
+              </footer>
+              <div className="flex flex-col gap-[0.5rem]">
+                <div className="bg-gray-400 w-[12rem] h-[0.8rem] rounded-full"></div>
+                <div className="bg-gray-500 w-[24rem] h-[0.8rem] rounded-full"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (isError || reviewIsError || editIsError || deleteIsError) {
     return (
       <div className="flex gap-[1rem] justify-center items-center">
         <div className="text-base md:text-lg">
-          로그인 후에 리뷰를 보실 수 있습니다 :D
+          로그인 후에 리뷰를 보실 수 있습니다.
         </div>
         <Link href="/login">
           <div className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-yellow-400 rounded-lg focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-300">
@@ -191,7 +261,7 @@ export default function Review() {
             </button>
           </div>
         </form>
-        {data?.list.map((item: IReviewData) => (
+        {data?.list.map((item: IReviewType) => (
           <article
             className="p-6 mb-6 text-base bg-white border-t border-gray-200"
             key={item.id}
@@ -360,7 +430,7 @@ export default function Review() {
   );
 }
 
-interface IReviewData {
+interface IReviewType {
   id: number;
   name: string;
   content: string;
