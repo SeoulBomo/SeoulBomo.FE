@@ -24,7 +24,7 @@ export default function MainSearchFrame() {
   };
 
   useEffect(() => {
-    queryClient.fetchQuery(["filterSearch"], getMainSearch);
+    queryClient.fetchQuery(["mainSearch"], getMainSearch);
   }, [searchParams]);
 
   const { isLoading, isError, data, error } = useQuery(
