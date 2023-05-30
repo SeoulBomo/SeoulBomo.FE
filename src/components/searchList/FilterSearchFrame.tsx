@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import FilterSearchSkeleton from "./FilterSearchSkeleton";
 
 export default function FilterSearchFrame() {
   const queryClient = useQueryClient();
@@ -45,7 +46,7 @@ export default function FilterSearchFrame() {
     }
   );
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <FilterSearchSkeleton />;
   }
 
   if (isError) {
@@ -57,7 +58,6 @@ export default function FilterSearchFrame() {
       </main>
     );
   }
-  //dummy 데이터
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="flex flex-col pt-[3rem]">
@@ -93,8 +93,8 @@ export default function FilterSearchFrame() {
               <option value="CULTURE_EVENT">문화행사</option>
             </select>
           </div>
-          <button className="px-[0.6rem] lg:px-[1rem] py-[0.6rem] bg-white rounded-lg shadow-md hover:bg-gray-100">
-            <text className="font-inter text-base font-semibold">GO</text>
+          <button className="bg-white shadow-lg hover:bg-gray-100 w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] rounded-[0.9rem] text-sm sm:text-base">
+            검색 🔍
           </button>
         </form>
       </div>

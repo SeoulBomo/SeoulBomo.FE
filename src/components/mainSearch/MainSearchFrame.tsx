@@ -4,6 +4,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import SearchSkeleton from "../commonSearch/SearchSkeleton";
 
 export default function MainSearchFrame() {
   const router = useRouter(); //useRouter 설정
@@ -29,25 +30,29 @@ export default function MainSearchFrame() {
       onSuccess: (data: any) => {
         // 성공시 호출
       },
-      onError: ({ e }: any) => {
-        console.log(e.message);
-      },
+      onError: ({ e }) => {},
     }
   );
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <SearchSkeleton keyword={keyword} />;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return (
+      <main className="flex flex-col items-center justify-between">
+        <div className="flex flex-col pt-[3rem]">
+          해당 정보에 대한 결과를 불러올 수 없습니다!
+        </div>
+      </main>
+    );
   }
-  //dummy 데이터
+
   return (
     <main className="flex flex-col items-center justify-between">
       <div className="flex flex-col pt-[3rem]">
-        <text className="ml-[1rem] text-[0rem] sm:text-xl font-medium">
+        <div className="ml-[1rem] text-[0rem] sm:text-xl font-medium">
           검색을 통해 각종 정보를 만나볼 수 있습니다
-        </text>
+        </div>
         <form onSubmit={submitForm}>
           <section className="bg-yellowColor px-[1rem] sm:px-[2rem] h-[4rem] sm:h-[5rem] rounded-[1.3rem] mt-[0.5rem] flex justify-center items-center gap-[1rem]">
             <input
@@ -57,8 +62,8 @@ export default function MainSearchFrame() {
               defaultValue={keyword === null ? "" : keyword}
               className="placeholder:text-gray-400 pl-[1rem] w-[12rem] h-[2rem] sm:w-[20rem] sm:h-[2.5rem] md:w-[28rem] lg:w-[33rem]border-4 border-white rounded-[28px] focus:outline-yellow-300  p-[1rem] text-xl"
             ></input>
-            <button className="w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] bg-white rounded-[0.9rem] text-xs sm:text-sm font-bold hover:bg-gray-100">
-              Search
+            <button className="bg-white shadow-lg hover:bg-gray-100 w-[4rem] sm:w-[6.125rem] h-[2rem] sm:h-[2.5rem] rounded-[0.9rem] text-sm sm:text-base">
+              검색 🔍
             </button>
           </section>
         </form>

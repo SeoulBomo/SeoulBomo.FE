@@ -26,9 +26,7 @@ export default function PopularCard() {
         console.log(data);
         console.log("성공입니다");
       },
-      onError: ({ e }: any) => {
-        console.log(e.message);
-      },
+      onError: ({ e }: any) => {},
     }
   );
   if (isLoading) {

@@ -90,6 +90,21 @@ export default function SearchCard({ category, data, word }: propsType) {
 }
 interface propsType {
   category: String;
-  data: object[];
+  data: IMainSearchType[];
   word: any;
+}
+
+interface IMainSearchType {
+  totalPages: number;
+  totalElements: number;
+  islast: boolean;
+  content: {
+    id: number;
+    name: string;
+    borough: string;
+    address: string;
+    centerType: string;
+    latitude: number;
+    longitude: number;
+  }[];
 }
