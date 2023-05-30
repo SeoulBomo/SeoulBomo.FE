@@ -2,10 +2,12 @@
 import axios from "axios";
 import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
 import { useSearchParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import SearchListSkeleton from "./SearchListSkeleton";
+import { useEffect } from "react";
 
 export default function MapSearchList() {
+  const queryClient = useQueryClient();
   const searchParams = useSearchParams();
   const borough = searchParams.get("borough");
   const centerType = searchParams.get("center-type");
@@ -16,6 +18,9 @@ export default function MapSearchList() {
     );
     return data;
   };
+  useEffect(() => {
+    queryClient.fetchQuery(["mapSearchList"], getMapSearchList);
+  }, [searchParams]);
 
   const { isLoading, isError, data, error } = useQuery(
     ["mapSearchList"],

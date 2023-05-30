@@ -1,11 +1,13 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import DetailSearchFrame from "../commonSearch/DetailSearchFrame";
 import SearchListSkeleton from "./SearchListSkeleton";
+import { useEffect } from "react";
 
 export default function MainSearchList() {
+  const queryClient = useQueryClient();
   const searchParams = useSearchParams();
   const keyword = searchParams.get("keyword");
   const type = searchParams.get("type");
@@ -16,6 +18,11 @@ export default function MainSearchList() {
     );
     return data;
   };
+
+  useEffect(() => {
+    queryClient.fetchQuery(["mainSearchList"],     getMainSearchList,
+    );
+  }, [searchParams]);
   const { isLoading, isError, data, error } = useQuery(
     ["mainSearchList"],
     getMainSearchList,

@@ -5,11 +5,11 @@ import { Tab } from "@headlessui/react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import Review from "./Review";
-import KakaoMap from "./KakaoMap";
 import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import Swal from "sweetalert2";
 import DetailSkeleton from "./DetailSkeleton";
+import KakaoMap from "./KakaoMap";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -23,9 +23,6 @@ export default function DetailFrame() {
 
   // invalidateQueries를 사용하여 쿼리를 무효화 시키고 다시 호출하기 위해 queryClient를 사용합니다.
   const queryClient = useQueryClient();
-
-  const user = useRecoilValue(userAtom);
-  const isLogin = useRecoilValue(isLoginSelector);
 
   const getDetailData = async () => {
     if (`/center/${params.id}` === pathname) {
@@ -45,7 +42,7 @@ export default function DetailFrame() {
     ["detail"],
     getDetailData,
     {
-      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+      refetchOnWindowFocus: true, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
       retry: 0, // 실패시 재호출 몇번 할지
       onSuccess: (data: IDetailData) => {
         // 성공시 호출
@@ -53,12 +50,15 @@ export default function DetailFrame() {
     }
   );
 
+  const user = useRecoilValue(userAtom);
+  const isLogin = useRecoilValue(isLoginSelector);
+
   // 스크랩 버튼 클릭시
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!isLogin) {
       Swal.fire({
-        titleText: "스크랩을 하려면 로그인이 필요합니다 :D",
+        titleText: "스크랩을 하려면 로그인이 필요합니다.",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#FBBF24",
@@ -215,10 +215,12 @@ export default function DetailFrame() {
             </form>
           </div>
         </div>
-        <KakaoMap
-          lat={parseFloat(data?.latitude ?? "33.5563")}
-          lng={parseFloat(data?.longitude ?? "126.795841")}
-        />
+        {
+          <KakaoMap
+            lat={parseFloat(data?.latitude ?? "33.5563")}
+            lng={parseFloat(data?.longitude ?? "126.795841")}
+          />
+        }
       </section>
       {/* 개요 및 리뷰 */}
       <div className="flex flex-col w-[20rem] sm:w-[30rem] md:w-[50rem] lg:w-[65rem] bg-white shadow-md drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] justify-start gap-[1rem]">
