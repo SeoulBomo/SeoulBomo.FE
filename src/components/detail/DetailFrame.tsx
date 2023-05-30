@@ -9,6 +9,7 @@ import KakaoMap from "./KakaoMap";
 import { useRecoilValue } from "recoil";
 import { isLoginSelector, userAtom } from "@/state";
 import Swal from "sweetalert2";
+import DetailSkeleton from "./DetailSkeleton";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -49,7 +50,6 @@ export default function DetailFrame() {
       onSuccess: (data: IDetailData) => {
         // 성공시 호출
       },
-      onError: ({ e }: any) => {},
     }
   );
 
@@ -102,10 +102,10 @@ export default function DetailFrame() {
     ["postScrap"],
     postScrap,
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["detail"] });
       },
-      onError: (error: any) => {
+      onError: () => {
         alert("알 수 없는 오류입니다.");
         router.push(pathname);
       },
@@ -113,7 +113,58 @@ export default function DetailFrame() {
   );
 
   if (isLoading || postScrapIsLoding) {
-    return <></>;
+    return (
+      <DetailSkeleton>
+        <Tab.Group>
+          <Tab.List className="bg-yellowColor flex rounded-xl p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-gray-600 hover:border-gray-30">
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                  selected
+                    ? "text-gray-900 bg-white shadow-md"
+                    : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                )
+              }
+            >
+              개요
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                  selected
+                    ? "text-gray-900 bg-white shadow-md"
+                    : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                )
+              }
+            >
+              리뷰
+            </Tab>
+          </Tab.List>
+          <Tab.Panels className="mt-2">
+            <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+              <div className="animate-pulse flex flex-col gap-[1rem]">
+                <div className="flex gap-[1rem]">
+                  <div className="h-[4rem] w-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col bg-gray-400"></div>
+                  <div className="h-[4rem] w-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col bg-gray-400"></div>
+                  <div className="h-[4rem] w-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col bg-gray-400"></div>
+                  <div className="h-[4rem] w-[4rem] md:w-[5rem] md:h-[5rem] lg:w-[10rem] lg:h-[12rem] rounded-[0.3rem] shadow-md flex items-center justify-center flex-col bg-gray-400"></div>
+                </div>
+                <div className="text-base lg:text-xl font-semibold leading-[3rem] lg:leading-[4rem] border-l-4 border-yellow-200 pl-[1rem]">
+                  <div className="h-[1rem] bg-gray-300 rounded-full"></div>
+                </div>
+              </div>
+            </Tab.Panel>
+            <Tab.Panel
+              className={classNames("rounded-xl bg-white p-3")}
+            ></Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
+      </DetailSkeleton>
+    );
   }
 
   return (
@@ -266,57 +317,9 @@ export default function DetailFrame() {
     </main>
   );
 }
-// 보육 정보 상세 조회 GET api/v1/child-care-info/{child-care-info-id}
-// {
-//     "id": 1,
-//     "name": "금천 하모니 축제",
-//     "infoType": "문화행사",
-//     "borough": "금천구",
-//     "ageType": "연령무관",
-//     "latitude": "126.89604",
-//     "longitude": "37.45707",
-//     "address": "서울특별시 금천구 시흥대로73길 70금천구청 앞 중앙무대 (시흥동)",
-//     "isFree": true,
-//     "fee": "",
-//     "startAt": "2023-05-13",
-//     "endAt": "2023-05-14",
-//     "infoUrl": "",
-//     "facilityName": "EVENT_FCLTY_NM",
-//     "reviewCount": 0,
-//     "likeCount": 0
-// }
-// 또는
-// 아동 센터 정보 상세조회 GET /api/v1/child-center-info/{child-center-info-id}
-//  {
-// "id": 3,
-// "name": "별숲어린이집",
-// "centerType": "어린이집",
-// "borough": "구로구",
-// "address": "서울특별시 구로구 경인로43길 49 고척아이파크MD 내 관리실",
-// "preschoolType": "국공립",
-// "contactNumber": null,
-// "homepage": null,
-// "classNum": null,
-// "playgroundNum": 3,
-// "cctvNum": 0,
-// "teacherNum": 0,
-// "latitude": 37.56647,
-// "longitude": 126.977963,
-// "isSchoolBus": false,
-// "isFree": false,
-// "fee": "0",
-// "isSatOpen": false,
-// "serviceType": "야간연장",
-// "reviewCount": 0,
-// "likeCount": 0
-// }
-// 위 두가지 형태로 데이터가 들어옵니다. 각각 타입을 만들어서 합쳐 처리해줍니다.
-// 공통된 프로퍼티는 id, name, borough, latitude, longitude, address, isFree, reviewCount, likeCount 입니다.
-
-//  두 타입을 합쳐서 서로 공통된 프로퍼티는 그대로 두고 나머지는 선택적으로 처리하여 어떤 타입이 들어오던지 처리할 수 있도록 합니다.
 // Intersection Type
 type IDetailData = IChildCareData & IChildCenterData;
-interface IChildCareData {
+export interface IChildCareData {
   id: number;
   name: string;
   borough: string;
@@ -335,7 +338,7 @@ interface IChildCareData {
   facilityName: string;
 }
 
-interface IChildCenterData {
+export interface IChildCenterData {
   id: number;
   name: string;
   borough: string;
