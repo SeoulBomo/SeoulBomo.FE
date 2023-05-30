@@ -46,7 +46,7 @@ export default function DetailSearchFrame({
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <div className="my-[1rem] flex flex-col gap-10">
+      <div className="my-[4rem] flex flex-col gap-10">
         <section className="flex flex-col w-[20rem] sm:w-[40rem] md:w-[50rem] lg:w-[60rem] border-2 border-gray-200 bg-white rounded-[1rem] drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] hover:drop-shadow-[0_2rem_2rem_rgba(0,0,0,0.07)] p-[3rem] ">
           <div className="rounded=[0.625rem] sm:w-[11.6rem] h-[3rem] sm:h-[5rem] bg-amber-200 flex justify-center items-center font-bold text-2xl mb-[1rem] rounded-[0.625rem]">
             <div className="text-xl sm:text-2xl">
