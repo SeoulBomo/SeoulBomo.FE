@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MypageReview from "./MypageReview";
 import Swal from "sweetalert2";
+import MypageSkeleton from "./MypageSkeleton";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -35,12 +36,85 @@ export default function MypageFrame() {
     refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
     retry: 0, // 실패시 재호출 몇번 할지
     onSuccess: (data: IMypageData[]) => {},
-    onError: ({ e }: any) => {},
   });
   if (isLoading) {
-    return <></>;
+    return (
+      <MypageSkeleton>
+        <Tab.Group>
+          <Tab.List className="bg-yellowColor flex rounded-xl p-4 border-b-2 border-transparent rounded-t-lg text-lg hover:text-gray-600 hover:border-gray-30">
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                  selected
+                    ? "text-gray-900 bg-white shadow-md"
+                    : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                )
+              }
+            >
+              스크랩
+            </Tab>
+            <Tab
+              className={({ selected }) =>
+                classNames(
+                  "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
+                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-yellow-400 focus:outline-none focus:ring-2",
+                  selected
+                    ? "text-gray-900 bg-white shadow-md"
+                    : "text-gray-400 hover:bg-white/[0.2] hover:text-gray-800"
+                )
+              }
+            >
+              리뷰 단 글
+            </Tab>
+          </Tab.List>
+          <Tab.Panels className="mt-2">
+            <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+              <div className="animate-pulse flex flex-col gap-[1rem]">
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+              </div>
+            </Tab.Panel>
+            <Tab.Panel className={classNames("rounded-xl bg-white p-3")}>
+              <div className="animate-pulse flex flex-col gap-[1rem]">
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+                <div className="flex flex-col items-start justify-centers pt-4">
+                  <div className="h-[0.8rem] w-[10rem] bg-gray-300 rounded-full dark:bg-gray-600 mb-[0.6rem]"></div>
+                  <div className="h-[0.5rem] w-[15rem] bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                </div>
+              </div>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
+      </MypageSkeleton>
+    );
   }
-  console.log(user);
   if (isError) {
     router.push("/error");
   }
