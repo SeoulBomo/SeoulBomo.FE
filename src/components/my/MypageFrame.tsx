@@ -134,7 +134,7 @@ export default function MypageFrame() {
         setUser(undefined);
         router.replace("/");
         Swal.fire({
-          title: "로그아웃 되었습니다 :D",
+          title: "로그아웃 되었습니다.",
           icon: "success",
           showConfirmButton: false,
           timer: 1000,

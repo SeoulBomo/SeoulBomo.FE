@@ -84,7 +84,12 @@ export default function DetailFrame() {
           careInfoId: params.id,
         })
         .then((res) => {
-          alert(res.data);
+          Swal.fire({
+            title: res.data,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
+          });
         });
     } else {
       await axios
@@ -93,7 +98,12 @@ export default function DetailFrame() {
           centerId: params.id,
         })
         .then((res) => {
-          alert(res.data);
+          Swal.fire({
+            title: res.data,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
+          });
         });
     }
   };
