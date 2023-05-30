@@ -4,7 +4,7 @@ export default function BusinessPay() {
       {/* 타이틀 */}
       <div className="flex items-center justify-center p-[3rem]">
         <text className="bg-yellowColor rounded-[0.7rem] p-[1.5rem] font-bold text-xl lg:text-2xl">
-          영유아보육료 지원
+          영유아보육료
         </text>
       </div>
       {/* 본문 */}
