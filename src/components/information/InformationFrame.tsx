@@ -88,7 +88,7 @@ export default function InformationFrame() {
   return (
     <main className="w-screen bg-cardFrameColor flex flex-col items-center justify-between">
       <text className="font-bold text-xl md:text-2xl lg:text-3xl mt-[5rem] mb-[5rem]">
-        보육정책
+        보육정보
       </text>
 
       <InformationCard data={policy} text={"보육 정책"} />
