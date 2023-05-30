@@ -24,7 +24,7 @@ export default function InformationFrame() {
     },
     {
       id: 5,
-      name: "보육 정책 현황",
+      name: "보육정책 현황",
       path: "/information/status",
     },
     {
