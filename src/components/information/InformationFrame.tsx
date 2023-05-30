@@ -9,17 +9,17 @@ export default function InformationFrame() {
     },
     {
       id: 2,
-      name: "국공립 어린이집 확충",
+      name: "국공립어린이집 확충",
       path: "/information/expansion",
     },
     {
       id: 3,
-      name: "육아 종합 지원 센터",
+      name: "육아종합지원센터",
       path: "/information/center",
     },
     {
       id: 4,
-      name: "보육 지원 체계 개편",
+      name: "보육지원체계개편",
       path: "/information/reform",
     },
     {
@@ -29,7 +29,7 @@ export default function InformationFrame() {
     },
     {
       id: 6,
-      name: "아이 행복 카드",
+      name: "아이행복카드",
       path: "/information/credit",
     },
     {
@@ -42,17 +42,17 @@ export default function InformationFrame() {
   const business = [
     {
       id: 1,
-      name: "영유아 보육료",
+      name: "영유아보육료",
       path: "/information/pay",
     },
     {
       id: 2,
-      name: "시간제 보육",
+      name: "시간제보육",
       path: "/information/care",
     },
     {
       id: 3,
-      name: "가정 양육 수당",
+      name: "가정양육수당",
       path: "/information/benefit",
     },
     {
@@ -75,7 +75,7 @@ export default function InformationFrame() {
     },
     {
       id: 3,
-      name: "어린이집 입소 대기",
+      name: "어린이집입소대기",
       path: "/information/waiting-admission",
     },
     {
