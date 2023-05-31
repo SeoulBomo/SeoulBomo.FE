@@ -215,12 +215,7 @@ export default function DetailFrame() {
             </form>
           </div>
         </div>
-        {
-          <KakaoMap
-            lat={parseFloat(data?.latitude ?? "33.5563")}
-            lng={parseFloat(data?.longitude ?? "126.795841")}
-          />
-        }
+        <KakaoMap lat={data?.latitude} lng={data?.longitude} />
       </section>
       {/* 개요 및 리뷰 */}
       <div className="flex flex-col w-[20rem] sm:w-[30rem] md:w-[50rem] lg:w-[65rem] bg-white shadow-md drop-shadow-[0_1.5rem__1.5rem_rgba(0,0,0,0.05)] mb-[2rem] rounded-[1rem] justify-start gap-[1rem]">
