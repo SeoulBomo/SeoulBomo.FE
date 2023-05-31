@@ -2,7 +2,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Script from "next/script";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { useInjectKakaoMapApi } from "react-kakao-maps-sdk";
 import { RecoilRoot } from "recoil";
 
@@ -13,15 +13,16 @@ export default function NextProvider({ children }: PropsWithChildren) {
   //   appkey: `${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}`,
   // });
 
+  useEffect(() => {
+    <Script
+      src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=services,clusterer&autoload=false`}
+      strategy="beforeInteractive"
+    />;
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <Script
-          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=services,clusterer&autoload=false`}
-          strategy="beforeInteractive"
-        />
-        {children}
-      </RecoilRoot>
+      <RecoilRoot>{children}</RecoilRoot>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
