@@ -14,6 +14,7 @@ export default function KakaoMap({
   if (typeof lat === "string") lat = parseFloat(lat);
   if (typeof lng === "string") lng = parseFloat(lng);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { loading, error } = useInjectKakaoMapApi({
     appkey: `${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}`,
   });
