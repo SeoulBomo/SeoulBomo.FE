@@ -31,11 +31,21 @@ export default function FilterSection() {
     // Preventing the page from reloading
     event.preventDefault();
 
-    if (!event.currentTarget.age.value || !event.currentTarget.place.value) {
+    if (!event.currentTarget.age.value) {
       Swal.fire({
         icon: "info",
         width: 300,
         html: "아이의 연령대를 선택하고 필요한 정보를 받아보세요!",
+        confirmButtonColor: "#ececec",
+      });
+      return;
+    }
+
+    if (!event.currentTarget.place.value) {
+      Swal.fire({
+        icon: "info",
+        width: 300,
+        html: "알고싶은 정보를 선택하고 필요한 정보를 받아보세요!",
         confirmButtonColor: "#ececec",
       });
       return;
@@ -54,7 +64,7 @@ export default function FilterSection() {
             당신을 위한 맞춤형 필터링 서비스
           </div>
           <div className="pt-[1rem] text-sm md:text-base lg:text-xl font-medium pb-[3rem]">
-            우리 아이의 나이를 선택하고 필요한 정보를 받아보세요
+            아이의 연령대와 시설을 선택하고 필요한 정보를 받아보세요
           </div>
         </div>
         <form onSubmit={submitForm}>
