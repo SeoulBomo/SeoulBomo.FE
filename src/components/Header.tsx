@@ -56,7 +56,7 @@ export default function Header() {
             href="/information"
             className="text-base font-semibold leading-6 text-gray-600 hover:text-gray-900"
           >
-            보육정보
+            보육정책
           </Link>
 
           {/* About us 버튼 */}
@@ -172,7 +172,7 @@ export default function Header() {
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      보육정보
+                      보육정책
                     </Link>
 
                     {/* 모바일 About us 버튼 */}
