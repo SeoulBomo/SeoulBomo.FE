@@ -9,17 +9,16 @@ export default function KakaoMap({
   lat: number | string | undefined;
   lng: number | string | undefined;
 }) {
-  if (!lat || !lng) return <></>;
-
-  if (typeof lat === "string") lat = parseFloat(lat);
-  if (typeof lng === "string") lng = parseFloat(lng);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { loading, error } = useInjectKakaoMapApi({
     appkey: `${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}`,
   });
 
   if (loading || error) return <></>;
+
+  if (!lat || !lng) return <></>;
+
+  if (typeof lat === "string") lat = parseFloat(lat);
+  if (typeof lng === "string") lng = parseFloat(lng);
 
   return (
     <>
