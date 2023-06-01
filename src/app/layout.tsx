@@ -17,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-cardFrameColor">
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <NextProvider>
           <div className={Pretendard.className}>{children}</div>
         </NextProvider>
