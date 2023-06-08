@@ -11,7 +11,7 @@
 </center>
 
 
-**[서울보모 바로가기](https://seoul-bomo.vercel.app/about-us)**  
+**[서울보모 바로가기](https://seoul-bomo.vercel.app)**  
 
 ## Team
 <table>
