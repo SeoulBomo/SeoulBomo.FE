@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { PropsWithChildren, useState } from "react";
 import { useInjectKakaoMapApi } from "react-kakao-maps-sdk";
 import { RecoilRoot } from "recoil";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function NextProvider({ children }: PropsWithChildren) {
   const [queryClient] = useState(() => new QueryClient());
@@ -16,6 +17,7 @@ export default function NextProvider({ children }: PropsWithChildren) {
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>{children}</RecoilRoot>
       <ReactQueryDevtools initialIsOpen={false} />
+      <Analytics />
     </QueryClientProvider>
   );
 }

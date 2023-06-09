@@ -2,7 +2,6 @@
 import { Pretendard } from "@/utils/font";
 import "./globals.css";
 import NextProvider from "./NextProvider";
-import Script from "next/script";
 
 export const metadata = {
   title: "서울보모",
