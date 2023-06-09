@@ -62,7 +62,7 @@
 
 ## 프로젝트 소개
 
-![description](https://github.com/SeoulBomo/SeoulBomo.FE/assets/49053676/bbd77551-cc9a-4598-9cb3-26de714c06c8)
+![description](https://github.com/SeoulBomo/SeoulBomo.FE/assets/49053676/bae6e7a3-5d83-429a-a101-35159f7276a9)
 
 ### 제작배경
 현재 대한민국의 저출산 문제가 점점 심각해지고 있다. 
