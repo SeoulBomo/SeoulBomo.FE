@@ -285,7 +285,7 @@ export default function MypageFrame() {
                           <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
                             {post.name}
                           </h3>
-                          <p className="text-xs lg:text-sm text-gray-600">
+                          <p className="text-xs lg:text-sm text-gray-600 truncate">
                             {post.address}
                           </p>
                         </li>

@@ -88,7 +88,7 @@ export default function MypageReview() {
                   router.push(`/care/${post.targetId}`);
                 }}
               >
-                <div className="flex flex-col">
+                <div className="flex flex-col truncate">
                   <h3 className="lg:text-lg text-sm font-medium leading-5 truncate">
                     {post.targetName}
                   </h3>
